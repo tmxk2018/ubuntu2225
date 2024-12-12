@@ -1,0 +1,5 @@
+12. /root/auborobotstudio/robotstudio/teachpendant/share/teachpendant/translations  
+    存放示教器的翻译文件，支持多语言界面和操作说明。
+
+13. /root/auborobotstudio/robotstudio/teachpendant/share/teachpendant/version_update_log  
+    存放版本更新日志的文件，记录示教器软件的更新历史和变更内容。
