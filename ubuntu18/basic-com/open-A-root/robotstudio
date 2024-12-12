@@ -12,3 +12,12 @@
 
 5. /root/auborobotstudio/robotstudio/teachpendant  
    存放示教器的相关文件目录，通常用于机器人编程和控制，一般程序文件最常用的目录。
+
+1. /root/auborobotstudio/robotstudio/teachpendant/bin  
+   存放示教器相关的可执行文件的目录，包含用于操作和控制机器人设备的程序。
+
+2. /root/auborobotstudio/robotstudio/teachpendant/lib  
+   存放示教器所需的库文件的目录，通常包含共享库和依赖文件，即程序运行时所需的重要部分。
+
+3. /root/auborobotstudio/robotstudio/teachpendant/share  
+   存放示教器相关的共享数据和资源的目录，包括文档、数据、配置文件、程序等。
