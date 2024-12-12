@@ -1,0 +1,14 @@
+1. /root/auborobotstudio/robotstudio/bin  
+   存放可执行文件的目录，包含与 Aubo 机器人工作室相关的主要程序。
+
+2. /root/auborobotstudio/robotstudio/conf  
+   存放配置文件的目录，通常用于定义机器人工作室的设置和参数。
+
+3. /root/auborobotstudio/robotstudio/rc  
+   存放启动脚本或运行时配置文件的目录，用于初始化设置。
+
+4. /root/auborobotstudio/robotstudio/service  
+   存放服务相关文件的目录，包含后台服务的配置和管理文件。
+
+5. /root/auborobotstudio/robotstudio/teachpendant  
+   存放示教器的相关文件目录，通常用于机器人编程和控制，一般程序文件最常用的目录。
