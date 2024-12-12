@@ -1,0 +1,38 @@
+1. /root/auborobotstudio/robotstudio/teachpendant/share/teachpendant/database  
+   存放示教器相关的数据库文件，可能用于存储和管理机器人运动轨迹和任务数据。
+
+2. /root/auborobotstudio/robotstudio/teachpendant/share/teachpendant/log  
+   存放示教器的日志文件，记录操作过程中的事件和错误，便于故障排查和分析。
+
+3. /root/auborobotstudio/robotstudio/teachpendant/share/teachpendant/nc  
+   存放数控（NC）相关文件，可能用于示教器的运动控制和路径规划。
+
+4. /root/auborobotstudio/robotstudio/teachpendant/share/teachpendant/offlinetrack  
+   存放离线轨迹文件的目录，可能用于预先定义机器人的运动轨迹，而无需实时控制。
+
+5. /root/auborobotstudio/robotstudio/teachpendant/share/teachpendant/plugins  
+   存放示教器插件的目录，可能包含扩展示教器功能的模块。
+
+6. /root/auborobotstudio/robotstudio/teachpendant/share/teachpendant/procedure  
+   存放示教器操作程序的目录，定义机器人执行的具体步骤和任务。
+
+7. /root/auborobotstudio/robotstudio/teachpendant/share/teachpendant/project  
+   存放示教器项目文件的目录，可能包含与特定机器人任务相关的所有资源和设定。
+
+8. /root/auborobotstudio/robotstudio/teachpendant/share/teachpendant/recordtrack  
+   存放记录轨迹的文件，记录机器人示教过程中产生的运动轨迹。
+
+9. /root/auborobotstudio/robotstudio/teachpendant/share/teachpendant/resources  
+   存放示教器所需的资源文件，可能包括图形、音频和其他辅助文件。
+
+10. /root/auborobotstudio/robotstudio/teachpendant/share/teachpendant/script  
+    存放示教器相关脚本的目录，包含用于自动化程序运行的脚本文件。
+
+11. /root/auborobotstudio/robotstudio/teachpendant/share/teachpendant/simulation  
+    存放示教器的仿真文件，用于模拟机器人运动和任务执行。
+
+12. /root/auborobotstudio/robotstudio/teachpendant/share/teachpendant/translations  
+    存放示教器的翻译文件，支持多语言界面和操作说明。
+
+13. /root/auborobotstudio/robotstudio/teachpendant/share/teachpendant/version_update_log  
+    存放版本更新日志的文件，记录示教器软件的更新历史和变更内容。
