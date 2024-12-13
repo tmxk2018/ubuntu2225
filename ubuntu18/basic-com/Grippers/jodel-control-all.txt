@@ -1,0 +1,15 @@
+-- 行程，速度，力度
+--open
+script_common_interface("JODELL_Tools","1|RG|RG75_300|Run|5,125,150")
+sleep(1)
+--close
+script_common_interface("JODELL_Tools","1|RG|RG75_300|Run|255,125,150")
+sleep(1)
+
+
+--全开全关
+script_common_interface("JODELL_Tools","1|RG|RG75_300|Open")
+sleep(2)
+script_common_interface("JODELL_Tools","1|RG|RG75_300|Close")
+
+
