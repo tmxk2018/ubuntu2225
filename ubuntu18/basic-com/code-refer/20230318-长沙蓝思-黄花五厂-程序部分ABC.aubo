@@ -1,0 +1,11 @@
+--Main Program
+
+--(Logic tree item : Project_Program) Project_Program
+  --(Logic tree item : Set) Set
+  --set_current_logic_tree_item("334b168409fa45cb8653e2d1c0c2edfb")
+S8=get_global_variable("V_I_numsxl")
+--print(S8)
+--sleep(0.2)
+S7=tonumber(S8)
+set_modbus_io_status("sl_num", S7)
+  --set_step_breakpoint()

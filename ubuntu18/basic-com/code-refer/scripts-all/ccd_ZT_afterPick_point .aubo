@@ -1,0 +1,17 @@
+
+init_global_move_profile()
+set_joint_maxacc({1,1,1,1,1,1})
+set_joint_maxvelc({1,1,1,1,1,1})
+
+if num==1 then
+
+pickpoint_pose[3]=0.6
+pickpoint_ori=rpy2quaternion({d2r(-179.999847),d2r(0.003806),d2r(10)})
+move_joint(get_target_pose(pickpoint_pose,pickpoint_ori,false),true)
+
+set_global_variable("V_D_rz",rz)
+pickpoint_ori=rpy2quaternion({d2r(-179.999847),d2r(0.003806),d2r(rz)})
+
+move_joint(get_target_pose(pickpoint_pose,pickpoint_ori,false),true)
+
+end

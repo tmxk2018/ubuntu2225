@@ -1,0 +1,39 @@
+﻿
+
+
+
+ip = "192.168.1.100" --相机的 IP
+port = 85000 --相机的端口号
+connectTCPServer(ip,port)--连接服务器
+
+
+ --自定义字符串分割函数，后面会用到。
+function string.split(str,delimiter)
+        if str==nil or str=='' or delimiter==nil then
+                return nil
+        end
+        local result = {}
+        for match in (str..delimiter):gmatch("(.-)"..delimiter) do
+               table.insert(result,match)
+        end
+        return result
+ end
+ 
+ -- 自定义函数。可把{1,1,1,1,1,1}转化为”1,1,1,1,1,1”
+function table2str(joint_table)
+str = ''
+for i=1,#joint_table,1 do
+str = str..tostring(joint_table[i])..","
+end
+str = string.sub(str,1,-2)
+return str
+end
+--自定义函数结束
+
+sleep(2)
+clientSendData(ip,port,pos_send)
+--tcp.client.send_str_data(ip, port, pos_send)
+
+
+
+ 

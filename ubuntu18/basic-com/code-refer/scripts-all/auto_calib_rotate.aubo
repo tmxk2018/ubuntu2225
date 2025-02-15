@@ -1,0 +1,77 @@
+﻿
+--无协议命令的格式
+--发送  RBCL,p,x,y,z,rx,ry,rz[分隔符]
+--接受  RBCL[分隔符]
+
+--参数p  0:9点校正    1：计算旋转中心   2：高精度计算
+--参数x,y,z,rx,ry,rz    机器人坐标
+
+
+ip = "192.168.1.100" --相机的 IP
+port = 85000 --相机的端口号
+connectTCPServer(ip,port)--连接服务器
+
+------------------------------------------------------
+ --自定义字符串分割函数，后面会用到。
+function string.split(str,delimiter)
+        if str==nil or str=='' or delimiter==nil then
+                return nil
+        end
+        local result = {}
+        for match in (str..delimiter):gmatch("(.-)"..delimiter) do
+               table.insert(result,match)
+        end
+        return result
+ end
+ 
+ -- 自定义函数。可把{1,1,1,1,1,1}转化为”1,1,1,1,1,1”
+function table2str(joint_table)
+str = ''
+for i=1,#joint_table,1 do
+str = str..tostring(joint_table[i])..","
+end
+str = string.sub(str,1,-2)
+return str
+end
+--自定义函数结束
+------------------------------------------------------
+
+pose = get_current_waypoint()
+
+
+X_str=string.format("%6.6f",pose.pos.x)
+Y_str=string.format("%6.6f",pose.pos.y)
+Z_str=string.format("%6.6f",pose.pos.z)
+
+X_num=tonumber(X_str)
+Y_num=tonumber(Y_str)
+Z_num=tonumber(Z_str)
+
+X=tostring(X_num*1000)
+Y=tostring(Y_num*1000)
+Z=tostring(Z_num*1000)
+
+print("X:"..X)
+print("Y:"..Y)
+print("Z:"..Z)
+
+RPY = quaternion2rpy({pose.ori.w,pose.ori.x,pose.ori.y,pose.ori.z})
+RX=string.format("%6.6f",r2d(RPY[1]))
+RY=string.format("%6.6f",r2d(RPY[2]))
+RZ=string.format("%6.6f",r2d(RPY[3]))
+
+print("RX:"..RX)
+print("RY:"..RY)
+print("RZ:"..RZ)
+
+pos_send="RBCL"..",".."1"..","..X..","..Y..","..Z..","..RX..","..RY..","..RZ.."\r"
+
+print("Str_Now="..pos_send)
+
+sleep(0.5)
+clientSendData(ip,port,pos_send)
+--tcp.client.send_str_data(ip, port, pos_send)
+
+
+
+ 

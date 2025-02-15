@@ -1,0 +1,11 @@
+
+init_global_move_profile()
+set_joint_maxacc({1,1,1,1,1,1})
+set_joint_maxvelc({1,1,1,1,1,1})
+
+if num==1 then
+pickpoint_pos[3]=0.35
+move_joint(get_target_pose(left_pickpoint_pos,left_pickpoint_ori,false),true)
+
+else move_joint(get_target_pose(left_camera_pos,left_camera_ori,false),true)
+end

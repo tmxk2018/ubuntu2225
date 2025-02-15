@@ -1,0 +1,36 @@
+﻿	ip="192.168.1.100"---------------------视觉系统的 IP 地址
+	port=8500-------------------------------------机械手的服务器端口号
+
+-- 自定义字符串分割函数,后面会用到。
+function string.split(str,delimiter)
+if str==nil or str=='' or delimiter==nil then
+return nil
+end
+local result = {}
+for match in (str..delimiter):gmatch("(.-)"..delimiter) do
+table.insert(result,match)
+end
+return result
+end
+--自定义字符串分割函数结束
+
+
+
+connectTCPServer(ip,port)--连接服务器
+
+sleep(0.5)
+clientSendData(ip,port,"C001\r")
+sleep(1)
+
+
+
+
+
+
+
+
+		
+	
+
+
+

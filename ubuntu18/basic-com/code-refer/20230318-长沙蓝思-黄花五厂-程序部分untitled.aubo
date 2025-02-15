@@ -1,0 +1,3 @@
+A = get_modbus_io_status("Work")
+A = A - 1
+set_modbus_io_status("Work", A)

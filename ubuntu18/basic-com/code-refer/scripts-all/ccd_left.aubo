@@ -1,0 +1,113 @@
+	ip="192.168.1.100"---------------------视觉系统的 IP 地址
+	port=8500-------------------------------------机械手的服务器端口号
+
+-- 自定义字符串分割函数,后面会用到。
+function string.split(str,delimiter)
+if str==nil or str=='' or delimiter==nil then
+return nil
+end
+local result = {}
+for match in (str..delimiter):gmatch("(.-)"..delimiter) do
+table.insert(result,match)
+end
+return result
+end
+--自定义字符串分割函数结束
+
+
+-- 自定义函数。可把{1,1,1,1,1,1}转化为”1,1,1,1,1,1”
+function table2str(joint_table)
+str = ''
+for i=1,#joint_table,1 do
+str = str..tostring(joint_table[i])..","
+end
+str = string.sub(str,1,-2)
+return str
+end
+--自定义函数结束
+
+camera_pos={-0.34966,0.108008,0.14986}--拍照位置
+camera_ori=rpy2quaternion({d2r(-140.6155),d2r(0.570683),d2r(0.325838)})--拍照姿态
+pickpoint_pos={-0.45832,0.023749,0.032414}--示教位置
+pickpoint_ori=rpy2quaternion({d2r(-140.615524),d2r(0.570606),d2r(0.326054)})--示教姿态
+takephoto="C003\r\n"--触发拍照字符串，可自定义
+
+init_global_move_profile()--初始化运动
+set_joint_maxacc({1,1,1,1,1,1})--设置轴动最大加速度
+set_joint_maxvelc({1,1,1,1,1,1})--设置轴动最大速度
+move_joint(get_target_pose(camera_pos,camera_ori,false,{0,0,0},{1,0,0,0}),true)--移动至拍照位
+
+connectTCPServer(ip,port)--连接服务器
+
+table1 = {0,0,0}
+while (1) do
+	--recv_str = "1"
+	clientSendData(ip,port,"C001\r") -- 触发相机拍照
+      sleep(2)
+	recv_str_no_use=clientRecvData(ip,port) -- 过滤无用数据
+	recv_str=clientRecvData(ip,port) -- 接收相机返回值
+	cnt=0
+	print("recv_str = "..recv_str) -- 打印出返回值
+	while (recv_str==nil or recv_str=='' or recv_str=="1") do
+		sleep(0.1)
+       if( recv_str==0) then
+        break
+       end
+		cnt = cnt+1
+		if cnt>10 then
+			cnt=0
+          -- clientSendData(ip,port,"C002\r\n")
+        --  sleep(0.5)
+		clientSendData(ip,port,takephoto) -- 5s 还没接收到数据,再发一次
+	    end
+		recv_str = clientRecvData(ip,port) -- 接收相机返回数据
+		print("recv_str = "..recv_str) -- 打印出返回值
+	end
+	table1 = string.split(recv_str,",") -- 按照,分割
+	if (table1[1] == "1") then -- 第一位为 1,拍照成功,跳出循环
+	break
+	elseif (table1[1] == "0") then -- 第一位 0,拍照失败
+	print("no object!")
+	popup_message("NG","no object!",false) -- 弹窗提醒
+   break
+	end
+break
+
+end
+------------------------------------------------功能 4:返回数据处理，以视觉系统 返回 x,y,theta 三个值为例，如:0.000,0.000,0.000
+--table1= string.split(recv,",")------------------返回的字符串分割
+
+
+::lable::
+xx=tonumber(table1[2])
+yy=tonumber(table1[3])
+num_num=tonumber(table1[1])
+--judge_judge=tonumber(table1[4])
+print("x:"..xx)
+print("y:"..yy)
+print("num_num:"..num_num)
+--print("judge_judge:"..judge_judge)
+set_global_variable("V_D_x",xx)------------------相机传回的变量保存到 V_D_x 中，方 便在线编程调用
+set_global_variable("V_D_y",yy)
+set_global_variable("V_D_num_num",num_num)
+--set_global_variable("V_D_judge_judge",judge_judge)
+
+
+pickpoint_pos[1]=xx/1000
+pickpoint_pos[2]=yy/1000
+--pickpoint_ori[3]=d2r(r2d(pickpoint_ori[3])+t)
+
+
+init_global_move_profile()
+set_joint_maxacc({1,1,1,1,1,1})
+set_joint_maxvelc({1,1,1,1,1,1})
+
+if num_num==1 then
+pickpoint_pos[3]=0.1
+move_joint(get_target_pose(pickpoint_pos,pickpoint_ori,false),true)
+
+pickpoint_pos[3]=0.04
+move_joint(get_target_pose(pickpoint_pos,pickpoint_ori,false),true)
+
+else move_joint(get_target_pose(camera_pos,camera_ori,false),true)
+end

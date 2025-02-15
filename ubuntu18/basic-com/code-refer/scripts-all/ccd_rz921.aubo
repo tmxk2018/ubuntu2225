@@ -1,0 +1,113 @@
+	ip="192.168.1.100"---------------------视觉系统的 IP 地址
+	port=8500-------------------------------------机械手的服务器端口号
+
+-- 自定义字符串分割函数,后面会用到。
+function string.split(str,delimiter)
+if str==nil or str=='' or delimiter==nil then
+return nil
+end
+local result = {}
+for match in (str..delimiter):gmatch("(.-)"..delimiter) do
+table.insert(result,match)
+end
+return result
+end
+--自定义字符串分割函数结束
+
+
+-- 自定义函数。可把{1,1,1,1,1,1}转化为”1,1,1,1,1,1”
+function table2str(joint_table)
+str = ''
+for i=1,#joint_table,1 do
+str = str..tostring(joint_table[i])..","
+end
+str = string.sub(str,1,-2)
+return str
+end
+--自定义函数结束
+
+camera_pose={-0.528249,-0.096711,0.341752}--拍照位置
+camera_ori=rpy2quaternion({d2r(-179.598083),d2r(-0.348536),d2r(133.558075)})--拍照姿态
+pickpoint_pose={-0.451777,-0.202887,0.229387}--示教位置
+pickpoint_ori=rpy2quaternion({d2r(-179.598083),d2r(-0.348536),d2r(133.558075)})--示教姿态
+--takephoto="C003\r\n"--触发拍照字符串，可自定义
+
+init_global_move_profile()--初始化运动
+set_joint_maxacc({25,25,25,30,30,30})--设置轴动最大加速度
+set_joint_maxvelc({2.5,2.5,2.5,3,3,3})--设置轴动最大速度
+--move_joint(get_target_pose(camera_pos,camera_ori,false,{0,0,0},{1,0,0,0}),true)--移动至拍照位
+
+connectTCPServer(ip,port)--连接服务器
+
+table1 = {0,0,0,0}
+z=tonumber(1)
+print("z="..z)
+--::lable::
+
+::lableA::
+sleep(0.01)
+clientSendData(ip,port,"C001\r")
+sleep(1)
+recv_str=clientRecvData(ip,port)
+--clientSendData(ip,port,"C001\r")
+--sleep(1)
+--recv_str=clientRecvData(ip,port)
+print("recv_str="..recv_str)
+table1= string.split(recv_str,",")
+print("table1[1]="..table1[1])
+print("table1[2]="..table1[2])
+print("table1[3]="..table1[3])
+print("table1[4]="..table1[4])
+
+x=tonumber(table1[2])
+y=tonumber(table1[3])
+rz=tonumber(table1[4])
+num=tonumber(table1[1])
+print("x:"..x)
+print("y:"..y)
+print("rz:"..rz)
+print("num:"..num)
+
+set_global_variable("V_D_num",num)
+set_global_variable("V_D_x",x)
+set_global_variable("V_D_y",y)
+set_global_variable("V_D_rz",rz)
+pickpoint_pose[1]=x/1000
+pickpoint_pose[2]=y/1000
+pickpoint_ori=rpy2quaternion({d2r(-179.598083),d2r(-0.348536),d2r(rz)})
+
+--if z==1 then
+--z=z+1
+--goto  lable
+--end
+
+if num==0 then
+goto  lableA
+end
+
+if num==1 then
+z=0
+
+pickpoint_pose[3]=0.12
+print("kkkkkkkkkmk")
+move_joint(get_target_pose(pickpoint_pose,pickpoint_ori,false,{-0.002459,0.000978,0.231606},{1,0,0,0}),true)
+
+pickpoint_pose[3]=0.055
+sleep (0.5)
+Modwp = get_target_pose(pickpoint_pose,pickpoint_ori,false,{-0.002459,0.000978,0.231606},{1,0,0,0})
+move_joint(Modwp,true)
+print("haha")
+
+end
+
+
+
+
+
+
+
+		
+	
+
+
+
