@@ -1,0 +1,17 @@
+2024-04-06 23:21:52.795 [info] CLI main {"_":[],"diff":false,"merge":false,"add":false,"goto":false,"new-window":false,"reuse-window":false,"wait":false,"help":false,"list-extensions":false,"show-versions":false,"install-extension":["ms-vscode-remote.remote-containers"],"pre-release":false,"update-extensions":false,"version":false,"verbose":false,"status":false,"prof-startup":false,"no-cached-data":false,"prof-v8-extensions":false,"disable-extensions":false,"disable-gpu":false,"disable-chromium-sandbox":false,"sandbox":false,"telemetry":false,"debugRenderer":false,"enable-smoke-test-driver":false,"logExtensionHostCommunication":false,"skip-release-notes":false,"skip-welcome":false,"disable-telemetry":false,"disable-updates":false,"use-inmemory-secretstorage":false,"disable-workspace-trust":false,"disable-crash-reporter":false,"skip-add-to-recently-opened":false,"unity-launch":false,"open-url":false,"file-write":false,"file-chmod":false,"force":false,"do-not-sync":false,"trace":false,"preserve-env":false,"force-user-env":false,"force-disable-user-env":false,"open-devtools":false,"disable-gpu-sandbox":false,"__enable-file-policy":false,"enable-coi":false,"no-proxy-server":false,"no-sandbox":false,"nolazy":false,"force-renderer-accessibility":false,"ignore-certificate-errors":false,"allow-insecure-localhost":false,"disable-dev-shm-usage":false,"profile-temp":false,"logsPath":"/root/.config/Code/logs/20240406T232152"}
+2024-04-06 23:21:52.795 [info] Started initializing default profile extensions in extensions installation folder. file:///root/.vscode/extensions
+2024-04-06 23:21:52.803 [info] Completed initializing default profile extensions in extensions installation folder. file:///root/.vscode/extensions
+2024-04-06 23:21:52.878 [error] [uncaught exception in CLI]: Error: ENOENT: no such file or directory, stat '/root/.vscode/extensions/extensions.json.vsctmp': EntryNotFound (FileSystemError): Error: ENOENT: no such file or directory, stat '/root/.vscode/extensions/extensions.json.vsctmp'
+    at n.create (/usr/share/code/resources/app/out/vs/code/node/cli.js:31:5835)
+    at w (/usr/share/code/resources/app/out/vs/code/node/cli.js:31:5947)
+    at i.fb (/usr/share/code/resources/app/out/vs/code/node/cliProcessMain.js:29:35367)
+    at i.stat (/usr/share/code/resources/app/out/vs/code/node/cliProcessMain.js:29:27813)
+    at async g.stat (/usr/share/code/resources/app/out/vs/code/node/cliProcessMain.js:29:14957)
+    at async Z.tb (/usr/share/code/resources/app/out/vs/code/node/cliProcessMain.js:56:69011)
+2024-04-06 23:22:00.983 [info] Getting Manifest... ms-vscode-remote.remote-containers
+2024-04-06 23:22:01.063 [info] Installing extension: ms-vscode-remote.remote-containers
+2024-04-06 23:22:17.678 [info] Extension signature is verified: ms-vscode-remote.remote-containers
+2024-04-06 23:22:17.852 [info] Extracted extension to file:///root/.vscode/extensions/ms-vscode-remote.remote-containers-0.354.0: ms-vscode-remote.remote-containers
+2024-04-06 23:22:17.857 [info] Renamed to /root/.vscode/extensions/ms-vscode-remote.remote-containers-0.354.0
+2024-04-06 23:22:17.860 [info] Extracting extension completed. ms-vscode-remote.remote-containers
+2024-04-06 23:22:17.864 [info] Extension installed successfully: ms-vscode-remote.remote-containers

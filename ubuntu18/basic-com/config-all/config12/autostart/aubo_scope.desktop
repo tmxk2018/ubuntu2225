@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=systemctl open aubo_scope.service
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[zh_CN]=aubo_scope
+Name=aubo_scope
+Comment[zh_CN]=aubo_scope
+Comment=aubo_scope
