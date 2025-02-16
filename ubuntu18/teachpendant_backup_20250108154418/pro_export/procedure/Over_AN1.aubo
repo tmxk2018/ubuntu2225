@@ -1,0 +1,9 @@
+--Procedure Program
+
+--(Logic tree item : Procedure_Program) Procedure_Program
+  --(Logic tree item : Wait) WaitAN1
+  set_current_logic_tree_item("7797795d9be34bac8795f9f15675f84c")
+  while (not (get_modbus_io_status("AN1") == 1)) do
+    sleep(0.01)
+  end
+  set_step_breakpoint()

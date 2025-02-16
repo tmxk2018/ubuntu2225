@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MainProgram>
+    <Condition ConditionType="Project_Program" ConditionAlias="Project_Program" ConditionUuid="a426b654df754b259d5c17565d126ac6">
+        <Attribute>
+            <md5OfProjectContinueFile></md5OfProjectContinueFile>
+            <md5OfProjectPauseFile></md5OfProjectPauseFile>
+            <md5OfProjectStopFile></md5OfProjectStopFile>
+            <projectContinueFile></projectContinueFile>
+            <projectPauseFile></projectPauseFile>
+            <projectStopFile></projectStopFile>
+            <selectProjectContinue>false</selectProjectContinue>
+            <selectProjectPause>false</selectProjectPause>
+            <selectProjectStop>false</selectProjectStop>
+        </Attribute>
+        <Condition ConditionType="Loop" ConditionAlias="Loop" ConditionUuid="0cc890f015d44cec9dd362c0e3c28123">
+            <Attribute>
+                <LoopConditionMode>Always</LoopConditionMode>
+            </Attribute>
+            <Condition ConditionType="Move" ConditionAlias="Move" ConditionUuid="ca724e32b42e4c2b902a6b6d181f1c13">
+                <Attribute>
+                    <MoveConditionMode>MoveJoint</MoveConditionMode>
+                    <ArrivalAheadThreshold>0.000000</ArrivalAheadThreshold>
+                    <ArrivalAheadType>None</ArrivalAheadType>
+                    <EnableArrivalAhead>false</EnableArrivalAhead>
+                    <EnableOffset>false</EnableOffset>
+                    <JointAcc>50,50,50,50,50,50</JointAcc>
+                    <JointSpeed>50,50,50,50,50,50</JointSpeed>
+                    <OffsetCoordName></OffsetCoordName>
+                    <OffsetCoordType>BaseCoord</OffsetCoordType>
+                    <OffsetRX></OffsetRX>
+                    <OffsetRY></OffsetRY>
+                    <OffsetRZ></OffsetRZ>
+                    <OffsetX></OffsetX>
+                    <OffsetY></OffsetY>
+                    <OffsetZ></OffsetZ>
+                </Attribute>
+                <Condition ConditionType="Waypoint" ConditionAlias="Waypoint" ConditionUuid="6ea3dea46d9d4c6b91b8ff2fe851df8d">
+                    <Attribute>
+                        <WaypointConditionMode>FixedPoint</WaypointConditionMode>
+                        <FixedPoint>0.000000,0.000000,0.000000,1.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000</FixedPoint>
+                    </Attribute>
+                </Condition>
+            </Condition>
+        </Condition>
+    </Condition>
+</MainProgram>

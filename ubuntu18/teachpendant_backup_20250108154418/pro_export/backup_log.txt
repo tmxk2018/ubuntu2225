@@ -1,0 +1,172 @@
+开始备份文件...
+备份目录：/root/auborobotstudio/robotstudio/teachpendant/share/teachpendant/database
+sending incremental file list
+database/
+database/authority.db
+database/config_info.db
+database/fixed_pose.db
+database/io_initpos.db
+database/joint_offset.db
+database/security_config.db
+database/system_info.db
+database/tool_coord_param.db
+database/tool_io_config.db
+database/variable.db
+
+sent 275,276 bytes  received 210 bytes  550,972.00 bytes/sec
+total size is 274,432  speedup is 1.00
+备份成功：/root/auborobotstudio/robotstudio/teachpendant/share/teachpendant/database
+备份目录：/root/auborobotstudio/robotstudio/teachpendant/share/teachpendant/log
+sending incremental file list
+log/
+
+sent 51 bytes  received 20 bytes  142.00 bytes/sec
+total size is 0  speedup is 0.00
+备份成功：/root/auborobotstudio/robotstudio/teachpendant/share/teachpendant/log
+备份目录：/root/auborobotstudio/robotstudio/teachpendant/share/teachpendant/plugins/Modbus
+sending incremental file list
+Modbus/
+Modbus/version_update_log
+Modbus/Database/
+Modbus/Database/modbus.db
+Modbus/Database/modbusSlave.conf
+
+sent 21,514 bytes  received 85 bytes  43,198.00 bytes/sec
+total size is 21,201  speedup is 0.98
+备份成功：/root/auborobotstudio/robotstudio/teachpendant/share/teachpendant/plugins/Modbus
+备份目录：/root/auborobotstudio/robotstudio/teachpendant/share/teachpendant/procedure
+sending incremental file list
+procedure/
+procedure/A8.aubo
+procedure/A8.xml
+procedure/Over_AN1.aubo
+procedure/Over_AN1.xml
+procedure/Over_AN2.aubo
+procedure/Over_AN2.xml
+procedure/Over_AN3.aubo
+procedure/Over_AN3.xml
+procedure/Over_AN4.aubo
+procedure/Over_AN4.xml
+procedure/Over_AN5.aubo
+procedure/Over_AN5.xml
+procedure/Over_AN6.aubo
+procedure/Over_AN6.xml
+procedure/Over_AN7.aubo
+procedure/Over_AN7.xml
+procedure/Over_AN8.aubo
+procedure/Over_AN8.xml
+procedure/arm_i10.aubo
+procedure/arm_i10.xml
+procedure/charge.aubo
+procedure/charge.xml
+procedure/dingwei.aubo
+procedure/dingwei.xml
+
+sent 118,623 bytes  received 476 bytes  238,198.00 bytes/sec
+total size is 116,951  speedup is 0.98
+备份成功：/root/auborobotstudio/robotstudio/teachpendant/share/teachpendant/procedure
+备份目录：/root/auborobotstudio/robotstudio/teachpendant/share/teachpendant/project
+sending incremental file list
+project/
+project/Work_ZZX/
+project/Work_ZZX/main.aubo
+project/Work_ZZX/main.xml
+project/ZZX_station_01/
+project/ZZX_station_01/main.aubo
+project/ZZX_station_01/main.xml
+project/ZZX_station_02/
+project/ZZX_station_02/main.aubo
+project/ZZX_station_02/main.xml
+project/ZZX_station_03/
+project/ZZX_station_03/main.aubo
+project/ZZX_station_03/main.xml
+project/ZZX_station_04/
+project/ZZX_station_04/main.aubo
+project/ZZX_station_04/main.xml
+project/ZZX_station_05/
+project/ZZX_station_05/main.aubo
+project/ZZX_station_05/main.xml
+project/ZZX_station_06/
+project/ZZX_station_06/main.aubo
+project/ZZX_station_06/main.xml
+project/ZZX_station_07/
+project/ZZX_station_07/main.aubo
+project/ZZX_station_07/main.xml
+project/ZZX_station_08/
+project/ZZX_station_08/main.aubo
+project/ZZX_station_08/main.xml
+project/ZZX_station_09/
+project/ZZX_station_09/main.aubo
+project/ZZX_station_09/main.xml
+project/ZZX_station_10/
+project/ZZX_station_10/main.aubo
+project/ZZX_station_10/main.xml
+project/ee/
+project/ee/main.aubo
+project/ee/main.xml
+project/proj_1/
+project/proj_1/main.aubo
+project/proj_1/main.xml
+project/proj_10/
+project/proj_10/main.aubo
+project/proj_10/main.xml
+project/proj_11/
+project/proj_11/main.aubo
+project/proj_11/main.xml
+project/proj_1_pro/
+project/proj_1_pro/main.aubo
+project/proj_1_pro/main.xml
+project/proj_2/
+project/proj_2/main.aubo
+project/proj_2/main.xml
+project/proj_2_old/
+project/proj_2_old/main.aubo
+project/proj_2_old/main.xml
+project/proj_3/
+project/proj_3/main.aubo
+project/proj_3/main.xml
+project/proj_4/
+project/proj_4/main.aubo
+project/proj_4/main.xml
+project/proj_5/
+project/proj_5/main.aubo
+project/proj_5/main.xml
+project/proj_6/
+project/proj_6/main.aubo
+project/proj_6/main.xml
+project/proj_7/
+project/proj_7/main.aubo
+project/proj_7/main.xml
+project/proj_8/
+project/proj_8/main.aubo
+project/proj_8/main.xml
+project/proj_9/
+project/proj_9/main.aubo
+project/proj_9/main.xml
+project/shutdown/
+project/shutdown/main.aubo
+project/shutdown/main.xml
+
+sent 4,014,709 bytes  received 1,208 bytes  8,031,834.00 bytes/sec
+total size is 4,009,715  speedup is 1.00
+备份成功：/root/auborobotstudio/robotstudio/teachpendant/share/teachpendant/project
+备份目录：/root/auborobotstudio/robotstudio/teachpendant/share/teachpendant/script
+sending incremental file list
+script/
+script/Close.aubo
+script/LM1.aubo
+script/LM2.aubo
+script/Open.aubo
+script/agv_test.aubo
+script/paizhao.aubo
+script/test_tcp_client.aubo
+
+sent 4,338 bytes  received 153 bytes  8,982.00 bytes/sec
+total size is 3,810  speedup is 0.85
+备份成功：/root/auborobotstudio/robotstudio/teachpendant/share/teachpendant/script
+跳过目录：/root/auborobotstudio/robotstudio/teachpendant/share/teachpendant/resources
+跳过目录：/root/auborobotstudio/robotstudio/teachpendant/share/teachpendant/simulation
+跳过目录：/root/auborobotstudio/robotstudio/teachpendant/share/teachpendant/recordtrack
+跳过目录：/root/auborobotstudio/robotstudio/teachpendant/share/teachpendant/nc
+跳过目录：/root/auborobotstudio/robotstudio/teachpendant/share/teachpendant/offlinetrack
+将日志文件包含在备份中...

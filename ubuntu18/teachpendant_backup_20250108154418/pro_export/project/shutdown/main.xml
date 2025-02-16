@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MainProgram>
+    <Condition ConditionType="Project_Program" ConditionAlias="Project_Program" ConditionUuid="dbfab474c9ca4c8caea1922f1ae97f58">
+        <Attribute>
+            <md5OfProjectContinueFile></md5OfProjectContinueFile>
+            <md5OfProjectPauseFile></md5OfProjectPauseFile>
+            <md5OfProjectStopFile></md5OfProjectStopFile>
+            <projectContinueFile></projectContinueFile>
+            <projectPauseFile></projectPauseFile>
+            <projectStopFile></projectStopFile>
+            <selectProjectContinue>false</selectProjectContinue>
+            <selectProjectPause>false</selectProjectPause>
+            <selectProjectStop>false</selectProjectStop>
+        </Attribute>
+        <Condition ConditionType="Script" ConditionAlias="test_tcp_shutdow" ConditionUuid="459c46d750644aeea745e4039bcc72f3">
+            <Attribute>
+                <ScriptConditionMode>BlockScript</ScriptConditionMode>
+                <MD5>4ea612eee68d5e73af5e5973f0b55a7c</MD5>
+                <ScriptFileName>test_tcp_shutdow</ScriptFileName>
+            </Attribute>
+        </Condition>
+    </Condition>
+</MainProgram>

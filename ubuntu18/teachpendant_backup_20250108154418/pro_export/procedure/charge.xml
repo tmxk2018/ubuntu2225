@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcedureProgram>
+    <Condition ConditionType="Procedure_Program" ConditionAlias="Procedure_Program" ConditionUuid="55a673f14d214bf497734360a51ec890">
+        <Attribute/>
+        <Condition ConditionType="AGV" ConditionAlias="Agv_goto_LM135_default" ConditionUuid="b90f7c0e3f0b414ead35aadf6412e787">
+            <Attribute>
+                <Acc></Acc>
+                <BackDist></BackDist>
+                <FordwardDist></FordwardDist>
+                <IsConnect>false</IsConnect>
+                <IsDisconnect>false</IsDisconnect>
+                <IsEnableBrakeControl>false</IsEnableBrakeControl>
+                <IsNavigation>true</IsNavigation>
+                <IsSafe>false</IsSafe>
+                <NaviMoveDirect>default</NaviMoveDirect>
+                <NaviPointName>LM</NaviPointName>
+                <PluginName>AGV</PluginName>
+                <PointNumber>135</PointNumber>
+                <SafeDetect>true</SafeDetect>
+                <SafeDist>2.5</SafeDist>
+                <SlowDist>1.5</SlowDist>
+                <Speed></Speed>
+                <Theta></Theta>
+                <WAcc></WAcc>
+                <WSpeed></WSpeed>
+                <enableBrakeControl>true</enableBrakeControl>
+            </Attribute>
+        </Condition>
+        <Condition ConditionType="AGV" ConditionAlias="Agv_goto_LM249_default" ConditionUuid="0757ec4e996f4ae49169ada991ef68f1">
+            <Attribute>
+                <Acc></Acc>
+                <BackDist></BackDist>
+                <FordwardDist></FordwardDist>
+                <IsConnect>false</IsConnect>
+                <IsDisconnect>false</IsDisconnect>
+                <IsEnableBrakeControl>false</IsEnableBrakeControl>
+                <IsNavigation>true</IsNavigation>
+                <IsSafe>false</IsSafe>
+                <NaviMoveDirect>default</NaviMoveDirect>
+                <NaviPointName>LM</NaviPointName>
+                <PluginName>AGV</PluginName>
+                <PointNumber>249</PointNumber>
+                <SafeDetect>true</SafeDetect>
+                <SafeDist>2.5</SafeDist>
+                <SlowDist>1.5</SlowDist>
+                <Speed></Speed>
+                <Theta></Theta>
+                <WAcc></WAcc>
+                <WSpeed></WSpeed>
+                <enableBrakeControl>true</enableBrakeControl>
+            </Attribute>
+        </Condition>
+        <Condition ConditionType="Loop" ConditionAlias="Loop" ConditionUuid="c682fd832eea4804b04664478bf3cc4d">
+            <Attribute>
+                <LoopConditionMode>Times</LoopConditionMode>
+                <LoopTimes>1</LoopTimes>
+            </Attribute>
+            <Condition ConditionType="If" ConditionAlias="If" ConditionUuid="6d37ba418f2b41e2a371c91f7759ddac">
+                <Attribute>
+                    <Exp>(M)c1 == 0</Exp>
+                </Attribute>
+                <Condition ConditionType="Set" ConditionAlias="c1" ConditionUuid="94e35e47ef6f4159b0d220b9a396ddc9">
+                    <Attribute>
+                        <SetConditionMode>IO</SetConditionMode>
+                        <IOCategory>Modbus</IOCategory>
+                        <IOName>c1</IOName>
+                        <IOValue>1</IOValue>
+                        <ModbusIOType>ModbusAO</ModbusIOType>
+                    </Attribute>
+                </Condition>
+                <Condition ConditionType="AGV" ConditionAlias="Agv_goto_CP237_default" ConditionUuid="80b0175b3a38454d8be377532780bd4f">
+                    <Attribute>
+                        <Acc></Acc>
+                        <BackDist></BackDist>
+                        <FordwardDist></FordwardDist>
+                        <IsConnect>false</IsConnect>
+                        <IsDisconnect>false</IsDisconnect>
+                        <IsEnableBrakeControl>false</IsEnableBrakeControl>
+                        <IsNavigation>true</IsNavigation>
+                        <IsSafe>false</IsSafe>
+                        <NaviMoveDirect>default</NaviMoveDirect>
+                        <NaviPointName>CP</NaviPointName>
+                        <PluginName>AGV</PluginName>
+                        <PointNumber>237</PointNumber>
+                        <SafeDetect>true</SafeDetect>
+                        <SafeDist>2.5</SafeDist>
+                        <SlowDist>1.5</SlowDist>
+                        <Speed></Speed>
+                        <Theta></Theta>
+                        <WAcc></WAcc>
+                        <WSpeed></WSpeed>
+                        <enableBrakeControl>true</enableBrakeControl>
+                    </Attribute>
+                </Condition>
+                <Condition ConditionType="Wait" ConditionAlias="Wait" ConditionUuid="356101a898d949a98849ac9372fe7677">
+                    <Attribute>
+                        <WaitConditionMode>Exp</WaitConditionMode>
+                        <WaitConditionExp>(M)d1 &gt; V_I_DC</WaitConditionExp>
+                    </Attribute>
+                </Condition>
+                <Condition ConditionType="AGV" ConditionAlias="Agv_goto_LM248_default" ConditionUuid="42482e0b3b6942e4b6749b6ed8bc5c6a">
+                    <Attribute>
+                        <Acc></Acc>
+                        <BackDist></BackDist>
+                        <FordwardDist></FordwardDist>
+                        <IsConnect>false</IsConnect>
+                        <IsDisconnect>false</IsDisconnect>
+                        <IsEnableBrakeControl>false</IsEnableBrakeControl>
+                        <IsNavigation>true</IsNavigation>
+                        <IsSafe>false</IsSafe>
+                        <NaviMoveDirect>default</NaviMoveDirect>
+                        <NaviPointName>LM</NaviPointName>
+                        <PluginName>AGV</PluginName>
+                        <PointNumber>248</PointNumber>
+                        <SafeDetect>true</SafeDetect>
+                        <SafeDist>2.5</SafeDist>
+                        <SlowDist>1.5</SlowDist>
+                        <Speed></Speed>
+                        <Theta></Theta>
+                        <WAcc></WAcc>
+                        <WSpeed></WSpeed>
+                        <enableBrakeControl>true</enableBrakeControl>
+                    </Attribute>
+                </Condition>
+                <Condition ConditionType="Set" ConditionAlias="c1fu" ConditionUuid="4ab0bcb2bb534898998ea018cf1bba06">
+                    <Attribute>
+                        <SetConditionMode>IO</SetConditionMode>
+                        <IOCategory>Modbus</IOCategory>
+                        <IOName>c1</IOName>
+                        <IOValue>0</IOValue>
+                        <ModbusIOType>ModbusAO</ModbusIOType>
+                    </Attribute>
+                </Condition>
+                <Condition ConditionType="AGV" ConditionAlias="Agv_goto_LM231_default" ConditionUuid="0e11206278404a2eaf62d0dbd3dbe480">
+                    <Attribute>
+                        <Acc></Acc>
+                        <BackDist></BackDist>
+                        <FordwardDist></FordwardDist>
+                        <IsConnect>false</IsConnect>
+                        <IsDisconnect>false</IsDisconnect>
+                        <IsEnableBrakeControl>false</IsEnableBrakeControl>
+                        <IsNavigation>true</IsNavigation>
+                        <IsSafe>false</IsSafe>
+                        <NaviMoveDirect>default</NaviMoveDirect>
+                        <NaviPointName>LM</NaviPointName>
+                        <PluginName>AGV</PluginName>
+                        <PointNumber>231</PointNumber>
+                        <SafeDetect>true</SafeDetect>
+                        <SafeDist>2.5</SafeDist>
+                        <SlowDist>1.5</SlowDist>
+                        <Speed></Speed>
+                        <Theta></Theta>
+                        <WAcc></WAcc>
+                        <WSpeed></WSpeed>
+                        <enableBrakeControl>true</enableBrakeControl>
+                    </Attribute>
+                </Condition>
+                <Condition ConditionType="Break" ConditionAlias="Break" ConditionUuid="ec4ebf6848fe4ce4a345515c33a392f9">
+                    <Attribute/>
+                </Condition>
+            </Condition>
+            <Condition ConditionType="Else_If" ConditionAlias="Else_If" ConditionUuid="5b7e19ba1ca04aa78e1c7000b4a68788">
+                <Attribute>
+                    <Exp>(M)c2 == 0</Exp>
+                </Attribute>
+                <Condition ConditionType="Set" ConditionAlias="c2" ConditionUuid="5108e81d608b45cb86c3f5c47d722d91">
+                    <Attribute>
+                        <SetConditionMode>IO</SetConditionMode>
+                        <IOCategory>Modbus</IOCategory>
+                        <IOName>c2</IOName>
+                        <IOValue>1</IOValue>
+                        <ModbusIOType>ModbusAO</ModbusIOType>
+                    </Attribute>
+                </Condition>
+                <Condition ConditionType="AGV" ConditionAlias="Agv_goto_CP236_default" ConditionUuid="61b88d965f684d9b86613f9767567829">
+                    <Attribute>
+                        <Acc>0</Acc>
+                        <BackDist>0</BackDist>
+                        <FordwardDist>0</FordwardDist>
+                        <IsConnect>false</IsConnect>
+                        <IsDisconnect>false</IsDisconnect>
+                        <IsEnableBrakeControl>false</IsEnableBrakeControl>
+                        <IsNavigation>true</IsNavigation>
+                        <IsSafe>false</IsSafe>
+                        <NaviMoveDirect>default</NaviMoveDirect>
+                        <NaviPointName>CP</NaviPointName>
+                        <PluginName>AGV</PluginName>
+                        <PointNumber>236</PointNumber>
+                        <SafeDetect>true</SafeDetect>
+                        <SafeDist>2.5</SafeDist>
+                        <SlowDist>1.5</SlowDist>
+                        <Speed>0</Speed>
+                        <Theta>0</Theta>
+                        <WAcc>0</WAcc>
+                        <WSpeed>0</WSpeed>
+                        <enableBrakeControl>true</enableBrakeControl>
+                    </Attribute>
+                </Condition>
+                <Condition ConditionType="Wait" ConditionAlias="Wait" ConditionUuid="15ec660160a149d9a963b88218476a2c">
+                    <Attribute>
+                        <WaitConditionMode>Exp</WaitConditionMode>
+                        <WaitConditionExp>(M)d1 &gt; V_I_DC</WaitConditionExp>
+                    </Attribute>
+                </Condition>
+                <Condition ConditionType="AGV" ConditionAlias="Agv_goto_LM248_default" ConditionUuid="13067d2d14254b0eb44f20b064b999f4">
+                    <Attribute>
+                        <Acc></Acc>
+                        <BackDist></BackDist>
+                        <FordwardDist></FordwardDist>
+                        <IsConnect>false</IsConnect>
+                        <IsDisconnect>false</IsDisconnect>
+                        <IsEnableBrakeControl>false</IsEnableBrakeControl>
+                        <IsNavigation>true</IsNavigation>
+                        <IsSafe>false</IsSafe>
+                        <NaviMoveDirect>default</NaviMoveDirect>
+                        <NaviPointName>LM</NaviPointName>
+                        <PluginName>AGV</PluginName>
+                        <PointNumber>248</PointNumber>
+                        <SafeDetect>true</SafeDetect>
+                        <SafeDist>2.5</SafeDist>
+                        <SlowDist>1.5</SlowDist>
+                        <Speed></Speed>
+                        <Theta></Theta>
+                        <WAcc></WAcc>
+                        <WSpeed></WSpeed>
+                        <enableBrakeControl>true</enableBrakeControl>
+                    </Attribute>
+                </Condition>
+                <Condition ConditionType="Set" ConditionAlias="c2fu" ConditionUuid="9fbd99e2aceb4148a56de42448a537b6">
+                    <Attribute>
+                        <SetConditionMode>IO</SetConditionMode>
+                        <IOCategory>Modbus</IOCategory>
+                        <IOName>c2</IOName>
+                        <IOValue>0</IOValue>
+                        <ModbusIOType>ModbusAO</ModbusIOType>
+                    </Attribute>
+                </Condition>
+                <Condition ConditionType="AGV" ConditionAlias="Agv_goto_LM231_default" ConditionUuid="d7c4e6eea9804b09ae17d0c371979f26">
+                    <Attribute>
+                        <Acc></Acc>
+                        <BackDist></BackDist>
+                        <FordwardDist></FordwardDist>
+                        <IsConnect>false</IsConnect>
+                        <IsDisconnect>false</IsDisconnect>
+                        <IsEnableBrakeControl>false</IsEnableBrakeControl>
+                        <IsNavigation>true</IsNavigation>
+                        <IsSafe>false</IsSafe>
+                        <NaviMoveDirect>default</NaviMoveDirect>
+                        <NaviPointName>LM</NaviPointName>
+                        <PluginName>AGV</PluginName>
+                        <PointNumber>231</PointNumber>
+                        <SafeDetect>true</SafeDetect>
+                        <SafeDist>2.5</SafeDist>
+                        <SlowDist>1.5</SlowDist>
+                        <Speed></Speed>
+                        <Theta></Theta>
+                        <WAcc></WAcc>
+                        <WSpeed></WSpeed>
+                        <enableBrakeControl>true</enableBrakeControl>
+                    </Attribute>
+                </Condition>
+                <Condition ConditionType="Break" ConditionAlias="Break" ConditionUuid="437563d440e944a5a14f38a3034721af">
+                    <Attribute/>
+                </Condition>
+            </Condition>
+            <Condition ConditionType="Else_If" ConditionAlias="Else_If" ConditionUuid="4238853a1bd8457b994a749980cb3705">
+                <Attribute>
+                    <Exp>(M)c3 == 0</Exp>
+                </Attribute>
+                <Condition ConditionType="Set" ConditionAlias="c3" ConditionUuid="418b032df14544e38a95f825b0c5be61">
+                    <Attribute>
+                        <SetConditionMode>IO</SetConditionMode>
+                        <IOCategory>Modbus</IOCategory>
+                        <IOName>c3</IOName>
+                        <IOValue>1</IOValue>
+                        <ModbusIOType>ModbusAO</ModbusIOType>
+                    </Attribute>
+                </Condition>
+                <Condition ConditionType="AGV" ConditionAlias="Agv_goto_CP235_default" ConditionUuid="50eba266557942e09f2c37d54cf079bc">
+                    <Attribute>
+                        <Acc>0</Acc>
+                        <BackDist>0</BackDist>
+                        <FordwardDist>0</FordwardDist>
+                        <IsConnect>false</IsConnect>
+                        <IsDisconnect>false</IsDisconnect>
+                        <IsEnableBrakeControl>false</IsEnableBrakeControl>
+                        <IsNavigation>true</IsNavigation>
+                        <IsSafe>false</IsSafe>
+                        <NaviMoveDirect>default</NaviMoveDirect>
+                        <NaviPointName>CP</NaviPointName>
+                        <PluginName>AGV</PluginName>
+                        <PointNumber>235</PointNumber>
+                        <SafeDetect>true</SafeDetect>
+                        <SafeDist>2.5</SafeDist>
+                        <SlowDist>1.5</SlowDist>
+                        <Speed>0</Speed>
+                        <Theta>0</Theta>
+                        <WAcc>0</WAcc>
+                        <WSpeed>0</WSpeed>
+                        <enableBrakeControl>true</enableBrakeControl>
+                    </Attribute>
+                </Condition>
+                <Condition ConditionType="Wait" ConditionAlias="Wait" ConditionUuid="0389c25bfe2f42ecb099ea6fdd4bf97e">
+                    <Attribute>
+                        <WaitConditionMode>Exp</WaitConditionMode>
+                        <WaitConditionExp>(M)d1 &gt; V_I_DC</WaitConditionExp>
+                    </Attribute>
+                </Condition>
+                <Condition ConditionType="AGV" ConditionAlias="Agv_goto_LM248_default" ConditionUuid="d240d3bc1f8844c5a80cff0ae4afe232">
+                    <Attribute>
+                        <Acc></Acc>
+                        <BackDist></BackDist>
+                        <FordwardDist></FordwardDist>
+                        <IsConnect>false</IsConnect>
+                        <IsDisconnect>false</IsDisconnect>
+                        <IsEnableBrakeControl>false</IsEnableBrakeControl>
+                        <IsNavigation>true</IsNavigation>
+                        <IsSafe>false</IsSafe>
+                        <NaviMoveDirect>default</NaviMoveDirect>
+                        <NaviPointName>LM</NaviPointName>
+                        <PluginName>AGV</PluginName>
+                        <PointNumber>248</PointNumber>
+                        <SafeDetect>true</SafeDetect>
+                        <SafeDist>2.5</SafeDist>
+                        <SlowDist>1.5</SlowDist>
+                        <Speed></Speed>
+                        <Theta></Theta>
+                        <WAcc></WAcc>
+                        <WSpeed></WSpeed>
+                        <enableBrakeControl>true</enableBrakeControl>
+                    </Attribute>
+                </Condition>
+                <Condition ConditionType="Set" ConditionAlias="c3fu" ConditionUuid="2f7b0c0c9eef41379d09f0874f8d9d47">
+                    <Attribute>
+                        <SetConditionMode>IO</SetConditionMode>
+                        <IOCategory>Modbus</IOCategory>
+                        <IOName>c3</IOName>
+                        <IOValue>0</IOValue>
+                        <ModbusIOType>ModbusAO</ModbusIOType>
+                    </Attribute>
+                </Condition>
+                <Condition ConditionType="AGV" ConditionAlias="Agv_goto_LM231_default" ConditionUuid="75811ad8b3a4480a92efc6af83835064">
+                    <Attribute>
+                        <Acc></Acc>
+                        <BackDist></BackDist>
+                        <FordwardDist></FordwardDist>
+                        <IsConnect>false</IsConnect>
+                        <IsDisconnect>false</IsDisconnect>
+                        <IsEnableBrakeControl>false</IsEnableBrakeControl>
+                        <IsNavigation>true</IsNavigation>
+                        <IsSafe>false</IsSafe>
+                        <NaviMoveDirect>default</NaviMoveDirect>
+                        <NaviPointName>LM</NaviPointName>
+                        <PluginName>AGV</PluginName>
+                        <PointNumber>231</PointNumber>
+                        <SafeDetect>true</SafeDetect>
+                        <SafeDist>2.5</SafeDist>
+                        <SlowDist>1.5</SlowDist>
+                        <Speed></Speed>
+                        <Theta></Theta>
+                        <WAcc></WAcc>
+                        <WSpeed></WSpeed>
+                        <enableBrakeControl>true</enableBrakeControl>
+                    </Attribute>
+                </Condition>
+                <Condition ConditionType="Break" ConditionAlias="Break" ConditionUuid="4b917d18bade4f958b1c77601f7a6f19">
+                    <Attribute/>
+                </Condition>
+            </Condition>
+            <Condition ConditionType="Else_If" ConditionAlias="Else_If" ConditionUuid="14b0ff2a7d6149a6a813049b78471017">
+                <Attribute>
+                    <Exp>(M)c4 == 0</Exp>
+                </Attribute>
+                <Condition ConditionType="Set" ConditionAlias="c4" ConditionUuid="aba9f4ca41624c278abfce46e2bff3e3">
+                    <Attribute>
+                        <SetConditionMode>IO</SetConditionMode>
+                        <IOCategory>Modbus</IOCategory>
+                        <IOName>c4</IOName>
+                        <IOValue>1</IOValue>
+                        <ModbusIOType>ModbusAO</ModbusIOType>
+                    </Attribute>
+                </Condition>
+                <Condition ConditionType="AGV" ConditionAlias="Agv_goto_CP234_default" ConditionUuid="1d4759ad673a441fb883c80a2c2b3d33">
+                    <Attribute>
+                        <Acc>0</Acc>
+                        <BackDist>0</BackDist>
+                        <FordwardDist>0</FordwardDist>
+                        <IsConnect>false</IsConnect>
+                        <IsDisconnect>false</IsDisconnect>
+                        <IsEnableBrakeControl>false</IsEnableBrakeControl>
+                        <IsNavigation>true</IsNavigation>
+                        <IsSafe>false</IsSafe>
+                        <NaviMoveDirect>default</NaviMoveDirect>
+                        <NaviPointName>CP</NaviPointName>
+                        <PluginName>AGV</PluginName>
+                        <PointNumber>234</PointNumber>
+                        <SafeDetect>true</SafeDetect>
+                        <SafeDist>2.5</SafeDist>
+                        <SlowDist>1.5</SlowDist>
+                        <Speed>0</Speed>
+                        <Theta>0</Theta>
+                        <WAcc>0</WAcc>
+                        <WSpeed>0</WSpeed>
+                        <enableBrakeControl>true</enableBrakeControl>
+                    </Attribute>
+                </Condition>
+                <Condition ConditionType="Wait" ConditionAlias="Wait" ConditionUuid="142eaac8598b47508e3548e2153359dc">
+                    <Attribute>
+                        <WaitConditionMode>Exp</WaitConditionMode>
+                        <WaitConditionExp>(M)d1 &gt; V_I_DC</WaitConditionExp>
+                    </Attribute>
+                </Condition>
+                <Condition ConditionType="AGV" ConditionAlias="Agv_goto_LM248_default" ConditionUuid="12ebba5006b6471b9087003a1f6727e0">
+                    <Attribute>
+                        <Acc></Acc>
+                        <BackDist></BackDist>
+                        <FordwardDist></FordwardDist>
+                        <IsConnect>false</IsConnect>
+                        <IsDisconnect>false</IsDisconnect>
+                        <IsEnableBrakeControl>false</IsEnableBrakeControl>
+                        <IsNavigation>true</IsNavigation>
+                        <IsSafe>false</IsSafe>
+                        <NaviMoveDirect>default</NaviMoveDirect>
+                        <NaviPointName>LM</NaviPointName>
+                        <PluginName>AGV</PluginName>
+                        <PointNumber>248</PointNumber>
+                        <SafeDetect>true</SafeDetect>
+                        <SafeDist>2.5</SafeDist>
+                        <SlowDist>1.5</SlowDist>
+                        <Speed></Speed>
+                        <Theta></Theta>
+                        <WAcc></WAcc>
+                        <WSpeed></WSpeed>
+                        <enableBrakeControl>true</enableBrakeControl>
+                    </Attribute>
+                </Condition>
+                <Condition ConditionType="Set" ConditionAlias="c4fu" ConditionUuid="d7f1629e074e4c969a11eda770b91a9a">
+                    <Attribute>
+                        <SetConditionMode>IO</SetConditionMode>
+                        <IOCategory>Modbus</IOCategory>
+                        <IOName>c4</IOName>
+                        <IOValue>0</IOValue>
+                        <ModbusIOType>ModbusAO</ModbusIOType>
+                    </Attribute>
+                </Condition>
+                <Condition ConditionType="AGV" ConditionAlias="Agv_goto_LM231_default" ConditionUuid="ba05d29c6ac748748c721dd31a914d35">
+                    <Attribute>
+                        <Acc></Acc>
+                        <BackDist></BackDist>
+                        <FordwardDist></FordwardDist>
+                        <IsConnect>false</IsConnect>
+                        <IsDisconnect>false</IsDisconnect>
+                        <IsEnableBrakeControl>false</IsEnableBrakeControl>
+                        <IsNavigation>true</IsNavigation>
+                        <IsSafe>false</IsSafe>
+                        <NaviMoveDirect>default</NaviMoveDirect>
+                        <NaviPointName>LM</NaviPointName>
+                        <PluginName>AGV</PluginName>
+                        <PointNumber>231</PointNumber>
+                        <SafeDetect>true</SafeDetect>
+                        <SafeDist>2.5</SafeDist>
+                        <SlowDist>1.5</SlowDist>
+                        <Speed></Speed>
+                        <Theta></Theta>
+                        <WAcc></WAcc>
+                        <WSpeed></WSpeed>
+                        <enableBrakeControl>true</enableBrakeControl>
+                    </Attribute>
+                </Condition>
+                <Condition ConditionType="Break" ConditionAlias="Break" ConditionUuid="7703a5eda2bb42f584c55fd3c3a39e3a">
+                    <Attribute/>
+                </Condition>
+            </Condition>
+            <Condition ConditionType="Else_If" ConditionAlias="Else_If" ConditionUuid="d37c371832fd46dda0d21758eb12b2b5">
+                <Attribute>
+                    <Exp>(M)c5 == 0</Exp>
+                </Attribute>
+                <Condition ConditionType="Set" ConditionAlias="c5" ConditionUuid="244a74b0bd7041c6881893e08cd0d530">
+                    <Attribute>
+                        <SetConditionMode>IO</SetConditionMode>
+                        <IOCategory>Modbus</IOCategory>
+                        <IOName>c5</IOName>
+                        <IOValue>1</IOValue>
+                        <ModbusIOType>ModbusAO</ModbusIOType>
+                    </Attribute>
+                </Condition>
+                <Condition ConditionType="AGV" ConditionAlias="Agv_goto_CP233_default" ConditionUuid="42000df26e6b45689546c5eac6caa3a5">
+                    <Attribute>
+                        <Acc>0</Acc>
+                        <BackDist>0</BackDist>
+                        <FordwardDist>0</FordwardDist>
+                        <IsConnect>false</IsConnect>
+                        <IsDisconnect>false</IsDisconnect>
+                        <IsEnableBrakeControl>false</IsEnableBrakeControl>
+                        <IsNavigation>true</IsNavigation>
+                        <IsSafe>false</IsSafe>
+                        <NaviMoveDirect>default</NaviMoveDirect>
+                        <NaviPointName>CP</NaviPointName>
+                        <PluginName>AGV</PluginName>
+                        <PointNumber>233</PointNumber>
+                        <SafeDetect>true</SafeDetect>
+                        <SafeDist>2.5</SafeDist>
+                        <SlowDist>1.5</SlowDist>
+                        <Speed>0</Speed>
+                        <Theta>0</Theta>
+                        <WAcc>0</WAcc>
+                        <WSpeed>0</WSpeed>
+                        <enableBrakeControl>true</enableBrakeControl>
+                    </Attribute>
+                </Condition>
+                <Condition ConditionType="Wait" ConditionAlias="Wait" ConditionUuid="ed71b35395664e9fba39df45eb394fb2">
+                    <Attribute>
+                        <WaitConditionMode>Exp</WaitConditionMode>
+                        <WaitConditionExp>(M)d1 &gt; V_I_DC</WaitConditionExp>
+                    </Attribute>
+                </Condition>
+                <Condition ConditionType="AGV" ConditionAlias="Agv_goto_LM248_default" ConditionUuid="edbd3347936c4b76b172efd44fe7455e">
+                    <Attribute>
+                        <Acc></Acc>
+                        <BackDist></BackDist>
+                        <FordwardDist></FordwardDist>
+                        <IsConnect>false</IsConnect>
+                        <IsDisconnect>false</IsDisconnect>
+                        <IsEnableBrakeControl>false</IsEnableBrakeControl>
+                        <IsNavigation>true</IsNavigation>
+                        <IsSafe>false</IsSafe>
+                        <NaviMoveDirect>default</NaviMoveDirect>
+                        <NaviPointName>LM</NaviPointName>
+                        <PluginName>AGV</PluginName>
+                        <PointNumber>248</PointNumber>
+                        <SafeDetect>true</SafeDetect>
+                        <SafeDist>2.5</SafeDist>
+                        <SlowDist>1.5</SlowDist>
+                        <Speed></Speed>
+                        <Theta></Theta>
+                        <WAcc></WAcc>
+                        <WSpeed></WSpeed>
+                        <enableBrakeControl>true</enableBrakeControl>
+                    </Attribute>
+                </Condition>
+                <Condition ConditionType="Set" ConditionAlias="c5fu" ConditionUuid="097950c461054395bc7c81f57bad7bbd">
+                    <Attribute>
+                        <SetConditionMode>IO</SetConditionMode>
+                        <IOCategory>Modbus</IOCategory>
+                        <IOName>c5</IOName>
+                        <IOValue>0</IOValue>
+                        <ModbusIOType>ModbusAO</ModbusIOType>
+                    </Attribute>
+                </Condition>
+                <Condition ConditionType="AGV" ConditionAlias="Agv_goto_LM231_default" ConditionUuid="1ff2e63744fc4e2fbfa4ab7a11df6c03">
+                    <Attribute>
+                        <Acc></Acc>
+                        <BackDist></BackDist>
+                        <FordwardDist></FordwardDist>
+                        <IsConnect>false</IsConnect>
+                        <IsDisconnect>false</IsDisconnect>
+                        <IsEnableBrakeControl>false</IsEnableBrakeControl>
+                        <IsNavigation>true</IsNavigation>
+                        <IsSafe>false</IsSafe>
+                        <NaviMoveDirect>default</NaviMoveDirect>
+                        <NaviPointName>LM</NaviPointName>
+                        <PluginName>AGV</PluginName>
+                        <PointNumber>231</PointNumber>
+                        <SafeDetect>true</SafeDetect>
+                        <SafeDist>2.5</SafeDist>
+                        <SlowDist>1.5</SlowDist>
+                        <Speed></Speed>
+                        <Theta></Theta>
+                        <WAcc></WAcc>
+                        <WSpeed></WSpeed>
+                        <enableBrakeControl>true</enableBrakeControl>
+                    </Attribute>
+                </Condition>
+                <Condition ConditionType="Break" ConditionAlias="Break" ConditionUuid="169dd6b577fd43c8bd50da3a263374d9">
+                    <Attribute/>
+                </Condition>
+            </Condition>
+            <Condition ConditionType="Else" ConditionAlias="Else" ConditionUuid="6ab270ce554e4138bfef8273c1926e38">
+                <Attribute/>
+                <Condition ConditionType="Break" ConditionAlias="Break" ConditionUuid="7d34b70ca0274e0dbcefbe43761087f9">
+                    <Attribute/>
+                </Condition>
+            </Condition>
+        </Condition>
+    </Condition>
+</ProcedureProgram>

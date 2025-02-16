@@ -1,0 +1,152 @@
+--Procedure Program
+
+--block script function definition
+  function blockScriptFunc_paizhao()
+     port=8000
+    ip="192.168.192.55"
+     tcp.client.connect(ip,port)
+     --var1=get_global_variable("V_I_num")
+    var1="get"
+    var2=0
+    var3=0
+     tcp.client.send_str_data(ip,port,var1)
+     str1= tcp.client.recv_str_data(ip,port)
+    	 	while (true) do
+    			str0=string.sub(str1,1,1)
+    			if str0~="#" then
+                   str1= tcp.client.recv_str_data(ip,port)
+    			else 
+                  print(str1)
+    				flag=string.sub(str1,2,2)
+    				print (flag)
+    				var2=string.len(str1)
+    				str2=string.sub(str1,4,var2)
+    				var3=string.find(str2,";",1)
+    				var3=var3-1
+    				x=string.sub(str2,1,var3)
+                        -- print(x)
+    				x1=x/1000
+    				x1=string.format ("%.6f",x1)
+    				print (x1)
+    				var3=var3+2
+    				str2=string.sub(str2,var3,var2)
+    				var2=string.len(str2)
+    				var3=string.find(str2,";",1)
+    				var3=var3-1
+    				y=string.sub(str2,1,var3)
+    				--print (y)
+    				y1=y/1000
+    				y1=string.format ("%.6f",y1)
+    				print (y1)
+    				var3=var3+2
+    				rz=string.sub(str2,var3,var2)
+                          print(rz)
+    				rz=-string.format ("%.4f",rz)
+    				print (rz)
+    				set_global_variable("V_I_flag",flag)
+    				set_global_variable("V_D_offs_x",x1)
+    				set_global_variable("V_D_offs_y",y1)
+    			     set_global_variable("V_D_offs_rz",rz)
+    				break
+    			end
+     		sleep(1)
+    		end
+  end  --function blockScriptFunc_paizhao()
+
+  function blockScriptFunc_Open()
+    script_common_interface("InsGripper","set_gripper_Parms|1,800,300,1000")
+    
+  end  --function blockScriptFunc_Open()
+
+  function blockScriptFunc_Close()
+    script_common_interface("InsGripper","set_gripper_Parms|1,10,800,1000")
+    
+  end  --function blockScriptFunc_Close()
+
+--loop function definition
+  function loopScriptFunc_0()
+    --(Logic tree item : Script) paizhao
+    set_current_logic_tree_item("ba3f87869fed4e539c6a013d49cf8ba1")
+    blockScriptFunc_paizhao()
+    set_step_breakpoint()
+  end
+
+--(Logic tree item : Procedure_Program) Procedure_Program
+  --(Logic tree item : Move) Move
+  init_global_move_profile()
+  set_joint_maxvelc({1.298089,1.298089,1.298089,1.555088,1.555088,1.555088})
+  set_joint_maxacc({8.654390,8.654390,8.654390,10.368128,10.368128,10.368128})
+    --(Logic tree item : Waypoint) Home
+    set_current_logic_tree_item("aaee9f41a81c4664aa8e4cb71288799f")
+    move_joint({-0.056930, 0.269289, -1.131948, 0.127985, -1.597811, 0.210251}, true)
+    set_step_breakpoint()
+  --(Logic tree item : Move) Move
+  init_global_move_profile()
+  set_joint_maxvelc({1.298089,1.298089,1.298089,1.555088,1.555088,1.555088})
+  set_joint_maxacc({8.654390,8.654390,8.654390,10.368128,10.368128,10.368128})
+    --(Logic tree item : Waypoint) Photo
+    set_current_logic_tree_item("324f4269c8bf4150add18a1580abc097")
+    move_joint({-1.323294, 0.228186, -0.848479, 0.453163, -1.598717, 0.232373}, true)
+    set_step_breakpoint()
+  --(Logic tree item : Script) paizhao
+  set_current_logic_tree_item("78e78f5c10d24f338ad604b4123b1855")
+  blockScriptFunc_paizhao()
+  set_step_breakpoint()
+  --(Logic tree item : Loop) Loop
+  while (get_global_variable("V_I_flag") == 0) do
+    sleep(0.001)
+    if (loopScriptFunc_0() == false) then
+      break
+    end
+  end
+  --(Logic tree item : Script) Open
+  set_current_logic_tree_item("50cf1369fde142c0907ef1a093553a86")
+  blockScriptFunc_Open()
+  set_step_breakpoint()
+  --(Logic tree item : Move) Move
+  init_global_move_profile()
+  set_end_maxvelc(1.000000)
+  set_end_maxacc(1.000000)
+  set_relative_offset({get_global_variable("V_D_offs_x"), get_global_variable("V_D_offs_y"), 0.05}, rpy2quaternion({d2r(0), d2r(0), d2r(get_global_variable("V_D_offs_rz"))}))
+    --(Logic tree item : Waypoint) Waypoint
+    set_current_logic_tree_item("ff8fe9ea81f944f3a4b2386b4426433a")
+    move_line({-1.383344, 0.577582, -1.612846, -0.665190, -1.596120, 0.172390}, true)
+    set_step_breakpoint()
+  --(Logic tree item : Move) Move
+  init_global_move_profile()
+  set_end_maxvelc(1.000000)
+  set_end_maxacc(1.000000)
+  set_relative_offset({get_global_variable("V_D_offs_x"), get_global_variable("V_D_offs_y"), 0}, rpy2quaternion({d2r(0), d2r(0), d2r(get_global_variable("V_D_offs_rz"))}))
+    --(Logic tree item : Waypoint) Waypoint
+    set_current_logic_tree_item("3e2d356c2998427fba6ff993200f2ce2")
+    move_line({-1.383341, 0.577573, -1.612831, -0.665193, -1.596120, 0.172390}, true)
+    set_step_breakpoint()
+  --(Logic tree item : Script) Close
+  set_current_logic_tree_item("dff9077693a84b21a596f9f2a171ee43")
+  blockScriptFunc_Close()
+  set_step_breakpoint()
+  --(Logic tree item : Move) Move
+  init_global_move_profile()
+  set_end_maxvelc(1.000000)
+  set_end_maxacc(1.000000)
+  set_relative_offset({get_global_variable("V_D_offs_x"), get_global_variable("V_D_offs_y"), 0.05}, rpy2quaternion({d2r(0), d2r(0), d2r(get_global_variable("V_D_offs_rz"))}))
+    --(Logic tree item : Waypoint) Waypoint
+    set_current_logic_tree_item("e41cf557c32e49a3912274dde5ee2606")
+    move_line({-1.383341, 0.577576, -1.612834, -0.665190, -1.596120, 0.172390}, true)
+    set_step_breakpoint()
+  --(Logic tree item : Move) Move
+  init_global_move_profile()
+  set_joint_maxvelc({1.298089,1.298089,1.298089,1.555088,1.555088,1.555088})
+  set_joint_maxacc({8.654390,8.654390,8.654390,10.368128,10.368128,10.368128})
+    --(Logic tree item : Waypoint) Photo
+    set_current_logic_tree_item("6fec66bf342647c996c7f9f49572d39d")
+    move_joint({-1.323294, 0.228186, -0.848479, 0.453163, -1.598717, 0.232373}, true)
+    set_step_breakpoint()
+  --(Logic tree item : Move) Move
+  init_global_move_profile()
+  set_joint_maxvelc({1.298089,1.298089,1.298089,1.555088,1.555088,1.555088})
+  set_joint_maxacc({8.654390,8.654390,8.654390,10.368128,10.368128,10.368128})
+    --(Logic tree item : Waypoint) Home
+    set_current_logic_tree_item("b9b55dcfee654f2391b68291c4c9443e")
+    move_joint({-0.056930, 0.269289, -1.131948, 0.127985, -1.597811, 0.210251}, true)
+    set_step_breakpoint()

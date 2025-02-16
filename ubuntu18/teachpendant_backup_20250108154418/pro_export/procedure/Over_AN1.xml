@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcedureProgram>
+    <Condition ConditionType="Procedure_Program" ConditionAlias="Procedure_Program" ConditionUuid="fb795ded5b2b46fca5fac09a18b7dc6c">
+        <Attribute/>
+        <Condition ConditionType="Wait" ConditionAlias="WaitAN1" ConditionUuid="7797795d9be34bac8795f9f15675f84c">
+            <Attribute>
+                <WaitConditionMode>Exp</WaitConditionMode>
+                <WaitConditionExp>(M)AN1 == 1</WaitConditionExp>
+            </Attribute>
+        </Condition>
+    </Condition>
+</ProcedureProgram>

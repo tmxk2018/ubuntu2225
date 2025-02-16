@@ -1,0 +1,49 @@
+ port=8000
+ip="192.168.192.55"
+ tcp.client.connect(ip,port)
+ --var1=get_global_variable("V_I_num")
+var1="get"
+var2=0
+var3=0
+ tcp.client.send_str_data(ip,port,var1)
+ str1= tcp.client.recv_str_data(ip,port)
+	 	while (true) do
+			str0=string.sub(str1,1,1)
+			if str0~="#" then
+               str1= tcp.client.recv_str_data(ip,port)
+			else 
+              print(str1)
+				flag=string.sub(str1,2,2)
+				print (flag)
+				var2=string.len(str1)
+				str2=string.sub(str1,4,var2)
+				var3=string.find(str2,";",1)
+				var3=var3-1
+				x=string.sub(str2,1,var3)
+                    -- print(x)
+				x1=x/1000
+				x1=string.format ("%.6f",x1)
+				print (x1)
+				var3=var3+2
+				str2=string.sub(str2,var3,var2)
+				var2=string.len(str2)
+				var3=string.find(str2,";",1)
+				var3=var3-1
+				y=string.sub(str2,1,var3)
+				--print (y)
+				y1=y/1000
+				y1=string.format ("%.6f",y1)
+				print (y1)
+				var3=var3+2
+				rz=string.sub(str2,var3,var2)
+                      print(rz)
+				rz=-string.format ("%.4f",rz)
+				print (rz)
+				set_global_variable("V_I_flag",flag)
+				set_global_variable("V_D_offs_x",x1)
+				set_global_variable("V_D_offs_y",y1)
+			     set_global_variable("V_D_offs_rz",rz)
+				break
+			end
+ 		sleep(1)
+		end

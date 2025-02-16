@@ -1,0 +1,198 @@
+--Procedure Program
+
+--(Logic tree item : Procedure_Program) Procedure_Program
+  --(Logic tree item : AGV) Agv_connect
+  connectResult = script_common_interface("AGV", "Connection|192.168.192.5")
+  print("connectResult : "..connectResult)
+  --(Logic tree item : Block_Comment) GO
+  --go
+    --(Logic tree item : AGV) Agv_goto_LM17_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM17, default, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+    --(Logic tree item : Procedure) Over_AN1
+      --(Logic tree item : Wait) WaitAN1
+      set_current_logic_tree_item("42bf62f56e58431d9c75233a4a88d5e6")
+      while (not (get_modbus_io_status("AN1") == 1)) do
+        sleep(0.01)
+      end
+      set_step_breakpoint()
+  --(Logic tree item : Block_Comment) GO
+  --go
+    --(Logic tree item : AGV) Agv_goto_LM16_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM16, default, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+    --(Logic tree item : Procedure) Over_AN1
+      --(Logic tree item : Wait) WaitAN1
+      set_current_logic_tree_item("542eb326557f458ebe9706b6dc423f1c")
+      while (not (get_modbus_io_status("AN1") == 1)) do
+        sleep(0.01)
+      end
+      set_step_breakpoint()
+  --(Logic tree item : Block_Comment) GO
+  --go
+    --(Logic tree item : AGV) Agv_goto_LM15_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM15, default, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+    --(Logic tree item : Procedure) Over_AN1
+      --(Logic tree item : Wait) WaitAN1
+      set_current_logic_tree_item("4fed694062d249cb917753e752bf9841")
+      while (not (get_modbus_io_status("AN1") == 1)) do
+        sleep(0.01)
+      end
+      set_step_breakpoint()
+  --(Logic tree item : Block_Comment) GO
+  --go
+    --(Logic tree item : AGV) Agv_goto_LM14_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM14, default, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+    --(Logic tree item : Procedure) Over_AN1
+      --(Logic tree item : Wait) WaitAN1
+      set_current_logic_tree_item("2680048c80544ac494290ca7ce3f93e9")
+      while (not (get_modbus_io_status("AN1") == 1)) do
+        sleep(0.01)
+      end
+      set_step_breakpoint()
+  --(Logic tree item : Block_Comment) GO
+  --go
+    --(Logic tree item : AGV) Agv_goto_LM13_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM13, default, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+    --(Logic tree item : Procedure) Over_AN1
+      --(Logic tree item : Wait) WaitAN1
+      set_current_logic_tree_item("2e5eb0200f0e4cee8dd340706e13d528")
+      while (not (get_modbus_io_status("AN1") == 1)) do
+        sleep(0.01)
+      end
+      set_step_breakpoint()
+  --(Logic tree item : Block_Comment) GO
+  --go
+    --(Logic tree item : AGV) Agv_goto_LM12_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM12, default, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+    --(Logic tree item : Procedure) Over_AN1
+      --(Logic tree item : Wait) WaitAN1
+      set_current_logic_tree_item("ca199c8078154bb8bf5a7fb4768cc0b9")
+      while (not (get_modbus_io_status("AN1") == 1)) do
+        sleep(0.01)
+      end
+      set_step_breakpoint()
+  --(Logic tree item : Block_Comment) GO
+  --go
+    --(Logic tree item : AGV) Agv_goto_LM11_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM11, default, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+    --(Logic tree item : Procedure) Over_AN1
+      --(Logic tree item : Wait) WaitAN1
+      set_current_logic_tree_item("9ffd0c0a82b24954a0d9af83ef2eda85")
+      while (not (get_modbus_io_status("AN1") == 1)) do
+        sleep(0.01)
+      end
+      set_step_breakpoint()
+  --(Logic tree item : Block_Comment) GO
+  --go
+    --(Logic tree item : AGV) Agv_goto_LM18_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM18, default, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+    --(Logic tree item : Procedure) Over_AN1
+      --(Logic tree item : Wait) WaitAN1
+      set_current_logic_tree_item("15443258fbd54a698745a6c8a9a839be")
+      while (not (get_modbus_io_status("AN1") == 1)) do
+        sleep(0.01)
+      end
+      set_step_breakpoint()

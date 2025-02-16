@@ -1,0 +1,127 @@
+--Procedure Program
+
+--(Logic tree item : Procedure_Program) Procedure_Program
+  --(Logic tree item : Move) Move
+  init_global_move_profile()
+  set_joint_maxvelc({1.555176,1.555176,1.298089,1.555176,1.555176,1.555176})
+  set_joint_maxacc({5.184064,5.184064,8.654390,10.368128,10.368128,10.368128})
+    --(Logic tree item : Waypoint) standby
+    set_current_logic_tree_item("d2113367ec2b4d4b94038b97c14af727")
+    move_joint({0.000004, -0.127270, -1.321117, 0.376934, -1.570741, 0.000015}, true)
+    set_step_breakpoint()
+    --(Logic tree item : Waypoint) takePic
+    set_current_logic_tree_item("b18a36a4a1e04a90a3495c4cdc866785")
+    move_joint({1.414472, -0.127266, -1.321127, 0.376934, -1.570804, -0.000018}, true)
+    set_step_breakpoint()
+  --(Logic tree item : Wait) Wait_for_pic
+  set_current_logic_tree_item("53a32ed4c8534a49bc4a021bc92abfcd")
+  sleep(5)
+  set_step_breakpoint()
+  --(Logic tree item : Move) Move
+  init_global_move_profile()
+  set_joint_maxvelc({1.555176,1.555176,1.298089,1.555176,1.555176,1.555176})
+  set_joint_maxacc({5.184064,5.184064,8.654390,10.368128,10.368128,10.368128})
+    --(Logic tree item : Waypoint) grab
+    set_current_logic_tree_item("f727eff1e01541cb9dcb068cb7e5f527")
+    move_joint({1.465297, 0.283289, -1.515143, -0.227785, -1.570844, 0.050810}, true)
+    set_step_breakpoint()
+  --(Logic tree item : Wait) Wait_for_grab
+  set_current_logic_tree_item("5ba8fdbaccc64c489559f0661347204d")
+  sleep(5)
+  set_step_breakpoint()
+  --(Logic tree item : Move) Move
+  init_global_move_profile()
+  set_joint_maxvelc({1.555176,1.555176,1.298089,1.555176,1.555176,1.555176})
+  set_joint_maxacc({5.184064,5.184064,8.654390,10.368128,10.368128,10.368128})
+    --(Logic tree item : Waypoint) grab2
+    set_current_logic_tree_item("e364fe272a4746ad9283b0357f314c4a")
+    move_joint({1.465297, 0.268375, -1.446805, -0.144399, -1.570804, 0.050810}, true)
+    set_step_breakpoint()
+    --(Logic tree item : Waypoint) put1
+    set_current_logic_tree_item("edb64d118690418b96ff74122757ebd2")
+    move_joint({0.832653, 0.017717, -1.736415, -0.183324, -1.570804, -0.581830}, true)
+    set_step_breakpoint()
+    --(Logic tree item : Waypoint) put2
+    set_current_logic_tree_item("fc977fa7c7564fb69f367ac2bbc78426")
+    move_joint({0.845279, 0.090685, -1.804407, -0.324448, -1.570811, -0.569208}, true)
+    set_step_breakpoint()
+  --(Logic tree item : Wait) Wait_for_put
+  set_current_logic_tree_item("e3d9a448536543ad9e8d5d40fcd87a81")
+  sleep(5)
+  set_step_breakpoint()
+  --(Logic tree item : Move) Move
+  init_global_move_profile()
+  set_joint_maxvelc({1.555176,1.555176,1.298089,1.555176,1.555176,1.555176})
+  set_joint_maxacc({5.184064,5.184064,8.654390,10.368128,10.368128,10.368128})
+    --(Logic tree item : Waypoint) put3
+    set_current_logic_tree_item("af6f084ec00242ceb401a92c00a9f68f")
+    move_joint({0.832653, 0.017717, -1.736415, -0.183324, -1.570804, -0.581830}, true)
+    set_step_breakpoint()
+    --(Logic tree item : Waypoint) standby
+    set_current_logic_tree_item("c3cb932a189e47148671e6d0d0d2be9a")
+    move_joint({0.000004, -0.127270, -1.321117, 0.376934, -1.570741, 0.000015}, true)
+    set_step_breakpoint()
+  --(Logic tree item : Move) Move
+  init_global_move_profile()
+  set_joint_maxvelc({1.555176,1.555176,1.298089,1.555176,1.555176,1.555176})
+  set_joint_maxacc({5.184064,5.184064,8.654390,10.368128,10.368128,10.368128})
+    --(Logic tree item : Waypoint) standby
+    set_current_logic_tree_item("5bb98c937c384a81a8e391c515777be8")
+    move_joint({0.000004, -0.127270, -1.321117, 0.376934, -1.570741, 0.000015}, true)
+    set_step_breakpoint()
+    --(Logic tree item : Waypoint) takePic2_2
+    set_current_logic_tree_item("184f0a0ebb0643818a5866e5e0f863e7")
+    move_joint({0.000004, -0.189791, -1.674565, 0.086070, -1.570738, 0.000000}, true)
+    set_step_breakpoint()
+  --(Logic tree item : Wait) Wait_for_pic2
+  set_current_logic_tree_item("b3ee597dbc2b48daa047d6e68fc54569")
+  sleep(5)
+  set_step_breakpoint()
+  --(Logic tree item : Move) Move
+  init_global_move_profile()
+  set_joint_maxvelc({1.555176,1.555176,1.298089,1.555176,1.555176,1.555176})
+  set_joint_maxacc({5.184064,5.184064,8.654390,10.368128,10.368128,10.368128})
+    --(Logic tree item : Waypoint) grab2_1
+    set_current_logic_tree_item("18832b9161b94e03b7f8a7c8aa0600c9")
+    move_joint({0.000004, -0.315069, -2.111895, -0.369635, -1.570734, -0.000018}, true)
+    set_step_breakpoint()
+  --(Logic tree item : Wait) Wait_for_grab2
+  set_current_logic_tree_item("10101b694bd2472fa3c381b4abaa2107")
+  sleep(5)
+  set_step_breakpoint()
+  --(Logic tree item : Move) Move
+  init_global_move_profile()
+  set_joint_maxvelc({1.555176,1.555176,1.298089,1.555176,1.555176,1.555176})
+  set_joint_maxacc({5.184064,5.184064,8.654390,10.368128,10.368128,10.368128})
+    --(Logic tree item : Waypoint) grab2_2
+    set_current_logic_tree_item("c62235d1f0c1446a8c23f2a259fdb6c1")
+    move_joint({-0.225976, -0.401125, -1.800626, 0.171253, -1.570738, -0.225973}, true)
+    set_step_breakpoint()
+    --(Logic tree item : Waypoint) put2_1
+    set_current_logic_tree_item("27661a1c4e9145329e540bcc0d19f945")
+    move_joint({1.465297, 0.260129, -1.370809, -0.060258, -1.570818, 0.050817}, true)
+    set_step_breakpoint()
+    --(Logic tree item : Waypoint) put2_2
+    set_current_logic_tree_item("7dbc365eabcd4473aff936108b86d4f5")
+    move_joint({1.465297, 0.309743, -1.588542, -0.327379, -1.570818, 0.050817}, true)
+    set_step_breakpoint()
+  --(Logic tree item : Wait) Wait_for_put2
+  set_current_logic_tree_item("44ddd8e1522c48e285b1c37db1229ed6")
+  sleep(5)
+  set_step_breakpoint()
+  --(Logic tree item : Move) Move
+  init_global_move_profile()
+  set_joint_maxvelc({1.555176,1.555176,1.298089,1.555176,1.555176,1.555176})
+  set_joint_maxacc({5.184064,5.184064,8.654390,10.368128,10.368128,10.368128})
+    --(Logic tree item : Waypoint) put2_3
+    set_current_logic_tree_item("2dd8716472664915a63ca4febd1348f5")
+    move_joint({1.465297, 0.260129, -1.370809, -0.060258, -1.570818, 0.050817}, true)
+    set_step_breakpoint()
+    --(Logic tree item : Waypoint) put2_4
+    set_current_logic_tree_item("8239e0d0c07945c9aa5ea5aeebeb5073")
+    move_joint({1.465297, 0.264766, -1.190856, 0.115154, -1.570818, 0.050817}, true)
+    set_step_breakpoint()
+    --(Logic tree item : Waypoint) standby2
+    set_current_logic_tree_item("f64d8ee8030442f68ea3fc8e9828e342")
+    move_joint({0.000004, -0.127270, -1.321117, 0.376934, -1.570741, 0.000015}, true)
+    set_step_breakpoint()

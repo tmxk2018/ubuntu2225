@@ -1,0 +1,1434 @@
+--Main Program
+
+--script function definition
+  function ifScriptFunc_10()
+    --(Logic tree item : Break) go_back
+    do return false end
+  end
+
+  function ifScriptFunc_20()
+    --(Logic tree item : Break) go_back
+    do return false end
+  end
+
+  function ifScriptFunc_40()
+    --(Logic tree item : Break) go_back
+    do return false end
+  end
+
+  function ifScriptFunc_30()
+    --(Logic tree item : Break) go_back
+    do return false end
+  end
+
+  function loopScriptFunc_0()
+    --(Logic tree item : Block_Comment) 1_station
+    --101
+      --(Logic tree item : AGV) Agv_goto_LM101_default
+      if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM101, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM101")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+      --(Logic tree item : Wait) Wait
+      set_current_logic_tree_item("1d2a726417e64469875e5afc41417e8e")
+      while (not (get_modbus_io_status("AN1") == 1 or get_modbus_io_status("AN2") == 1)) do
+        sleep(0.01)
+      end
+      set_step_breakpoint()
+      --(Logic tree item : If) finish
+      if (get_modbus_io_status("AN2") == 1) then
+        ifFuncRet = ifScriptFunc_22()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      --(Logic tree item : Else_If) move_on
+      elseif (get_modbus_io_status("AN1") == 1) then
+        ifFuncRet = ifScriptFunc_23()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      end
+      --(Logic tree item : Set) AN1
+      set_current_logic_tree_item("96f04e9ead194a599e8b57ef030f4a50")
+      set_modbus_io_status("AN1", 0)
+      set_step_breakpoint()
+      --(Logic tree item : Set) AN2
+      set_current_logic_tree_item("77f97e76f5514596bc4d4a13d2cd19c9")
+      set_modbus_io_status("AN2", 0)
+      set_step_breakpoint()
+    --(Logic tree item : Block_Comment) 2_station
+    --102
+      --(Logic tree item : Wait) Wait
+      set_current_logic_tree_item("45ed4559b7724b4ea84a9a9a3956fa72")
+      while (not (get_modbus_io_status("AN1") == 1 or get_modbus_io_status("AN2") == 1)) do
+        sleep(0.01)
+      end
+      set_step_breakpoint()
+      --(Logic tree item : If) finish
+      if (get_modbus_io_status("AN2") == 1) then
+        ifFuncRet = ifScriptFunc_24()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      --(Logic tree item : Else_If) move_on
+      elseif (get_modbus_io_status("AN1") == 1) then
+        ifFuncRet = ifScriptFunc_25()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      end
+      --(Logic tree item : Set) AN1
+      set_current_logic_tree_item("953fc93553514159bdc8e7f0ef2170db")
+      set_modbus_io_status("AN1", 0)
+      set_step_breakpoint()
+      --(Logic tree item : Set) AN2
+      set_current_logic_tree_item("b5b0d5aaa2a74924b7b1beba985f4388")
+      set_modbus_io_status("AN2", 0)
+      set_step_breakpoint()
+    --(Logic tree item : Block_Comment) 3_station
+    --103
+      --(Logic tree item : Wait) Wait
+      set_current_logic_tree_item("b9b833af3092442cb11060565460476e")
+      while (not (get_modbus_io_status("AN1") == 1 or get_modbus_io_status("AN2") == 1)) do
+        sleep(0.01)
+      end
+      set_step_breakpoint()
+      --(Logic tree item : If) finish
+      if (get_modbus_io_status("AN2") == 1) then
+        ifFuncRet = ifScriptFunc_26()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      --(Logic tree item : Else_If) move_on
+      elseif (get_modbus_io_status("AN1") == 1) then
+        ifFuncRet = ifScriptFunc_27()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      end
+      --(Logic tree item : Set) AN1
+      set_current_logic_tree_item("610be3e301df428599d3fefb913043f9")
+      set_modbus_io_status("AN1", 0)
+      set_step_breakpoint()
+      --(Logic tree item : Set) AN2
+      set_current_logic_tree_item("f47b4d08016643949258906ee6602616")
+      set_modbus_io_status("AN2", 0)
+      set_step_breakpoint()
+    --(Logic tree item : Block_Comment) 4_station
+    --104
+      --(Logic tree item : Wait) Wait
+      set_current_logic_tree_item("84836567c44c49008151c5bae1f3516d")
+      while (not (get_modbus_io_status("AN1") == 1 or get_modbus_io_status("AN2") == 1)) do
+        sleep(0.01)
+      end
+      set_step_breakpoint()
+      --(Logic tree item : If) finish
+      if (get_modbus_io_status("AN2") == 1) then
+        ifFuncRet = ifScriptFunc_28()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      --(Logic tree item : Else_If) move_on
+      elseif (get_modbus_io_status("AN1") == 1) then
+        ifFuncRet = ifScriptFunc_29()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      end
+      --(Logic tree item : Set) AN1
+      set_current_logic_tree_item("63341d4be19545299195c9309073e7fe")
+      set_modbus_io_status("AN1", 0)
+      set_step_breakpoint()
+      --(Logic tree item : Set) AN2
+      set_current_logic_tree_item("fa5a5e151d244d9da402aee96004a8c2")
+      set_modbus_io_status("AN2", 0)
+      set_step_breakpoint()
+    --(Logic tree item : Block_Comment) 5_station
+    --105
+      --(Logic tree item : Wait) Wait
+      set_current_logic_tree_item("e3c5042efc5f4aa3b19969c801c82861")
+      while (not (get_modbus_io_status("AN1") == 1 or get_modbus_io_status("AN2") == 1)) do
+        sleep(0.01)
+      end
+      set_step_breakpoint()
+      --(Logic tree item : If) finish
+      if (get_modbus_io_status("AN2") == 1) then
+        ifFuncRet = ifScriptFunc_30()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      --(Logic tree item : Else_If) move_on
+      elseif (get_modbus_io_status("AN1") == 1) then
+        ifFuncRet = ifScriptFunc_31()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      end
+      --(Logic tree item : Set) Set
+      set_current_logic_tree_item("541fc9e594844f7180a7e39e2e9b8cfe")
+      set_modbus_io_status("AN1", 0)
+      set_step_breakpoint()
+      --(Logic tree item : Set) Set
+      set_current_logic_tree_item("a2c8af1d67274069a8b1987dd96c9a0f")
+      set_modbus_io_status("AN2", 0)
+      set_step_breakpoint()
+    --(Logic tree item : Block_Comment) 6_station
+    --6
+      --(Logic tree item : Wait) Wait
+      set_current_logic_tree_item("1840a7ad8fb541ac9430782041852666")
+      while (not (get_modbus_io_status("AN1") == 1 or get_modbus_io_status("AN2") == 1)) do
+        sleep(0.01)
+      end
+      set_step_breakpoint()
+      --(Logic tree item : If) finish
+      if (get_modbus_io_status("AN2") == 1) then
+        ifFuncRet = ifScriptFunc_32()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      --(Logic tree item : Else_If) move_on
+      elseif (get_modbus_io_status("AN1") == 1) then
+        ifFuncRet = ifScriptFunc_33()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      end
+      --(Logic tree item : Set) AN1
+      set_current_logic_tree_item("01f5ac90e16447069269b2a388a117e1")
+      set_modbus_io_status("AN1", 0)
+      set_step_breakpoint()
+      --(Logic tree item : Set) AN2
+      set_current_logic_tree_item("5b1e27d7e408400bbb76ef772ea5fe28")
+      set_modbus_io_status("AN2", 0)
+      set_step_breakpoint()
+    --(Logic tree item : Block_Comment) 7_station
+    --107
+      --(Logic tree item : Wait) Wait
+      set_current_logic_tree_item("8efc8cbe8f29491db6e79510be4be390")
+      while (not (get_modbus_io_status("AN1") == 1 or get_modbus_io_status("AN2") == 1)) do
+        sleep(0.01)
+      end
+      set_step_breakpoint()
+      --(Logic tree item : If) finish
+      if (get_modbus_io_status("AN2") == 1) then
+        ifFuncRet = ifScriptFunc_34()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      --(Logic tree item : Else_If) move_on
+      elseif (get_modbus_io_status("AN1") == 1) then
+        ifFuncRet = ifScriptFunc_35()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      end
+      --(Logic tree item : Set) AN1
+      set_current_logic_tree_item("5f34408aebdd445d8a9d377bed10e380")
+      set_modbus_io_status("AN1", 0)
+      set_step_breakpoint()
+      --(Logic tree item : Set) AN2
+      set_current_logic_tree_item("e20cd4415fdf4e248b5b579560212dd1")
+      set_modbus_io_status("AN2", 0)
+      set_step_breakpoint()
+    --(Logic tree item : Block_Comment) 8_station
+    --108
+      --(Logic tree item : Wait) Wait
+      set_current_logic_tree_item("852e2906bcb9416caeae8d9f62bad751")
+      while (not (get_modbus_io_status("AN1") == 1 or get_modbus_io_status("AN2") == 1)) do
+        sleep(0.01)
+      end
+      set_step_breakpoint()
+      --(Logic tree item : If) finish
+      if (get_modbus_io_status("AN2") == 1) then
+        ifFuncRet = ifScriptFunc_36()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      --(Logic tree item : Else_If) move_on
+      elseif (get_modbus_io_status("AN1") == 1) then
+        ifFuncRet = ifScriptFunc_37()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      end
+      --(Logic tree item : Set) AN1
+      set_current_logic_tree_item("9d68cdd630ae4174b650f185e28c6378")
+      set_modbus_io_status("AN1", 0)
+      set_step_breakpoint()
+      --(Logic tree item : Set) AN2
+      set_current_logic_tree_item("9a1f5c2841ce498da7c69cb13e6579e6")
+      set_modbus_io_status("AN2", 0)
+      set_step_breakpoint()
+    --(Logic tree item : Block_Comment) 9_station
+    --109
+      --(Logic tree item : Wait) Wait
+      set_current_logic_tree_item("a070b60b6c4042108e280b9c55d0f6bf")
+      while (not (get_modbus_io_status("AN1") == 1 or get_modbus_io_status("AN2") == 1)) do
+        sleep(0.01)
+      end
+      set_step_breakpoint()
+      --(Logic tree item : If) finish
+      if (get_modbus_io_status("AN2") == 1) then
+        ifFuncRet = ifScriptFunc_38()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      --(Logic tree item : Else_If) move_on
+      elseif (get_modbus_io_status("AN1") == 1) then
+        ifFuncRet = ifScriptFunc_39()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      end
+      --(Logic tree item : Set) AN1
+      set_current_logic_tree_item("14679cde9a5449efb926b3d2dbc6d4a3")
+      set_modbus_io_status("AN1", 0)
+      set_step_breakpoint()
+      --(Logic tree item : Set) AN2
+      set_current_logic_tree_item("6cf3f2cfe82e40abae6ed9b8d70cfbac")
+      set_modbus_io_status("AN2", 0)
+      set_step_breakpoint()
+    --(Logic tree item : Block_Comment) 10_station
+    --110
+      --(Logic tree item : Wait) Wait
+      set_current_logic_tree_item("30c0802086c44192838f826fab61adb1")
+      while (not (get_modbus_io_status("AN1") == 1 or get_modbus_io_status("AN2") == 1)) do
+        sleep(0.01)
+      end
+      set_step_breakpoint()
+      --(Logic tree item : If) finish
+      if (get_modbus_io_status("AN2") == 1) then
+        ifFuncRet = ifScriptFunc_40()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      --(Logic tree item : Else_If) move_on
+      elseif (get_modbus_io_status("AN1") == 1) then
+        ifFuncRet = ifScriptFunc_41()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      end
+      --(Logic tree item : Set) AN1
+      set_current_logic_tree_item("16ecfd4dcb52485b9943e9ad8fc36a2b")
+      set_modbus_io_status("AN1", 0)
+      set_step_breakpoint()
+      --(Logic tree item : Set) AN2
+      set_current_logic_tree_item("4f5208f8fd784b9d90f4b14aab5091e6")
+      set_modbus_io_status("AN2", 0)
+      set_step_breakpoint()
+    --(Logic tree item : Block_Comment) 11_test
+    --the job of test
+      --(Logic tree item : Wait) Wait
+      set_current_logic_tree_item("515f0878e8b84a86abb4a3c190fe5e34")
+      while (not (get_modbus_io_status("AN1") == 1 or get_modbus_io_status("AN2") == 1)) do
+        sleep(0.01)
+      end
+      set_step_breakpoint()
+      --(Logic tree item : If) finish
+      if (get_modbus_io_status("AN2") == 1) then
+        ifFuncRet = ifScriptFunc_42()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      --(Logic tree item : Else_If) move_on
+      elseif (get_modbus_io_status("AN1") == 1) then
+        ifFuncRet = ifScriptFunc_43()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      end
+      --(Logic tree item : Set) AN1
+      set_current_logic_tree_item("cd7cc03f0f444e42a5b4d53e145cce49")
+      set_modbus_io_status("AN1", 0)
+      set_step_breakpoint()
+      --(Logic tree item : Set) AN2
+      set_current_logic_tree_item("0ae86255116a48809864c7733f910ff1")
+      set_modbus_io_status("AN2", 0)
+      set_step_breakpoint()
+    --(Logic tree item : Block_Comment) go_on
+    --transition regin
+      --(Logic tree item : AGV) Agv_goto_LM204_default
+      if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM204, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM204")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+      --(Logic tree item : AGV) Agv_goto_LM208_default
+      if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM208, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM208")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+      --(Logic tree item : AGV) Agv_goto_LM120_default
+      if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM120, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM120")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+      --(Logic tree item : AGV) Agv_goto_LM122_default
+      if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM122, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM122")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+  end
+
+  function ifScriptFunc_0()
+    --(Logic tree item : Break) go_back
+    do return false end
+  end
+
+  function ifScriptFunc_11()
+    --(Logic tree item : AGV) Agv_goto_LM107_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM107, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM107")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+  end
+
+  function ifScriptFunc_31()
+    --(Logic tree item : AGV) Agv_goto_LM106_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM106, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM106")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+  end
+
+  function ifScriptFunc_21()
+    --(Logic tree item : AGV) Agv_goto_LM125_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM125, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM125")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+  end
+
+  function ifScriptFunc_1()
+    --(Logic tree item : AGV) Agv_goto_LM102_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM102, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM102")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+  end
+
+  function ifScriptFunc_41()
+    --(Logic tree item : AGV) Agv_goto_LM123_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM123, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM123")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+    --(Logic tree item : AGV) Agv_goto_LM124_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM124, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM124")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+  end
+
+  function ifScriptFunc_2()
+    --(Logic tree item : Break) go_back
+    do return false end
+  end
+
+  function ifScriptFunc_32()
+    --(Logic tree item : Break) go_back
+    do return false end
+  end
+
+  function ifScriptFunc_22()
+    --(Logic tree item : Break) go_back
+    do return false end
+  end
+
+  function ifScriptFunc_42()
+    --(Logic tree item : Break) go_back
+    do return false end
+  end
+
+  function ifScriptFunc_12()
+    --(Logic tree item : Break) go_back
+    do return false end
+  end
+
+  function ifScriptFunc_3()
+    --(Logic tree item : AGV) Agv_goto_LM103_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM103, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM103")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+  end
+
+  function ifScriptFunc_43()
+    --(Logic tree item : AGV) Agv_goto_LM125_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM125, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM125")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+  end
+
+  function ifScriptFunc_23()
+    --(Logic tree item : AGV) Agv_goto_LM102_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM102, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM102")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+  end
+
+  function ifScriptFunc_33()
+    --(Logic tree item : AGV) Agv_goto_LM107_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM107, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM107")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+  end
+
+  function ifScriptFunc_13()
+    --(Logic tree item : AGV) Agv_goto_LM108_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM108, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM108")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+  end
+
+  function ifScriptFunc_24()
+    --(Logic tree item : Break) go_back
+    do return false end
+  end
+
+  function ifScriptFunc_4()
+    --(Logic tree item : Break) go_back
+    do return false end
+  end
+
+  function ifScriptFunc_34()
+    --(Logic tree item : Break) go_back
+    do return false end
+  end
+
+  function ifScriptFunc_14()
+    --(Logic tree item : Break) go_back
+    do return false end
+  end
+
+  function ifScriptFunc_35()
+    --(Logic tree item : AGV) Agv_goto_LM108_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM108, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM108")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+  end
+
+  function ifScriptFunc_25()
+    --(Logic tree item : AGV) Agv_goto_LM103_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM103, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM103")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+  end
+
+  function ifScriptFunc_5()
+    --(Logic tree item : AGV) Agv_goto_LM104_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM104, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM104")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+  end
+
+  function ifScriptFunc_15()
+    --(Logic tree item : AGV) Agv_goto_LM109_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM109, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM109")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+  end
+
+  function ifScriptFunc_16()
+    --(Logic tree item : Break) go_back
+    do return false end
+  end
+
+  function ifScriptFunc_6()
+    --(Logic tree item : Break) go_back
+    do return false end
+  end
+
+  function ifScriptFunc_36()
+    --(Logic tree item : Break) go_back
+    do return false end
+  end
+
+  function ifScriptFunc_26()
+    --(Logic tree item : Break) go_back
+    do return false end
+  end
+
+  function ifScriptFunc_27()
+    --(Logic tree item : AGV) Agv_goto_LM104_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM104, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM104")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+  end
+
+  function ifScriptFunc_37()
+    --(Logic tree item : AGV) Agv_goto_LM109_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM109, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM109")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+  end
+
+  function ifScriptFunc_7()
+    --(Logic tree item : AGV) Agv_goto_LM105_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM105, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM105")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+  end
+
+  function ifScriptFunc_17()
+    --(Logic tree item : AGV) Agv_goto_LM110_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM110, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM110")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+  end
+
+  function ifScriptFunc_8()
+    --(Logic tree item : Break) go_back
+    do return false end
+  end
+
+  function ifScriptFunc_38()
+    --(Logic tree item : Break) go_back
+    do return false end
+  end
+
+  function ifScriptFunc_18()
+    --(Logic tree item : Break) go_back
+    do return false end
+  end
+
+  function ifScriptFunc_28()
+    --(Logic tree item : Break) go_back
+    do return false end
+  end
+
+  function ifScriptFunc_19()
+    --(Logic tree item : AGV) Agv_goto_LM123_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM123, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM123")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+    --(Logic tree item : AGV) Agv_goto_LM124_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM124, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM124")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+  end
+
+  function ifScriptFunc_29()
+    --(Logic tree item : AGV) Agv_goto_LM105_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM105, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM105")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+  end
+
+  function ifScriptFunc_39()
+    --(Logic tree item : AGV) Agv_goto_LM110_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM110, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM110")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+  end
+
+  function ifScriptFunc_9()
+    --(Logic tree item : AGV) Agv_goto_LM106_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM106, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM106")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+  end
+
+--(Logic tree item : Project_Program) Project_Program
+  --(Logic tree item : AGV) Agv_connect
+  connectResult = script_common_interface("AGV", "Connection|192.168.192.5")
+  print("connectResult : "..connectResult)
+  --(Logic tree item : Set) AN1
+  set_current_logic_tree_item("424edf3c3d9f40f89f6831bc650bc76d")
+  set_modbus_io_status("AN1", 0)
+  set_step_breakpoint()
+  --(Logic tree item : Set) AN2
+  set_current_logic_tree_item("6afd4e75f87940e2b867b5e594675c85")
+  set_modbus_io_status("AN2", 0)
+  set_step_breakpoint()
+  --(Logic tree item : Block_Comment) exception_handing
+  --101
+    --(Logic tree item : AGV) Agv_goto_LM135_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM135, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM135")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+    --(Logic tree item : AGV) Agv_goto_LM134_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM134, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM134")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+    --(Logic tree item : AGV) Agv_goto_LM101_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM101, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM101")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+    --(Logic tree item : Block_Comment) 1_station
+    --101
+      --(Logic tree item : AGV) Agv_goto_LM101_default
+      if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM101, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM101")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+      --(Logic tree item : Wait) Wait
+      set_current_logic_tree_item("2e55c141de39425f8fac1e81723f01ad")
+      while (not (get_modbus_io_status("AN1") == 1 or get_modbus_io_status("AN2") == 1)) do
+        sleep(0.01)
+      end
+      set_step_breakpoint()
+      --(Logic tree item : If) finish
+      if (get_modbus_io_status("AN2") == 1) then
+        ifFuncRet = ifScriptFunc_0()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      --(Logic tree item : Else_If) move_on
+      elseif (get_modbus_io_status("AN1") == 1) then
+        ifFuncRet = ifScriptFunc_1()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      end
+      --(Logic tree item : Set) AN1
+      set_current_logic_tree_item("498a7f79573f4f02abf5caa4c6b09fab")
+      set_modbus_io_status("AN1", 0)
+      set_step_breakpoint()
+      --(Logic tree item : Set) AN2
+      set_current_logic_tree_item("87fb055b0c194a70950ed02d676bb256")
+      set_modbus_io_status("AN2", 0)
+      set_step_breakpoint()
+    --(Logic tree item : Block_Comment) 2_station
+    --102
+      --(Logic tree item : Wait) Wait
+      set_current_logic_tree_item("ab5318f692a8435fb6e58c7b69920ca8")
+      while (not (get_modbus_io_status("AN1") == 1 or get_modbus_io_status("AN2") == 1)) do
+        sleep(0.01)
+      end
+      set_step_breakpoint()
+      --(Logic tree item : If) finish
+      if (get_modbus_io_status("AN2") == 1) then
+        ifFuncRet = ifScriptFunc_2()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      --(Logic tree item : Else_If) move_on
+      elseif (get_modbus_io_status("AN1") == 1) then
+        ifFuncRet = ifScriptFunc_3()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      end
+      --(Logic tree item : Set) AN1
+      set_current_logic_tree_item("6e5fd873507b4fab989788eb9e5c3765")
+      set_modbus_io_status("AN1", 0)
+      set_step_breakpoint()
+      --(Logic tree item : Set) AN2
+      set_current_logic_tree_item("85ffc52c5ec34a71a2511ce49980a4b8")
+      set_modbus_io_status("AN2", 0)
+      set_step_breakpoint()
+    --(Logic tree item : Block_Comment) 3_station
+    --103
+      --(Logic tree item : Wait) Wait
+      set_current_logic_tree_item("2e40b982c22844c396641c665515c6b8")
+      while (not (get_modbus_io_status("AN1") == 1 or get_modbus_io_status("AN2") == 1)) do
+        sleep(0.01)
+      end
+      set_step_breakpoint()
+      --(Logic tree item : If) finish
+      if (get_modbus_io_status("AN2") == 1) then
+        ifFuncRet = ifScriptFunc_4()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      --(Logic tree item : Else_If) move_on
+      elseif (get_modbus_io_status("AN1") == 1) then
+        ifFuncRet = ifScriptFunc_5()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      end
+      --(Logic tree item : Set) AN1
+      set_current_logic_tree_item("1f47e21186d248709efbc60b40c7015e")
+      set_modbus_io_status("AN1", 0)
+      set_step_breakpoint()
+      --(Logic tree item : Set) AN2
+      set_current_logic_tree_item("e999eb052f9745748e8e3fb431c29fc3")
+      set_modbus_io_status("AN2", 0)
+      set_step_breakpoint()
+    --(Logic tree item : Block_Comment) 4_station
+    --104
+      --(Logic tree item : Wait) Wait
+      set_current_logic_tree_item("2142c343fab643579e3c0c44939bda35")
+      while (not (get_modbus_io_status("AN1") == 1 or get_modbus_io_status("AN2") == 1)) do
+        sleep(0.01)
+      end
+      set_step_breakpoint()
+      --(Logic tree item : If) finish
+      if (get_modbus_io_status("AN2") == 1) then
+        ifFuncRet = ifScriptFunc_6()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      --(Logic tree item : Else_If) move_on
+      elseif (get_modbus_io_status("AN1") == 1) then
+        ifFuncRet = ifScriptFunc_7()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      end
+      --(Logic tree item : Set) AN1
+      set_current_logic_tree_item("1ba28dd7caf94da48e86f6c0b2aadb9f")
+      set_modbus_io_status("AN1", 0)
+      set_step_breakpoint()
+      --(Logic tree item : Set) AN2
+      set_current_logic_tree_item("a4b06f120d9f493ba9e51473dce57bb8")
+      set_modbus_io_status("AN2", 0)
+      set_step_breakpoint()
+    --(Logic tree item : Block_Comment) 5_station
+    --105
+      --(Logic tree item : Wait) Wait
+      set_current_logic_tree_item("6f71e411b71a4472974b2abe41d8bbb1")
+      while (not (get_modbus_io_status("AN1") == 1 or get_modbus_io_status("AN2") == 1)) do
+        sleep(0.01)
+      end
+      set_step_breakpoint()
+      --(Logic tree item : If) finish
+      if (get_modbus_io_status("AN2") == 1) then
+        ifFuncRet = ifScriptFunc_8()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      --(Logic tree item : Else_If) move_on
+      elseif (get_modbus_io_status("AN1") == 1) then
+        ifFuncRet = ifScriptFunc_9()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      end
+      --(Logic tree item : Set) Set
+      set_current_logic_tree_item("0cd6a3f585d1425796c89487aca49fb3")
+      set_modbus_io_status("AN1", 0)
+      set_step_breakpoint()
+      --(Logic tree item : Set) Set
+      set_current_logic_tree_item("1869afc06cd742d1a0bcc62974ee38e3")
+      set_modbus_io_status("AN2", 0)
+      set_step_breakpoint()
+    --(Logic tree item : Block_Comment) 6_station
+    --6
+      --(Logic tree item : Wait) Wait
+      set_current_logic_tree_item("04d04e33446f496c9073cc435838d0c6")
+      while (not (get_modbus_io_status("AN1") == 1 or get_modbus_io_status("AN2") == 1)) do
+        sleep(0.01)
+      end
+      set_step_breakpoint()
+      --(Logic tree item : If) finish
+      if (get_modbus_io_status("AN2") == 1) then
+        ifFuncRet = ifScriptFunc_10()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      --(Logic tree item : Else_If) move_on
+      elseif (get_modbus_io_status("AN1") == 1) then
+        ifFuncRet = ifScriptFunc_11()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      end
+      --(Logic tree item : Set) AN1
+      set_current_logic_tree_item("a3a1d99722fc4910a221c5bfdce0595f")
+      set_modbus_io_status("AN1", 0)
+      set_step_breakpoint()
+      --(Logic tree item : Set) AN2
+      set_current_logic_tree_item("96d6a2cfcc964cdc84d018f9d636133d")
+      set_modbus_io_status("AN2", 0)
+      set_step_breakpoint()
+    --(Logic tree item : Block_Comment) 7_station
+    --107
+      --(Logic tree item : Wait) Wait
+      set_current_logic_tree_item("4ea117c47a394897af2cf9826064244c")
+      while (not (get_modbus_io_status("AN1") == 1 or get_modbus_io_status("AN2") == 1)) do
+        sleep(0.01)
+      end
+      set_step_breakpoint()
+      --(Logic tree item : If) finish
+      if (get_modbus_io_status("AN2") == 1) then
+        ifFuncRet = ifScriptFunc_12()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      --(Logic tree item : Else_If) move_on
+      elseif (get_modbus_io_status("AN1") == 1) then
+        ifFuncRet = ifScriptFunc_13()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      end
+      --(Logic tree item : Set) AN1
+      set_current_logic_tree_item("e2f8dc82978e4b2da82be4865c9def20")
+      set_modbus_io_status("AN1", 0)
+      set_step_breakpoint()
+      --(Logic tree item : Set) AN2
+      set_current_logic_tree_item("b537e9df26504465a331c3015ee5ac90")
+      set_modbus_io_status("AN2", 0)
+      set_step_breakpoint()
+    --(Logic tree item : Block_Comment) 8_station
+    --108
+      --(Logic tree item : Wait) Wait
+      set_current_logic_tree_item("96a560cf2aef45ff8296f3e8a14b8c18")
+      while (not (get_modbus_io_status("AN1") == 1 or get_modbus_io_status("AN2") == 1)) do
+        sleep(0.01)
+      end
+      set_step_breakpoint()
+      --(Logic tree item : If) finish
+      if (get_modbus_io_status("AN2") == 1) then
+        ifFuncRet = ifScriptFunc_14()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      --(Logic tree item : Else_If) move_on
+      elseif (get_modbus_io_status("AN1") == 1) then
+        ifFuncRet = ifScriptFunc_15()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      end
+      --(Logic tree item : Set) AN1
+      set_current_logic_tree_item("334f5a6c7a1f4130803d1a3ad46b1df1")
+      set_modbus_io_status("AN1", 0)
+      set_step_breakpoint()
+      --(Logic tree item : Set) AN2
+      set_current_logic_tree_item("1632b5315f04455ea7622ebe872ba1fa")
+      set_modbus_io_status("AN2", 0)
+      set_step_breakpoint()
+    --(Logic tree item : Block_Comment) 9_station
+    --109
+      --(Logic tree item : Wait) Wait
+      set_current_logic_tree_item("81cff91f2ad04c07a369d988a0dfa7a2")
+      while (not (get_modbus_io_status("AN1") == 1 or get_modbus_io_status("AN2") == 1)) do
+        sleep(0.01)
+      end
+      set_step_breakpoint()
+      --(Logic tree item : If) finish
+      if (get_modbus_io_status("AN2") == 1) then
+        ifFuncRet = ifScriptFunc_16()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      --(Logic tree item : Else_If) move_on
+      elseif (get_modbus_io_status("AN1") == 1) then
+        ifFuncRet = ifScriptFunc_17()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      end
+      --(Logic tree item : Set) AN1
+      set_current_logic_tree_item("53792ce8f0af41b4ab4d651d17511baf")
+      set_modbus_io_status("AN1", 0)
+      set_step_breakpoint()
+      --(Logic tree item : Set) AN2
+      set_current_logic_tree_item("dc4bb48175d14341b1c07c2abb4859ca")
+      set_modbus_io_status("AN2", 0)
+      set_step_breakpoint()
+    --(Logic tree item : Block_Comment) 10_station
+    --110
+      --(Logic tree item : Wait) Wait
+      set_current_logic_tree_item("ea79b23297a44802b407192a530b7532")
+      while (not (get_modbus_io_status("AN1") == 1 or get_modbus_io_status("AN2") == 1)) do
+        sleep(0.01)
+      end
+      set_step_breakpoint()
+      --(Logic tree item : If) finish
+      if (get_modbus_io_status("AN2") == 1) then
+        ifFuncRet = ifScriptFunc_18()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      --(Logic tree item : Else_If) move_on
+      elseif (get_modbus_io_status("AN1") == 1) then
+        ifFuncRet = ifScriptFunc_19()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      end
+      --(Logic tree item : Set) AN1
+      set_current_logic_tree_item("ce66d2f7d993495d94c82c531eec2327")
+      set_modbus_io_status("AN1", 0)
+      set_step_breakpoint()
+      --(Logic tree item : Set) AN2
+      set_current_logic_tree_item("139865379d9e4a17a670dad144051192")
+      set_modbus_io_status("AN2", 0)
+      set_step_breakpoint()
+    --(Logic tree item : Block_Comment) 11_test
+    --the job of test
+      --(Logic tree item : Wait) Wait
+      set_current_logic_tree_item("05b86a64c4fa4da1b9cbb22596e67309")
+      while (not (get_modbus_io_status("AN1") == 1 or get_modbus_io_status("AN2") == 1)) do
+        sleep(0.01)
+      end
+      set_step_breakpoint()
+      --(Logic tree item : If) finish
+      if (get_modbus_io_status("AN2") == 1) then
+        ifFuncRet = ifScriptFunc_20()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      --(Logic tree item : Else_If) move_on
+      elseif (get_modbus_io_status("AN1") == 1) then
+        ifFuncRet = ifScriptFunc_21()
+        if (ifFuncRet ~= nil) then
+          do return ifFuncRet end
+        end
+      end
+      --(Logic tree item : Set) AN1
+      set_current_logic_tree_item("f01576eb8c8a40979fc2783c27fecd49")
+      set_modbus_io_status("AN1", 0)
+      set_step_breakpoint()
+      --(Logic tree item : Set) AN2
+      set_current_logic_tree_item("683e6a15926d4eafba2c697e19ffa8af")
+      set_modbus_io_status("AN2", 0)
+      set_step_breakpoint()
+    --(Logic tree item : Block_Comment) go_on
+    --transition regin
+      --(Logic tree item : AGV) Agv_goto_LM204_default
+      if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM204, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM204")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+      --(Logic tree item : AGV) Agv_goto_LM208_default
+      if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM208, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM208")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+      --(Logic tree item : AGV) Agv_goto_LM120_default
+      if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM120, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM120")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+      --(Logic tree item : AGV) Agv_goto_LM122_default
+      if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM122, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM122")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+  --(Logic tree item : Loop) Loop
+  while (true) do
+    sleep(0.001)
+    if (loopScriptFunc_0() == false) then
+      break
+    end
+  end
+  --(Logic tree item : Block_Comment) finish
+  --222
+    --(Logic tree item : AGV) Agv_goto_LM211_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM211, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM211")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+    --(Logic tree item : AGV) Agv_goto_LM231_default
+    if(connectResult == "ConnectSucceed") then
+    naviResult = script_common_interface("AGV", "NavigationMove|LM231, default, 0, 0, 0, 0, 0, 0, 0")
+    print("naviResult : "..naviResult)
+    while(1) do
+      infoResult = script_common_interface("AGV", "getNavigationInfo|LM231")
+      print("infoResult : "..infoResult)
+      if(infoResult == "COMPLETED") then
+        break
+      end
+      sleep(0.1)
+    end
+  else
+    popup_message(2, "agv not connect!", true)
+  end
+    --(Logic tree item : AGV) Agv_disconnect
+    script_common_interface("AGV", "Disconnection")

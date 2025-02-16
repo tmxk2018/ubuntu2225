@@ -1,0 +1,21 @@
+--Main Program
+
+--block script function definition
+  function blockScriptFunc_test_tcp_shutdow()
+    port = 1206
+    ip = "192.168.1.109"
+    tcp.client.connect(ip,port)
+    tcp.client.send_str_data(ip,port,"DATA_HEAD00000037{\"event control\":\"shutdown\"}DATA_TAIL")
+    
+      
+      
+      
+      
+     
+  end  --function blockScriptFunc_test_tcp_shutdow()
+
+--(Logic tree item : Project_Program) Project_Program
+  --(Logic tree item : Script) test_tcp_shutdow
+  set_current_logic_tree_item("459c46d750644aeea745e4039bcc72f3")
+  blockScriptFunc_test_tcp_shutdow()
+  set_step_breakpoint()
