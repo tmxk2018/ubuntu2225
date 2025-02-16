@@ -1,0 +1,131 @@
+function string.split(str, delimiter)
+  if str==nil or str=='' or delimiter==nil then
+    return nil
+  end
+  local result = {}
+  for match in (str..delimiter):gmatch("(.-)"..delimiter) do
+    table.insert(result, match)
+  end
+  return result
+end
+
+
+port = 8888
+ip = "192.168.192.190"
+tcp.client.connect(ip,port)
+--recv=0
+
+set_robot_io_status(RobotIOType.RobotBoardUserDO,"U_DO_00",0)
+
+tcp.client.send_str_data(ip,port,"SR,P2")
+sleep(1)
+
+recv=tcp.client.recv_str_data(ip,port)
+
+set_robot_io_status(RobotIOType.RobotBoardUserDO,"U_DO_00",1)
+
+
+
+--[[while(recv==nil or recv=="")do
+	print("waiting for receive...")
+	sleep(0.1)
+recv=tcp.client.recv_str_data(ip,port)
+end
+--]]  --AA=tonumber(A*Math.PI/180.0)
+--AA=tonumber(A*3.1415926/180.0)
+--print("AA is"..A)--AA=tonumber(A*3.1415926/180.0)
+--print("AA is"..A)
+
+table_recv={}
+table_recv=string.split(recv,",")
+--print(table_recv)
+print("recv is"..recv)
+
+if(table_recv[1]=="OK" and table_recv[2]=="P2")then
+  print("It is OK")
+  X=tonumber(table_recv[3])
+  Y=tonumber(table_recv[4])
+  A=tonumber(table_recv[5])
+  print("A IS"..A)  --AA=tonumber(A*Math.PI/180.0)
+--AA=tonumber(A*3.1415926/180.0)
+--print("AA is"..A)--AA=tonumber(A*3.1415926/180.0)
+--print("AA is"..A)
+
+  set_global_variable("V_B_PhotoResult",true)
+
+  set_global_variable("V_D_x",X/1000)
+  set_global_variable("V_D_y",Y/1000)
+  set_global_variable("V_D_rz",A)
+
+--dx=0/1000
+--dy=0/1000
+dx=X/1000
+dy=Y/1000--AA=tonumber(A*3.1415926/180.0)
+--print("AA is"..A)
+
+init_global_move_profile()
+
+set_joint_maxvelc({0.5,0.5,0.5,0.5,0.5,0.5})
+
+set_joint_maxacc({1.0,1.0,1.0,1.0,1.0,1.0})
+
+set_end_maxvelc(0.5)
+set_end_maxacc(1.0)
+
+--shijiao
+x=0.580261
+y=-0.327185
+z=0.245389
+rx=178.300125
+ry=0.001587
+rz0=87.342667
+print("x is"..dx)
+quliao0={x,y,z}--qianzhi1={x,y,z+0.035}
+quliao_qian={x+dx,y+dy,z+0.05}
+--quliao_up={x+dx,y+dy,z+0.04}
+quliao_out={x+dx-0.18,y+dy,z+0.05}
+quliaos={x+dx,y+dy,z}
+tool_s={-0.002588,0.111459,0.162944}
+
+move_line(get_target_pose(quliao_qian,rpy2quaternion({d2r(rx),d2r(ry),d2r(rz0+A)}),false,
+tool_s,{1.0,0.0,0.0,0.0}),true)
+
+move_line(get_target_pose(quliaos,rpy2quaternion({d2r(rx),d2r(ry),d2r(rz0+A)}),false,
+tool_s,{1.0,0.0,0.0,0.0}),true)
+sleep(0.5)
+set_robot_io_status(RobotIOType.RobotBoardUserDO,"U_DO_01",0)
+
+set_robot_io_status(RobotIOType.RobotBoardUserDO,"U_DO_02",1)
+--print("idsjg"..result0)--print("recv i555s"..recv)
+sleep(1)
+move_line(get_target_pose(quliao_qian,rpy2quaternion({d2r(rx),d2r(ry),d2r(rz0+A)}),false,
+tool_s,{1.0,0.0,0.0,0.0}),true)
+
+move_line(get_target_pose(quliao_out,rpy2quaternion({d2r(rx),d2r(ry),d2r(rz0+A)}),false,
+tool_s,{1.0,0.0,0.0,0.0}),true)
+
+--[[
+print("recv 66is"..recv)
+--print("rz="..rz0)
+
+--print("asds11a")
+--move_line(get_target_pose(quliao_qian,rpy2quaternion({d2r(rx),d2r(ry),d2r(rz0)}),false,
+--tool_s,{1.0,0.0,0.0,0.0}),true)
+move_line(get_target_pos(quliaos,rpy2quaternion({d2r(rx),d2r(ry),d2r(rz0+V_D_rz)}),false,tool_s,{1.0,0.0,0.0,0.0}),true)
+move_joint(get_target_pose({x,y,z+0.035},rpy2quaternion({d2r(rx),d2r(ry),d2r(rz0+rz1)}),false,
+tool_s,{1.0,0.0,0.0,0.0}),true)
+--print("asd2sa")
+--]]
+
+  elseif (table_recv[1] == "NG") then
+    set_global_variable("V_B_PhotoResult",false)
+    print("It is Not Good")  
+    sleep(0.2)
+    print("Receiving data from vison is error !!!")
+
+ end
+sleep(0.2)
+print("program is end")
+
+
+

@@ -1,0 +1,80 @@
+--Procedure Program
+
+--block script function definition
+--script function definition
+  function ifScriptFunc_0()
+    --(Logic tree item : Script) close_plc
+    set_current_logic_tree_item("ae00f49cf5f24ac19c96d022a5a39c12")
+    blockScriptFunc_close_plc()
+    set_step_breakpoint()
+    --(Logic tree item : Set) Set
+    set_current_logic_tree_item("830fb7f5d51d44f899a958c93d68d488")
+    set_robot_io_status(RobotIOType.RobotBoardUserDO, "U_DO_02", 1)
+    set_step_breakpoint()
+    --(Logic tree item : Wait) Wait
+    set_current_logic_tree_item("a9f2f8ca572f4d7e876b1e32c493560f")
+    sleep(0.5)
+    set_step_breakpoint()
+    --(Logic tree item : Set) Set
+    set_current_logic_tree_item("0fe9c342db2f488f95003572112c56cf")
+    set_robot_io_status(RobotIOType.RobotBoardUserDO, "U_DO_02", 0)
+    set_step_breakpoint()
+  end
+
+--(Logic tree item : Procedure_Program) Procedure_Program
+  --(Logic tree item : Set) Set
+  set_current_logic_tree_item("0f5cadfea4754d7b99ba9bab9daedfa3")
+  set_global_variable("V_I_Receive", get_global_variable("V_I_Receive") - 1)
+  --(Logic tree item : Move) Move
+  init_global_move_profile()
+  set_joint_maxvelc({1.298089,1.298089,1.298089,1.555088,1.555088,1.555088})
+  set_joint_maxacc({8.654390,8.654390,8.654390,10.368128,10.368128,10.368128})
+  set_relative_offset({0, 0, 0.300}, rpy2quaternion({d2r(0), d2r(0), d2r(0)}))
+    --(Logic tree item : Waypoint) Waypoint_V_P_putpos
+    set_current_logic_tree_item("3485d2fa652a4cc5a80083ea1ad43865")
+    move_joint(get_global_variable("V_P_putpos"), true)
+    set_step_breakpoint()
+  --(Logic tree item : Move) Move
+  init_global_move_profile()
+  set_end_maxvelc(1.000000)
+  set_end_maxacc(2.000000)
+    --(Logic tree item : Waypoint) Waypoint_V_P_putpos
+    set_current_logic_tree_item("468e49af353e4d07b0749599b0c62665")
+    move_line(get_global_variable("V_P_putpos"), true)
+    set_step_breakpoint()
+  --(Logic tree item : Set) Set
+  set_current_logic_tree_item("eb237c155d1340eca7a52c85150eaaa1")
+  set_robot_io_status(RobotIOType.RobotBoardUserDO, "U_DO_00", 0)
+  set_step_breakpoint()
+  --(Logic tree item : Wait) Wait
+  set_current_logic_tree_item("9c6d8cee46414f59afeeeb265d26809b")
+  sleep(0.5)
+  set_step_breakpoint()
+  --(Logic tree item : Move) Move
+  init_global_move_profile()
+  set_end_maxvelc(1.000000)
+  set_end_maxacc(2.000000)
+  set_relative_offset({0, 0, 0.30}, rpy2quaternion({d2r(0), d2r(0), d2r(0)}))
+    --(Logic tree item : Waypoint) Waypoint_V_P_putpos
+    set_current_logic_tree_item("3393ffcd26554bd995aa29fab5d2a36d")
+    move_line(get_global_variable("V_P_putpos"), true)
+    set_step_breakpoint()
+  --(Logic tree item : Set) Set
+  set_current_logic_tree_item("23bb93440dfd407588737bf49e767904")
+  set_robot_io_status(RobotIOType.RobotBoardUserDO, "U_DO_04", 1)
+  set_step_breakpoint()
+  --(Logic tree item : Wait) Wait
+  set_current_logic_tree_item("b1f6e680f82e4180bb7758748db877a3")
+  sleep(0.5)
+  set_step_breakpoint()
+  --(Logic tree item : Set) Set
+  set_current_logic_tree_item("79dc717799d341e69927ac49f4a3bd01")
+  set_robot_io_status(RobotIOType.RobotBoardUserDO, "U_DO_04", 0)
+  set_step_breakpoint()
+  --(Logic tree item : If) If
+  if (get_global_variable("V_I_Receive") == 0) then
+    ifFuncRet = ifScriptFunc_0()
+    if (ifFuncRet ~= nil) then
+      do return ifFuncRet end
+    end
+  end

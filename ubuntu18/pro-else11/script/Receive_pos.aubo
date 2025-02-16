@@ -1,0 +1,105 @@
+ recv=nil
+pos=nil
+port = 54600
+ip = "192.168.0.51" 
+tcp.client.connect(ip,port) 
+
+function string.split(str, delimiter)   
+	 if str==nil or str=='' or delimiter==nil then     
+		return nil  
+	 end 
+
+ local result = {}   
+for match in (str..delimiter):gmatch("(.-)"..delimiter) do    
+	 table.insert(result, match)   
+end 
+ return result 
+end 
+
+if  (workNum >0) then
+tcp.client.send_str_data(ip,port,"Wait for PC Response!")
+sleep (0.1)
+end
+
+repeat
+ recv=tcp.client.recv_str_data(ip,port)
+sleep (0.2)
+print(recv)
+pos = string.split(recv, ",")
+ until(recv~="")
+ 
+print "Ready to send"
+print (pos[1])
+pose=get_current_waypoint()
+tool_pose={-0.000086,0.000701,0.164962}---#3D_TOOL_XYZ
+tool_ori=rpy2quaternion({-3.140577,-0.015406,0.685496})---#3D_TOOL_RX,RY,RZ
+joint={pose.joint.j1,pose.joint.j2,pose.joint.j3,pose.joint.j4,pose.joint.j5,pose.joint.j6}
+pos_user,ori_user=base_to_user(joint,tool_pose,tool_ori)--print user name
+RPY_user=quaternion2rpy({ori_user[1],ori_user[2],ori_user[3],ori_user[4]})
+x=(pos_user[1])*1000
+y=(pos_user[2])*1000
+z=(pos_user[3])*1000
+rx=(r2d(RPY_user[1]))
+ry=(r2d(RPY_user[2]))
+rz=(r2d(RPY_user[3]))
+addxy=(x)..","..(y)
+addzrx=(z)..","..(rx)
+addryrz=(ry)..","..(rz)
+addxyza=(addxy)..","..(addzrx)
+addxyzabc=(addxyza)..","..(addryrz)
+add000xyzabc=("000")..","..(addxyzabc)
+tcp.client.send_str_data(ip,port,(add000xyzabc))
+sleep (0.1)
+print "send_point(successful)"
+ if (pos[1] =="310") then 
+print"Receive location"
+print (pos[1])
+ set_global_variable("V_D_posX", tonumber(pos[2])/1000)
+ set_global_variable("V_D_posY", tonumber(pos[3])/1000)
+ set_global_variable("V_D_posZ", tonumber(pos[4])/1000)
+ set_global_variable("V_D_posRX", tonumber(pos[5]))
+ set_global_variable("V_D_posRY", tonumber(pos[6]))
+ set_global_variable("V_D_posRZ", tonumber(pos[7]))
+sleep(0.1)
+ set_global_variable("V_D_A1X", tonumber(pos[2])/1000)
+ set_global_variable("V_D_A1Y", tonumber(pos[3])/1000)
+ set_global_variable("V_D_A1Z",tonumber(pos[4])/1000)
+ set_global_variable("V_D_A2RX",tonumber(pos[5]))
+ set_global_variable("V_D_A2RY", tonumber(pos[6]))
+ set_global_variable("V_D_A2RZ", tonumber(pos[7]))
+sleep(0.1)
+--tcp.client.send_str_data(ip,port,"101")
+set_global_variable("V_B_ClawRun", true)
+recv=nil
+print"310"
+ end
+
+
+function move_pos()
+ init_global_move_profile()
+ --set_joint_maxacc({20,20,20,20,20,20})
+--set_joint_maxvelc({10,10,10,10,10,10})
+set_end_maxvelc(0.5)
+set_end_maxacc(0.5)
+tool_pose={-0.000086,0.000701,0.164962}---#3D_TOOL_XYZ
+tool_ori=rpy2quaternion({-3.140577,-0.015406,0.685496})---#3D_TOOL_RX,RY,RZ
+x =get_global_variable("V_D_A1X")
+y =get_global_variable("V_D_A1Y")
+z =get_global_variable("V_D_A1Z")
+rx =get_global_variable("V_D_A2RX")
+ry =get_global_variable("V_D_A2RY")
+rz =get_global_variable("V_D_A2RZ")
+pos_qua = rpy2quaternion({d2r(rx),d2r(ry),d2r(rz)})
+move_line(get_target_pose({x,y,z},pos_qua,false,{-0.000086,0.000701,0.264962},tool_ori),true)
+move_line(get_target_pose({x,y,z},pos_qua,false,{-0.000086,0.000701,0.174962},tool_ori),true)
+move_line(get_target_pose({x,y,z},pos_qua,false,tool_pose,tool_ori),true)
+sleep (0.2)
+set_robot_io_status(RobotIOType.RobotBoardUserDO,"U_DO_00",1)
+sleep (0.1)
+repeat
+a=get_robot_io_status(RobotIOType.RobotBoardUserDI,"U_DI_00")
+print(a)
+ until(a~=0)
+move_line(get_target_pose({x,y,z},pos_qua,false,{-0.000086,0.000701,0.174962},tool_ori),true)
+move_line(get_target_pose({x,y,z},pos_qua,false,{-0.000086,0.000701,0.264962},tool_ori),true)
+end

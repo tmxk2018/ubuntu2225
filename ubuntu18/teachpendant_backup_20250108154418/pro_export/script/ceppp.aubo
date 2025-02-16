@@ -1,0 +1,91 @@
+function string.split(str, delimiter)
+  if str==nil or str=='' or delimiter==nil then
+    return nil
+  end
+  local result = {}
+  for match in (str..delimiter):gmatch("(.-)"..delimiter) do
+    table.insert(result, match)
+  end
+  return result
+end
+set_robot_io_status(RobotIOType.RobotBoardUserDO,"U_DO_00",0)
+
+--set_robot_io_status(RobotIOType.RobotBoardUserDO,"U_DO_00",1)
+
+port = 8888
+ip = "192.168.192.190"
+tcp.client.connect(ip,port)
+recv=0
+tcp.client.send_str_data(ip,port,"SR,A1")
+sleep(1)
+
+recv=tcp.client.recv_str_data(ip,port)
+
+--print("recv is"..recv)
+--[[
+while(recv==nil or recv=="")do
+	print("waiting for receive...")
+	sleep(0.1)
+end
+--]]
+--table_recv=[0.0,0.0,0.0,0.0,0.0]
+table_recv=string.split(recv,",")
+--print(table_recv)
+print("recv is"..recv)
+
+if(table_recv[1]=="OK" and table_recv[2]=="A1")then
+  print("It is OK")
+  X=tonumber(table_recv[3])
+  Y=tonumber(table_recv[4])
+  A=tonumber(table_recv[5])
+  print("A IS"..A)
+  --AA=tonumber(A*Math.PI/180.0)
+AA=tonumber(A*3.1415926/180.0)
+
+  print("AA is"..AA)
+  set_global_variable("V_B_PhotoResult",true)
+  set_global_variable("V_D_x",X/1000)
+  set_global_variable("V_D_y",Y/1000)
+  set_global_variable("V_D_rz",AA)
+  --set_global_variable("V_D_z",0)
+  --set_global_variable("V_D_rx",0)
+  --set_global_variable("V_D_ry",0)
+  
+
+--set_variable("x",)
+--[[
+dx=get_global_variable("V_D_x")/1000
+dy=get_global_variable("V_D_y")/1000
+print("dx is"..dx)
+
+if dx>0.1 or dy>0.1 or dx<-0.1 or dy<-0.1 then
+set_global_variable("V_B_G",false)
+else
+set_global_variable("V_B_G",true)
+end
+--]]
+init_global_move_profile()
+
+x=-0.079766;
+y=0.551987
+z=0.247514
+rx=179.320748
+ry=-1.718080
+rz1=177.419739
+
+set_joint_maxvelc({0.5,0.5,0.5,0.5,0.5,0.5})
+set_joint_maxacc({2.654390,2.654390,2.654390,3.368128,3.368128,3.368128})
+move_joint(get_target_pose({x,y,z},rpy2quaternion({d2r(rx),d2r(ry),d2r(rz1)}),false,
+{-0.002588,0.11159,0.162994},{1.0,0.0,0.0,0.0}),true)
+--[[
+  elseif (table_recv[1] == "NG") then
+    set_global_variable("V_B_PhotoResult",false)
+    print("It is Not Good")  
+    print("Receiving data from vison is error !!!")
+    sleep(0.2)
+--]]
+ end
+ sleep(0.2)
+
+set_robot_io_status(RobotIOType.RobotBoardUserDO,"U_DO_00",1)
+

@@ -1,0 +1,80 @@
+-- Created using AuboEditor on ���� 2�� 13 2019
+-- Written by: .
+
+--init_global_move_profile()
+--set_joint_maxvelc({1.298089,1.298089,1.298089,1.555088,1.555088,1.555088}) 
+--set_joint_maxacc({8.654390,8.654390,8.654390,10.368128,10.368128,10.368128})
+--get_clawpos 
+
+
+
+--#17
+--Tool offst values
+local LiftPosition = {}
+
+    table.insert(LiftPosition, 0)
+
+	table.insert(LiftPosition, 0)
+
+    table.insert(LiftPosition, 0.06) --�޸�ƫ��ֵ 
+
+local LiftPositionPose = {}
+
+    table.insert(LiftPositionPose, 1.0)
+
+    table.insert(LiftPositionPose, 0.0)
+
+    table.insert(LiftPositionPose, 0.0)
+
+    table.insert(LiftPositionPose, 0.0)
+
+--
+camera_RPY =rpy2quaternion({d2r(get_global_variable("V_D_posRX")),d2r(get_global_variable("V_D_posRY")),d2r(get_global_variable("V_D_posRZ"))})
+camera_RPY1 =rpy2quaternion({d2r(0),d2r(0),d2r(0)})
+
+--Set grab pos
+joint=get_target_pose({get_global_variable("V_D_posX")/1000,get_global_variable("V_D_posY")/1000,
+get_global_variable("V_D_posZ")/1000+0.04},camera_RPY,false,{0,0,0.15},camera_RPY1,get_user_coord_param("desk1"))--׼Ѹ֣
+move_joint(joint,true)
+--sleep (2)
+--set_relative_offset(LiftPosition, LiftPositionPose, EndEffector, EndEffectorPose)--����ƫ������
+
+--Tool offset order
+--set_relative_offset(LiftPosition, LiftPositionPose, get_tool_kinematics_param("alsontool1"))
+
+--Finally pose
+--set_end_maxvelc(1.5)
+--set_end_maxacc(1.5)
+
+--move_line(get_global_variable("Realtime_Waypoint"),true)
+--script_common_interface("DHrobotics2F","set_gripper_param|90,90,ture")
+--set_robot_io_status(RobotIOType.RobotBoardUserDO,"U_DO_02",1)
+--sleep(1)
+
+
+
+--Air pose (user offset)
+--set_relative_offset({0,0,0.05})
+--move_line(get_global_variable("Realtime_Waypoint"),true)
+
+--Air pose (Tool offset)
+--set_end_maxvelc(1.5)
+--set_end_maxacc(1.5)
+--set_relative_offset({0,0,0.1},{1,0,0,0},get_tool_kinematics_param("alsontool1"))
+--move_line(get_global_variable("Realtime_Waypoint"),true)
+
+joint=get_target_pose(
+	{	get_global_variable("V_D_posX")/1000,
+		get_global_variable("V_D_posY")/1000,
+		get_global_variable("V_D_posZ")/1000+0.15
+	},
+	camera_RPY,false,{0,0,0.15},camera_RPY1,get_user_coord_param("desk1"))--׼Ѹ֣
+--move_joint(joint,true)
+
+init_global_move_profile()
+set_end_maxvelc(1.00) 
+set_end_maxacc(1.00) 
+
+move_line(joint,true)
+
+sleep(0.1)

@@ -1,0 +1,73 @@
+--Main Program
+
+--block script function definition
+  function blockScriptFunc_Text_3Dvision()
+    function string.split(str, delimiter)   
+    	if str==nil or str=='' or delimiter==nil then     
+    		return nil  
+    	 end 
+     local result = {}
+       
+    for match in (str..delimiter):gmatch("(.-)"..delimiter) do    
+    	 table.insert(result, match)   
+    end 
+     return result 
+    end 
+    
+    
+    port = 54600
+    ip = "192.168.0.51" 
+    sleep (0.2)
+    tcp.client.connect(ip,port) 
+    workNum=1
+    sleep (0.2)
+    tcp.client.send_str_data(ip,port,"Wait for PC Response!")
+    sleep (0.2)
+    
+    
+    
+     repeat
+     recv=tcp.client.recv_str_data(ip,port)
+     until(recv~="")
+    
+    print(recv)
+    pos = string.split(recv, ",")
+    print"xiayigehishoudaode"
+    print (pos[1])
+    
+    
+    
+    if (pos[1]=="000")then
+    print "Ready to send"
+    print (pos[1])
+    pose=get_current_waypoint()
+    tool_pose={-0.000086,0.000701,0.164962}---#3D_TOOL_XYZ
+    tool_ori=rpy2quaternion({-3.140577,-0.015406,0.685496})---#3D_TOOL_RX,RY,RZ
+    joint={pose.joint.j1,pose.joint.j2,pose.joint.j3,pose.joint.j4,pose.joint.j5,pose.joint.j6}
+    pos_user,ori_user=base_to_user(joint,tool_pose,tool_ori)--print user name
+    RPY_user=quaternion2rpy({ori_user[1],ori_user[2],ori_user[3],ori_user[4]})
+    x=(pos_user[1])*1000
+    y=(pos_user[2])*1000
+    z=(pos_user[3])*1000
+    rx=(r2d(RPY_user[1]))
+    ry=(r2d(RPY_user[2]))
+    rz=(r2d(RPY_user[3]))
+    
+    
+    addxy=(x)..","..(y)
+    addzrx=(z)..","..(rx)
+    addryrz=(ry)..","..(rz)
+    addxyza=(addxy)..","..(addzrx)
+    addxyzabc=(addxyza)..","..(addryrz)
+    add000xyzabc=("000")..","..(addxyzabc)
+    tcp.client.send_str_data(ip,port,(add000xyzabc))
+    print "send_point(successful)"
+    V_I_A= 1
+    end
+  end  --function blockScriptFunc_Text_3Dvision()
+
+--(Logic tree item : Project_Program) TEST_3DVISION
+  --(Logic tree item : Script) Text_3Dvision
+  set_current_logic_tree_item("07bd110f45ee429aa7f3c20786bff42c")
+  blockScriptFunc_Text_3Dvision()
+  set_step_breakpoint()

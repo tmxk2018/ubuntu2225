@@ -1,0 +1,56 @@
+function string.split(str,delimiter)
+	if str  ==  nil or str ==  ''  or  delimiter  == nil then
+			return  nil
+	end
+	local  result =  {}
+	for match in  (str..delimiter):gmatch("(.-)"..delimiter) do
+			table.insert(result,match)
+	end
+	return result
+end
+
+ip = "192.168.5.201"
+port = 3000
+tcp.client.connect(ip,port)
+recv = ""
+tcp.client.send_str_data(ip,port,"PHOTO")
+sleep(0.2)
+
+cnt=0--辅助计时
+cnt1=0--记拍照次数
+
+while (recv =="" or recv == nil or recv=="err") do  --如果收不到相机数据，默认每3秒拍一次。总共拍三次
+        sleep(1)
+        recv=tcp.client.recv_str_data(ip,port)
+        print("recv:"..recv)
+end
+
+--tool_pos = {0,0,0.1}
+--tool_ori = {1,0,0,0}
+
+table1 = {}
+table1=string.split(recv,",")
+if table1[1]=="OK" then
+   set_global_variable("V_B_photo", true)
+    x=tonumber(table1[2])/1000
+    y=tonumber(table1[3])/1000
+    rz=tonumber(table1[4])
+    set_global_variable("V_D_x",x)
+    set_global_variable("V_D_y",y)
+    set_global_variable("V_D_rz",rz)
+
+tool_pos = {}
+pos,ori=base_to_user(get_global_variable("V_P_pick00"),get_user_coord_param("user_coord"))
+pos1 =({pos[1]+x,pos[2]+y,pos[3]})
+rpy1 = quaternion2rpy(ori)    
+ori1 = rpy2quaternion({rpy1[1],rpy1[2],rpy1[3]+d2r(rz)})
+pt=get_target_pose(pos1,ori1,false,{0,0,0},{1,0,0,0},get_user_coord_param("user_coord"))
+str1="0,0,0,1,0,0,0,"..tostring(pt[1])..","..tostring(pt[2])..","..tostring(pt[3])..","..tostring(pt[4])..","..tostring(pt[5])..","..tostring(pt[6])
+set_global_variable("V_P_pick", str1)
+
+elseif table1[1]=="NG" then
+     set_global_variable("V_B_photo", false)
+
+sleep(0.5)
+
+end

@@ -1,0 +1,23 @@
+data=nil
+sleep(0.2)
+port =20089
+
+ip = "192.168.0.51" 
+tcp.client.connect(ip,port) 
+sleep(0.1)
+data=tcp.client.recv_str_data(ip,port)
+sleep(0.1)
+print(data)
+aaa= string.sub(data,5,6)
+sleep(0.2)
+if (aaa >="1") then
+tcp.client.send_str_data(ip,20089,"ok")
+print("ok")
+end
+
+if (aaa >="1") then
+print(aaa)
+set_global_variable("V_I_Receive",  tonumber(aaa))
+sleep(1)
+data=nil
+end

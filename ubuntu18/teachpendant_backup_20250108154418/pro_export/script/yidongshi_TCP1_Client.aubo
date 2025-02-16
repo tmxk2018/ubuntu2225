@@ -1,0 +1,120 @@
+-- Written by: 
+function string.split(str, delimiter)   
+	if str==nil or str=='' or delimiter==nil then     
+		return nil  
+	 end 
+ local result = {}   
+for match in (str..delimiter):gmatch("(.-)"..delimiter) do    
+	 table.insert(result, match)   
+end 
+ return result 
+end 
+
+--connect to TCP server 
+port = 54600
+ip = "192.168.192.29" 
+tcp.client.connect(ip,port) 
+workNum=get_global_variable("V_I_workNum")
+
+if (workNum == 0) then
+tcp.client.send_str_data(ip,port,"210")
+sleep (0.2)
+end
+if (workNum>0) then
+tcp.client.send_str_data(ip,port,"101")
+sleep (0.1)
+end
+
+--read data 
+ recv = "" 
+ pos = {}
+x=""
+y=""
+z=""
+rx=""
+ry=""
+rz=""
+
+addxy={}
+addzrx={}
+addryrz={}
+addxyza={}
+addxyzabc={}
+add000xyzabc={}
+ ::label1::
+repeat
+ recv=tcp.client.recv_str_data(ip,port)
+ until(recv~="")
+ print(recv)
+ pos = string.split(recv, ",")
+print"xiayigehishoudaode"
+print (pos[1])
+ if (pos[1]=="310") then 
+print"shoudao"
+print (pos[1])
+ set_global_variable("V_D_posX", tonumber(pos[2]))
+ set_global_variable("V_D_posY", tonumber(pos[3]))
+ set_global_variable("V_D_posZ", tonumber(pos[4]))
+ set_global_variable("V_D_posRX", tonumber(pos[5]))
+ set_global_variable("V_D_posRY", tonumber(pos[6]))
+ set_global_variable("V_D_posRZ", tonumber(pos[7]))
+ set_global_variable("V_B_ClawRun" ,true)
+--tcp.client.send_str_data(ip,port,"101")
+recv=nil
+ end
+
+if (pos[1]=="403")then 
+print "shoudao"
+print (pos[1])
+sleep (0.1000)
+end
+if (pos[1]=="406")then 
+print "shoudao"
+print (pos[1])
+sleep (0.1000)
+end
+
+if (pos[1]=="000")then
+print "shoudao"
+print (pos[1])
+pose=get_current_waypoint()
+
+tool_pose={0,0,0.15}--print ToolData
+tool_ori=rpy2quaternion({0,0,0})--print ToolData
+joint={pose.joint.j1,pose.joint.j2,pose.joint.j3,pose.joint.j4,pose.joint.j5,pose.joint.j6}
+pos_user,ori_user=base_to_user(joint,tool_pose,tool_ori,get_user_coord_param("desk1"))--print user name
+RPY_user=quaternion2rpy({ori_user[1],ori_user[2],ori_user[3],ori_user[4]})
+
+x=(pos_user[1])*1000
+y=(pos_user[2])*1000
+z=(pos_user[3])*1000
+
+rx=(r2d(RPY_user[1]))
+ry=(r2d(RPY_user[2]))
+rz=(r2d(RPY_user[3]))
+
+--test print
+print(x)
+print(y)
+print(z)
+print(rx)
+print(rx)
+print(rz)
+
+--add
+addxy=(x)..","..(y)
+addzrx=(z)..","..(rx)
+addryrz=(ry)..","..(rz)
+addxyza=(addxy)..","..(addzrx)
+addxyzabc=(addxyza)..","..(addryrz)
+add000xyzabc=("000")..","..(addxyzabc)
+print(add000xyzabc)
+
+tcp.client.send_str_data(ip,port,(add000xyzabc))
+goto label1 
+end
+sleep (0.1)
+--tcp.client.send_str_data(ip,port,"101")
+recv=nil
+--workNum=workNum+1
+--print (workNum)

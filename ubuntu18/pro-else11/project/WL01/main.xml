@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MainProgram>
+    <Condition ConditionType="Project_Program" ConditionAlias="Project_Program" ConditionUuid="3d3126b8cd1a4cdd87811f4f35f29251">
+        <Attribute>
+            <md5OfProjectContinueFile>010bb254ed29b06731d6391e244cf30d</md5OfProjectContinueFile>
+            <md5OfProjectPauseFile>010bb254ed29b06731d6391e244cf30d</md5OfProjectPauseFile>
+            <md5OfProjectStopFile>010bb254ed29b06731d6391e244cf30d</md5OfProjectStopFile>
+            <projectContinueFile>Vision</projectContinueFile>
+            <projectPauseFile>Vision</projectPauseFile>
+            <projectStopFile>Vision</projectStopFile>
+            <selectProjectContinue>false</selectProjectContinue>
+            <selectProjectPause>false</selectProjectPause>
+            <selectProjectStop>false</selectProjectStop>
+        </Attribute>
+        <Condition ConditionType="Loop" ConditionAlias="Loop" ConditionUuid="0de254090cc048aea676422e2711b5be">
+            <Attribute>
+                <LoopConditionMode>Times</LoopConditionMode>
+                <LoopTimes>1</LoopTimes>
+            </Attribute>
+            <Condition ConditionType="Set" ConditionAlias="Set" ConditionUuid="896f0a07974345c2a5271b061f2288f6">
+                <Attribute>
+                    <SetConditionMode>Variable</SetConditionMode>
+                    <VarAssignmentExp>0</VarAssignmentExp>
+                    <VarName>V_I_Receive</VarName>
+                </Attribute>
+            </Condition>
+            <Condition ConditionType="Set" ConditionAlias="Set" ConditionUuid="da44d6cefa7046bca8124af6be266155">
+                <Attribute>
+                    <SetConditionMode>IO</SetConditionMode>
+                    <IOCategory>User</IOCategory>
+                    <IOName>U_DO_03</IOName>
+                    <IOValue>0</IOValue>
+                    <RobotIOType>RobotBoardUserDO</RobotIOType>
+                </Attribute>
+            </Condition>
+        </Condition>
+        <Condition ConditionType="Loop" ConditionAlias="Loop" ConditionUuid="b21caac1c6394908847afd455dabc2bf">
+            <Attribute>
+                <LoopConditionMode>Always</LoopConditionMode>
+            </Attribute>
+            <Condition ConditionType="Loop" ConditionAlias="Loop" ConditionUuid="d656fcb437384ce3a2c4d3930cc544e8">
+                <Attribute>
+                    <LoopConditionMode>Exp</LoopConditionMode>
+                    <LoopConditionExp>V_I_Receive &gt;= 1 and (U,DI)U_DI_01 == 1</LoopConditionExp>
+                </Attribute>
+                <Condition ConditionType="Move" ConditionAlias="Move" ConditionUuid="45adaab911a749168186d47083054f5b">
+                    <Attribute>
+                        <MoveConditionMode>MoveJoint</MoveConditionMode>
+                        <ArrivalAheadThreshold>0.000000</ArrivalAheadThreshold>
+                        <ArrivalAheadType>None</ArrivalAheadType>
+                        <EnableArrivalAhead>false</EnableArrivalAhead>
+                        <EnableOffset>false</EnableOffset>
+                        <JointAcc>50,50,50,50,50,50</JointAcc>
+                        <JointSpeed>50,50,50,50,50,50</JointSpeed>
+                        <OffsetCoordName></OffsetCoordName>
+                        <OffsetCoordType>BaseCoord</OffsetCoordType>
+                        <OffsetRX></OffsetRX>
+                        <OffsetRY></OffsetRY>
+                        <OffsetRZ></OffsetRZ>
+                        <OffsetX></OffsetX>
+                        <OffsetY></OffsetY>
+                        <OffsetZ></OffsetZ>
+                    </Attribute>
+                    <Condition ConditionType="Waypoint" ConditionAlias="Waypoint_V_P_GET_POS" ConditionUuid="c1174fd31a054f35b5edcfb9f8ed2025">
+                        <Attribute>
+                            <WaypointConditionMode>FixedPoint</WaypointConditionMode>
+                            <FixedPoint>-0.088115,-0.399043,0.498632,0.000270,0.394910,-0.918712,0.003685,-1.486681,0.190646,1.512091,-0.242189,1.572616,2.413768</FixedPoint>
+                        </Attribute>
+                    </Condition>
+                </Condition>
+                <Condition ConditionType="If" ConditionAlias="If" ConditionUuid="ae9b77f5ce5a43f29eda6b6090ce4a1a">
+                    <Attribute>
+                        <Exp>V_I_Receive &gt; 0</Exp>
+                    </Attribute>
+                    <Condition ConditionType="Script" ConditionAlias="initial" ConditionUuid="bf9b9464c4cf4c398546bd6c49553650">
+                        <Attribute>
+                            <ScriptConditionMode>BlockScript</ScriptConditionMode>
+                            <MD5>8db1b40687124a472b463f01b3120ed5</MD5>
+                            <ScriptFileName>initial</ScriptFileName>
+                        </Attribute>
+                    </Condition>
+                    <Condition ConditionType="Wait" ConditionAlias="Wait" ConditionUuid="726d162e88894d338722437944a1980c">
+                        <Attribute>
+                            <WaitConditionMode>Time</WaitConditionMode>
+                            <WaitTime>0.1</WaitTime>
+                        </Attribute>
+                    </Condition>
+                    <Condition ConditionType="Loop" ConditionAlias="Loop" ConditionUuid="59486f4b6cdb4c6cb1eb76c18ae28baa">
+                        <Attribute>
+                            <LoopConditionMode>Exp</LoopConditionMode>
+                            <LoopConditionExp>V_B_ClawRun == false and V_I_Receive &gt;= 1</LoopConditionExp>
+                        </Attribute>
+                        <Condition ConditionType="Loop" ConditionAlias="Loop" ConditionUuid="39c3d541bd954c88840a07d355dc5bd7">
+                            <Attribute>
+                                <LoopConditionMode>Times</LoopConditionMode>
+                                <LoopTimes>1</LoopTimes>
+                            </Attribute>
+                            <Condition ConditionType="Script" ConditionAlias="q" ConditionUuid="2bd82e0c015a401e815f54a6a7016d09">
+                                <Attribute>
+                                    <ScriptConditionMode>BlockScript</ScriptConditionMode>
+                                    <MD5>1ff5625c13b1f31b433df0003f2bc4bc</MD5>
+                                    <ScriptFileName>q</ScriptFileName>
+                                </Attribute>
+                            </Condition>
+                        </Condition>
+                        <Condition ConditionType="Script" ConditionAlias="3D_Vision" ConditionUuid="63bf42e2b6cb4ee2bb5f3985373e2e3c">
+                            <Attribute>
+                                <ScriptConditionMode>BlockScript</ScriptConditionMode>
+                                <MD5>feff9ef20058badfe6e1463e5609d8bf</MD5>
+                                <ScriptFileName>3D_Vision</ScriptFileName>
+                            </Attribute>
+                        </Condition>
+                        <Condition ConditionType="Wait" ConditionAlias="Wait" ConditionUuid="645171e4a70f48fbb09ed3a85cd5384c">
+                            <Attribute>
+                                <WaitConditionMode>Time</WaitConditionMode>
+                                <WaitTime>0.5</WaitTime>
+                            </Attribute>
+                        </Condition>
+                        <Condition ConditionType="Set" ConditionAlias="Set" ConditionUuid="d61474a47a2d4d58bff19a94b2656f0d">
+                            <Attribute>
+                                <SetConditionMode>Variable</SetConditionMode>
+                                <VarAssignmentExp>V_I_workNum + 1</VarAssignmentExp>
+                                <VarName>V_I_workNum</VarName>
+                            </Attribute>
+                        </Condition>
+                        <Condition ConditionType="If" ConditionAlias="If" ConditionUuid="5f1bd55b2ffd4089abb1ea1930af4d6d">
+                            <Attribute>
+                                <Exp>V_B_ClawRun == true</Exp>
+                            </Attribute>
+                            <Condition ConditionType="Script" ConditionAlias="Script" ConditionUuid="938d4fdf011b45ef806c9bf4a1e03c31">
+                                <Attribute>
+                                    <ScriptConditionMode>LineScript</ScriptConditionMode>
+                                    <LineScriptContent>move_pos()</LineScriptContent>
+                                </Attribute>
+                            </Condition>
+                            <Condition ConditionType="If" ConditionAlias="If" ConditionUuid="ee93506326b04eaf9a60aa148dfcac08">
+                                <Attribute>
+                                    <Exp>V_B_ClawRun == true and V_I_Receive &gt;= 1</Exp>
+                                </Attribute>
+                                <Condition ConditionType="Set" ConditionAlias="Set" ConditionUuid="a44f02b1b6c64cf9aa088965ad4eb860">
+                                    <Attribute>
+                                        <SetConditionMode>Variable</SetConditionMode>
+                                        <VarAssignmentExp>0</VarAssignmentExp>
+                                        <VarName>V_I_workNum</VarName>
+                                    </Attribute>
+                                </Condition>
+                                <Condition ConditionType="Set" ConditionAlias="Set" ConditionUuid="ac13eaa76c0b4bebb9efeaab0e63fa0d">
+                                    <Attribute>
+                                        <SetConditionMode>Variable</SetConditionMode>
+                                        <VarAssignmentExp>false</VarAssignmentExp>
+                                        <VarName>V_B_ClawRun</VarName>
+                                    </Attribute>
+                                </Condition>
+                                <Condition ConditionType="Procedure" ConditionAlias="putpos1" ConditionUuid="c80daa24f3244abc8a031699fc7ad32e">
+                                    <Attribute>
+                                        <MD5>c744c4af3cefc36eb655670a7f140c56</MD5>
+                                        <ProcedureName>putpos1</ProcedureName>
+                                    </Attribute>
+                                    <Condition ConditionType="Set" ConditionAlias="Set" ConditionUuid="a9ae39f00e7c4f7986706981c9fa3d74">
+                                        <Attribute>
+                                            <SetConditionMode>Variable</SetConditionMode>
+                                            <VarAssignmentExp>V_I_Receive - 1</VarAssignmentExp>
+                                            <VarName>V_I_Receive</VarName>
+                                        </Attribute>
+                                    </Condition>
+                                    <Condition ConditionType="Move" ConditionAlias="Move" ConditionUuid="eeceb2556bd446c6a250a7ba076c039a">
+                                        <Attribute>
+                                            <MoveConditionMode>MoveJoint</MoveConditionMode>
+                                            <ArrivalAheadThreshold>0.000000</ArrivalAheadThreshold>
+                                            <ArrivalAheadType>None</ArrivalAheadType>
+                                            <EnableArrivalAhead>false</EnableArrivalAhead>
+                                            <EnableOffset>true</EnableOffset>
+                                            <JointAcc>50,50,50,50,50,50</JointAcc>
+                                            <JointSpeed>50,50,50,50,50,50</JointSpeed>
+                                            <OffsetCoordName>Base</OffsetCoordName>
+                                            <OffsetCoordType>BaseCoord</OffsetCoordType>
+                                            <OffsetRX>0</OffsetRX>
+                                            <OffsetRY>0</OffsetRY>
+                                            <OffsetRZ>0</OffsetRZ>
+                                            <OffsetX>0</OffsetX>
+                                            <OffsetY>0</OffsetY>
+                                            <OffsetZ>0.300</OffsetZ>
+                                            <angleJerkRatio>0.25</angleJerkRatio>
+                                            <isInMoveGroup>false</isInMoveGroup>
+                                            <jerkRatio>0.25</jerkRatio>
+                                        </Attribute>
+                                        <Condition ConditionType="Waypoint" ConditionAlias="Waypoint_V_P_putpos" ConditionUuid="7e4595e747a4409b823310cf69daf046">
+                                            <Attribute>
+                                                <WaypointConditionMode>VarPoint</WaypointConditionMode>
+                                                <VarPoint>V_P_putpos</VarPoint>
+                                            </Attribute>
+                                        </Condition>
+                                    </Condition>
+                                    <Condition ConditionType="Move" ConditionAlias="Move" ConditionUuid="6eaddbe08fd540e79fc959a696550fd1">
+                                        <Attribute>
+                                            <MoveConditionMode>MoveLine</MoveConditionMode>
+                                            <ArrivalAheadThreshold>0.000000</ArrivalAheadThreshold>
+                                            <ArrivalAheadType>None</ArrivalAheadType>
+                                            <EnableArrivalAhead>false</EnableArrivalAhead>
+                                            <EnableOffset>false</EnableOffset>
+                                            <EndAngleAcc>50</EndAngleAcc>
+                                            <EndAngleSpeed>50</EndAngleSpeed>
+                                            <EndLinearAcc>50</EndLinearAcc>
+                                            <EndLinearSpeed>50</EndLinearSpeed>
+                                            <OffsetCoordName>Base</OffsetCoordName>
+                                            <OffsetCoordType>BaseCoord</OffsetCoordType>
+                                            <OffsetRX></OffsetRX>
+                                            <OffsetRY></OffsetRY>
+                                            <OffsetRZ></OffsetRZ>
+                                            <OffsetX></OffsetX>
+                                            <OffsetY></OffsetY>
+                                            <OffsetZ></OffsetZ>
+                                            <angleJerkRatio>0.25</angleJerkRatio>
+                                            <isInMoveGroup>false</isInMoveGroup>
+                                            <jerkRatio>0.25</jerkRatio>
+                                        </Attribute>
+                                        <Condition ConditionType="Waypoint" ConditionAlias="Waypoint_V_P_putpos" ConditionUuid="1ac7639acc404fc898c83b3383b74ad8">
+                                            <Attribute>
+                                                <WaypointConditionMode>VarPoint</WaypointConditionMode>
+                                                <VarPoint>V_P_putpos</VarPoint>
+                                            </Attribute>
+                                        </Condition>
+                                    </Condition>
+                                    <Condition ConditionType="Set" ConditionAlias="Set" ConditionUuid="977fc4cc78214dec9c4ccc8f060fb6f5">
+                                        <Attribute>
+                                            <SetConditionMode>IO</SetConditionMode>
+                                            <IOCategory>User</IOCategory>
+                                            <IOName>U_DO_00</IOName>
+                                            <IOValue>0</IOValue>
+                                            <RobotIOType>RobotBoardUserDO</RobotIOType>
+                                        </Attribute>
+                                    </Condition>
+                                    <Condition ConditionType="Set" ConditionAlias="Set" ConditionUuid="d8216d1b89204e0cbd080e38230c57d7">
+                                        <Attribute>
+                                            <SetConditionMode>IO</SetConditionMode>
+                                            <IOCategory>User</IOCategory>
+                                            <IOName>U_DO_01</IOName>
+                                            <IOValue>1</IOValue>
+                                            <RobotIOType>RobotBoardUserDO</RobotIOType>
+                                        </Attribute>
+                                    </Condition>
+                                    <Condition ConditionType="Wait" ConditionAlias="Wait" ConditionUuid="8d0f8e3008974ebba9de6276c6d35c62">
+                                        <Attribute>
+                                            <WaitConditionMode>Time</WaitConditionMode>
+                                            <WaitTime>0.5</WaitTime>
+                                        </Attribute>
+                                    </Condition>
+                                    <Condition ConditionType="Set" ConditionAlias="Set" ConditionUuid="12b9130642b74691a587de142b8e9d5c">
+                                        <Attribute>
+                                            <SetConditionMode>IO</SetConditionMode>
+                                            <IOCategory>User</IOCategory>
+                                            <IOName>U_DO_01</IOName>
+                                            <IOValue>0</IOValue>
+                                            <RobotIOType>RobotBoardUserDO</RobotIOType>
+                                        </Attribute>
+                                    </Condition>
+                                    <Condition ConditionType="Move" ConditionAlias="Move" ConditionUuid="9ccf5bae4e674f97942a8a68a86e2d8c">
+                                        <Attribute>
+                                            <MoveConditionMode>MoveLine</MoveConditionMode>
+                                            <ArrivalAheadThreshold>0.000000</ArrivalAheadThreshold>
+                                            <ArrivalAheadType>None</ArrivalAheadType>
+                                            <EnableArrivalAhead>false</EnableArrivalAhead>
+                                            <EnableOffset>true</EnableOffset>
+                                            <EndAngleAcc>-1</EndAngleAcc>
+                                            <EndAngleSpeed>-1</EndAngleSpeed>
+                                            <EndLinearAcc>50</EndLinearAcc>
+                                            <EndLinearSpeed>50</EndLinearSpeed>
+                                            <OffsetCoordName>Base</OffsetCoordName>
+                                            <OffsetCoordType>BaseCoord</OffsetCoordType>
+                                            <OffsetRX>0</OffsetRX>
+                                            <OffsetRY>0</OffsetRY>
+                                            <OffsetRZ>0</OffsetRZ>
+                                            <OffsetX>0</OffsetX>
+                                            <OffsetY>0</OffsetY>
+                                            <OffsetZ>0.30</OffsetZ>
+                                            <angleJerkRatio>0.25</angleJerkRatio>
+                                            <isInMoveGroup>false</isInMoveGroup>
+                                            <jerkRatio>0.25</jerkRatio>
+                                        </Attribute>
+                                        <Condition ConditionType="Waypoint" ConditionAlias="Waypoint_V_P_putpos" ConditionUuid="c0f2898579b54a7fac8082bbb026de45">
+                                            <Attribute>
+                                                <WaypointConditionMode>VarPoint</WaypointConditionMode>
+                                                <VarPoint>V_P_putpos</VarPoint>
+                                            </Attribute>
+                                        </Condition>
+                                    </Condition>
+                                    <Condition ConditionType="Set" ConditionAlias="Set" ConditionUuid="a954b9171db64258bef303588a5363ee">
+                                        <Attribute>
+                                            <SetConditionMode>IO</SetConditionMode>
+                                            <IOCategory>User</IOCategory>
+                                            <IOName>U_DO_04</IOName>
+                                            <IOValue>1</IOValue>
+                                            <RobotIOType>RobotBoardUserDO</RobotIOType>
+                                        </Attribute>
+                                    </Condition>
+                                    <Condition ConditionType="Wait" ConditionAlias="Wait" ConditionUuid="d756cdc7f6e04b3eaf044da7d6758b02">
+                                        <Attribute>
+                                            <WaitConditionMode>Time</WaitConditionMode>
+                                            <WaitTime>0.5</WaitTime>
+                                        </Attribute>
+                                    </Condition>
+                                    <Condition ConditionType="Set" ConditionAlias="Set" ConditionUuid="a1368421fe674bcfba2428c5ea3e3d34">
+                                        <Attribute>
+                                            <SetConditionMode>IO</SetConditionMode>
+                                            <IOCategory>User</IOCategory>
+                                            <IOName>U_DO_04</IOName>
+                                            <IOValue>0</IOValue>
+                                            <RobotIOType>RobotBoardUserDO</RobotIOType>
+                                        </Attribute>
+                                    </Condition>
+                                    <Condition ConditionType="If" ConditionAlias="If" ConditionUuid="9ca427a1cb234427b2cd71fb4adb83cd">
+                                        <Attribute>
+                                            <Exp>V_I_Receive == 0</Exp>
+                                        </Attribute>
+                                        <Condition ConditionType="Set" ConditionAlias="Set" ConditionUuid="f40d033f5c484037a638750fd87792e6">
+                                            <Attribute>
+                                                <SetConditionMode>IO</SetConditionMode>
+                                                <IOCategory>User</IOCategory>
+                                                <IOName>U_DO_02</IOName>
+                                                <IOValue>1</IOValue>
+                                                <RobotIOType>RobotBoardUserDO</RobotIOType>
+                                            </Attribute>
+                                        </Condition>
+                                        <Condition ConditionType="Wait" ConditionAlias="Wait" ConditionUuid="41daa093491548f193621c9700b83bad">
+                                            <Attribute>
+                                                <WaitConditionMode>Time</WaitConditionMode>
+                                                <WaitTime>0.5</WaitTime>
+                                            </Attribute>
+                                        </Condition>
+                                        <Condition ConditionType="Set" ConditionAlias="Set" ConditionUuid="a891bda560da4679a2bd2fd01ae01343">
+                                            <Attribute>
+                                                <SetConditionMode>IO</SetConditionMode>
+                                                <IOCategory>User</IOCategory>
+                                                <IOName>U_DO_02</IOName>
+                                                <IOValue>0</IOValue>
+                                                <RobotIOType>RobotBoardUserDO</RobotIOType>
+                                            </Attribute>
+                                        </Condition>
+                                    </Condition>
+                                </Condition>
+                                <Condition ConditionType="Move" ConditionAlias="Move" ConditionUuid="63019461bb4b4733969e33e4db0b5cca">
+                                    <Attribute>
+                                        <MoveConditionMode>MoveJoint</MoveConditionMode>
+                                        <ArrivalAheadThreshold>0.000000</ArrivalAheadThreshold>
+                                        <ArrivalAheadType>None</ArrivalAheadType>
+                                        <EnableArrivalAhead>false</EnableArrivalAhead>
+                                        <EnableOffset>false</EnableOffset>
+                                        <JointAcc>50,50,50,50,50,50</JointAcc>
+                                        <JointSpeed>50,50,50,50,50,50</JointSpeed>
+                                        <OffsetCoordName></OffsetCoordName>
+                                        <OffsetCoordType>BaseCoord</OffsetCoordType>
+                                        <OffsetRX></OffsetRX>
+                                        <OffsetRY></OffsetRY>
+                                        <OffsetRZ></OffsetRZ>
+                                        <OffsetX></OffsetX>
+                                        <OffsetY></OffsetY>
+                                        <OffsetZ></OffsetZ>
+                                        <angleJerkRatio>0.25</angleJerkRatio>
+                                        <isInMoveGroup>false</isInMoveGroup>
+                                        <jerkRatio>0.25</jerkRatio>
+                                    </Attribute>
+                                    <Condition ConditionType="Waypoint" ConditionAlias="Waypoint_V_P_GET_POS" ConditionUuid="ccddafe42104472b9077aa57657ee57b">
+                                        <Attribute>
+                                            <WaypointConditionMode>FixedPoint</WaypointConditionMode>
+                                            <FixedPoint>-0.088115,-0.399043,0.498632,0.000270,0.394910,-0.918712,0.003685,-1.486681,0.190646,1.512091,-0.242189,1.572616,2.413768</FixedPoint>
+                                        </Attribute>
+                                    </Condition>
+                                </Condition>
+                            </Condition>
+                        </Condition>
+                    </Condition>
+                </Condition>
+            </Condition>
+        </Condition>
+    </Condition>
+</MainProgram>

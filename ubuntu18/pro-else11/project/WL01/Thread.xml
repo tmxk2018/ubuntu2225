@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ThreadProgram>
+    <Condition ConditionType="Thread" ConditionAlias="Thread" ConditionUuid="e6c9509cc58a482fb6778e6d66669339">
+        <Attribute>
+            <ThreadName>Thread</ThreadName>
+        </Attribute>
+        <Condition ConditionType="Loop" ConditionAlias="Loop" ConditionUuid="53efaf2e7da341f8ae1136d3fe5b2718">
+            <Attribute>
+                <LoopConditionMode>Always</LoopConditionMode>
+            </Attribute>
+            <Condition ConditionType="Wait" ConditionAlias="Wait" ConditionUuid="7ab7605cc6da4985a786c3a7bfd10bd3">
+                <Attribute>
+                    <WaitConditionMode>Time</WaitConditionMode>
+                    <WaitTime>1</WaitTime>
+                </Attribute>
+            </Condition>
+            <Condition ConditionType="Loop" ConditionAlias="Loop" ConditionUuid="39c4fd2bfd0a4da881268e943a930faf">
+                <Attribute>
+                    <LoopConditionMode>Exp</LoopConditionMode>
+                    <LoopConditionExp>(U,DI)U_DI_03 == 1 and V_I_Receive == 0</LoopConditionExp>
+                </Attribute>
+                <Condition ConditionType="Loop" ConditionAlias="Loop" ConditionUuid="f38bdef4fa88436597e9f4c7a335376f">
+                    <Attribute>
+                        <LoopConditionMode>Times</LoopConditionMode>
+                        <LoopTimes>1</LoopTimes>
+                    </Attribute>
+                    <Condition ConditionType="Script" ConditionAlias="q2" ConditionUuid="eacfd8343e6f4116ac23ad430b6b315b">
+                        <Attribute>
+                            <ScriptConditionMode>BlockScript</ScriptConditionMode>
+                            <MD5>d70375eca935d282cebfb357929eed45</MD5>
+                            <ScriptFileName>q2</ScriptFileName>
+                        </Attribute>
+                    </Condition>
+                </Condition>
+                <Condition ConditionType="Script" ConditionAlias="PLC_connetion" ConditionUuid="b759ceff37774decbb3b7793a2fcadd4">
+                    <Attribute>
+                        <ScriptConditionMode>BlockScript</ScriptConditionMode>
+                        <MD5>3aa9b83ec515b7b7a96d6a63eff11c96</MD5>
+                        <ScriptFileName>PLC_connetion</ScriptFileName>
+                    </Attribute>
+                </Condition>
+            </Condition>
+            <Condition ConditionType="Loop" ConditionAlias="Loop" ConditionUuid="870c9e208cd74389944388537f32165d">
+                <Attribute>
+                    <LoopConditionMode>Exp</LoopConditionMode>
+                    <LoopConditionExp>(U,DI)U_DI_03 == 0</LoopConditionExp>
+                </Attribute>
+                <Condition ConditionType="Script" ConditionAlias="plcf" ConditionUuid="547728e2452c456395d20c9671b712e3">
+                    <Attribute>
+                        <ScriptConditionMode>BlockScript</ScriptConditionMode>
+                        <MD5>5c131a88963290fcbd549239c8e4b0fa</MD5>
+                        <ScriptFileName>plcf</ScriptFileName>
+                    </Attribute>
+                </Condition>
+            </Condition>
+        </Condition>
+    </Condition>
+</ThreadProgram>

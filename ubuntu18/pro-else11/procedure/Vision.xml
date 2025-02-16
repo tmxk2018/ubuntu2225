@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcedureProgram>
+    <Condition ConditionType="Procedure_Program" ConditionAlias="Procedure_Program" ConditionUuid="70249e2ffce946bfb24be18ae13c2fa5">
+        <Attribute/>
+        <Condition ConditionType="Move" ConditionAlias="Move" ConditionUuid="4dfdad8190ea4b1ab0c201633d722c44">
+            <Attribute>
+                <MoveConditionMode>MoveJoint</MoveConditionMode>
+                <ArrivalAheadThreshold>0.000000</ArrivalAheadThreshold>
+                <ArrivalAheadType>None</ArrivalAheadType>
+                <EnableArrivalAhead>false</EnableArrivalAhead>
+                <EnableOffset>false</EnableOffset>
+                <JointAcc>50,50,50,50,50,50</JointAcc>
+                <JointSpeed>50,50,50,50,50,50</JointSpeed>
+                <OffsetCoordName></OffsetCoordName>
+                <OffsetCoordType>BaseCoord</OffsetCoordType>
+                <OffsetRX></OffsetRX>
+                <OffsetRY></OffsetRY>
+                <OffsetRZ></OffsetRZ>
+                <OffsetX></OffsetX>
+                <OffsetY></OffsetY>
+                <OffsetZ></OffsetZ>
+            </Attribute>
+            <Condition ConditionType="Waypoint" ConditionAlias="Waypoint" ConditionUuid="bdfc1029ad6744ddbb1b9a934fc3ccd6">
+                <Attribute>
+                    <WaypointConditionMode>VarPoint</WaypointConditionMode>
+                    <VarPoint>V_P_Area_1</VarPoint>
+                </Attribute>
+            </Condition>
+        </Condition>
+        <Condition ConditionType="Loop" ConditionAlias="Loop" ConditionUuid="39c7e676123a4b759185629ac166bc79">
+            <Attribute>
+                <LoopConditionMode>Always</LoopConditionMode>
+            </Attribute>
+            <Condition ConditionType="Script" ConditionAlias="3D_Vision" ConditionUuid="6c5ebdabf8f049be8ac4f8ab377075f3">
+                <Attribute>
+                    <ScriptConditionMode>BlockScript</ScriptConditionMode>
+                    <MD5>f8f5db3ef47e60c7ef5fd70478d2c944</MD5>
+                    <ScriptFileName>3D_Vision</ScriptFileName>
+                </Attribute>
+            </Condition>
+            <Condition ConditionType="Wait" ConditionAlias="Wait" ConditionUuid="379a7c00d8b04f42b727da21df7ef313">
+                <Attribute>
+                    <WaitConditionMode>Time</WaitConditionMode>
+                    <WaitTime>0.5</WaitTime>
+                </Attribute>
+            </Condition>
+            <Condition ConditionType="Loop" ConditionAlias="Loop" ConditionUuid="5f4682729c4f48b5a48332732d9fbed9">
+                <Attribute>
+                    <LoopConditionMode>Exp</LoopConditionMode>
+                    <LoopConditionExp>V_B_ClawRun == false</LoopConditionExp>
+                </Attribute>
+                <Condition ConditionType="Script" ConditionAlias="Receive_pos" ConditionUuid="d4a54bc2696c4a2ea5b076605546f25c">
+                    <Attribute>
+                        <ScriptConditionMode>BlockScript</ScriptConditionMode>
+                        <MD5>5297ac931dcfab3e5e994f12c2324a1e</MD5>
+                        <ScriptFileName>Receive_pos</ScriptFileName>
+                    </Attribute>
+                </Condition>
+            </Condition>
+            <Condition ConditionType="Script" ConditionAlias="Script" ConditionUuid="2a752f558eeb436482a158e081b7f2a6">
+                <Attribute>
+                    <ScriptConditionMode>LineScript</ScriptConditionMode>
+                    <LineScriptContent>move_pos()</LineScriptContent>
+                </Attribute>
+            </Condition>
+            <Condition ConditionType="Set" ConditionAlias="Set" ConditionUuid="4d7809b61c424c929e74d705f1413704">
+                <Attribute>
+                    <SetConditionMode>Variable</SetConditionMode>
+                    <VarAssignmentExp>false</VarAssignmentExp>
+                    <VarName>V_B_ClawRun</VarName>
+                </Attribute>
+            </Condition>
+        </Condition>
+    </Condition>
+</ProcedureProgram>

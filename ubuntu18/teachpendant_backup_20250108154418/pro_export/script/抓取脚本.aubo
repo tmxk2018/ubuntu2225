@@ -1,0 +1,82 @@
+function string.split(str , delimiter) 
+  if str == nil or str ==' ' or delimiter == nil then
+    return nil
+  end 
+  local result = {}
+  for match in (str..delimiter):gmatch("(.-)"..delimiter) do
+    table.insert(result, match)
+  end
+  return result
+end
+function table2str(joint_table) 
+  str = ''
+  for i=1,#joint_table,1 do
+    str = str..tostring(joint_table[i])..","
+  end
+  str = string.sub(str,1,-2)
+  return str 
+end
+function photo1()
+  sleep(1)
+  tcp.client.recv_str_data(ip,port)
+    tcp.client.send_str_data(ip,port,"photo1")
+  recv=""
+  n=0
+  while (recv==nil or recv=='' or recv=="1" or recv=="[err]" or recv=="0") do
+    recv=tcp.client.recv_str_data(ip,port)
+     n=n+1
+    sleep(0.1)
+    if n> 50 then
+      tcp.client.send_str_data(ip,port,"photo1")
+        print("error1")
+      n=0
+    end
+  end
+  print(recv)
+  table1=string.split(recv,",")
+  ok=tonumber(table1[4])
+  tool1_x_offset=tonumber(table1[1])/1000
+  tool1_y_offset=tonumber(table1[2])/1000
+  tool1_t_offset=-tonumber(table1[3])
+  print("偏移量设置完成!!!")
+  print(tool1_x_offset)
+  print(tool1_y_offset)
+  print(tool1_t_offset)
+  a=pick_pos[1]+tool1_x_offset
+  print("a设置成功")
+  print(a)
+  b=pick_pos[2]+tool1_y_offset
+  print("b设置成功")
+  print(b)
+  c=pick_pos[3]
+  print("c设置成功")
+  print(c)
+  d1=d2r(pick_rpy[1])
+  print("d1设置成功")
+  print(d1)
+  d2=d2r(pick_rpy[2])
+  print("d2设置成功")
+  print(d2)
+  d3=d2r(pick_rpy[3])+d2r(tool1_t_offset)
+  print("d3设置成功")
+  print(d3)
+  d=rpy2quaternion({d1,d2,d3})
+  print("d设置成功")
+  joint_prepick=get_target_pose({a,b,c},d,false, {0,0,0},{1,0,0,0})
+  print("joint_prepick设置完成!!!")
+  joint_prepick[6] = joint_prepick[6]
+  set_global_variable("V_P_prepick","0,0,0,0,0,0,0,".. table2str(joint_prepick))
+  print(table2str(joint_prepick))
+end
+ip="192.168.192.6"
+port = 8000
+pick_pos = {-0.506988,-0.005821,0.028803} 
+pick_rpy = {180,0,-90} 
+tcp.client.connect(ip,port)
+sleep(0.5)
+
+
+
+
+
+

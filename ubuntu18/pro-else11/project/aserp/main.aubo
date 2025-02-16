@@ -1,0 +1,42 @@
+--Main Program
+
+--script function definition
+  function loopScriptFunc_0()
+    --(Logic tree item : Move) Move
+    init_global_move_profile()
+    set_joint_maxvelc({2.076942,2.076942,2.076942,2.488141,2.488141,2.488141})
+    set_joint_maxacc({13.847023,13.847023,13.847023,16.589005,16.589005,16.589005})
+      --(Logic tree item : Waypoint) Waypoint
+      set_current_logic_tree_item("b6a0efb4ae574a59be8c4feb234a83c1")
+      move_joint({1.070437, 0.795683, 0.849927, -0.384200, 0.578965, -0.869803}, true)
+      set_step_breakpoint()
+      --(Logic tree item : Waypoint) Waypoint
+      set_current_logic_tree_item("594c52851d564d0d8f300de9ec9a7039")
+      move_joint({1.070437, 0.795680, 1.986318, -0.384204, 1.010076, -0.370346}, true)
+      set_step_breakpoint()
+      --(Logic tree item : Waypoint) Waypoint
+      set_current_logic_tree_item("398c7f1e7eb84f949a55401e777bd704")
+      move_joint({1.710758, 0.366766, 2.065234, -0.384200, 1.010043, -0.370350}, true)
+      set_step_breakpoint()
+      --(Logic tree item : Waypoint) Waypoint
+      set_current_logic_tree_item("96f28a3e039b4aaab5334623b3c64e49")
+      move_joint({1.710758, 0.820305, 2.065234, 0.932328, 1.010043, -0.370346}, true)
+      set_step_breakpoint()
+      --(Logic tree item : Waypoint) Waypoint
+      set_current_logic_tree_item("4881c94ed72148898995941db1e920ea")
+      move_joint({1.710758, 0.820299, 2.162135, 1.061142, 1.196074, -0.505979}, true)
+      set_step_breakpoint()
+      --(Logic tree item : Waypoint) Waypoint
+      set_current_logic_tree_item("9d89c64d03ff4d65bcd94f12f1b2f2a1")
+      move_joint({1.710758, 0.650694, 1.643559, 0.712184, 1.196074, -0.505982}, true)
+      set_step_breakpoint()
+  end
+
+--(Logic tree item : Project_Program) Project_Program
+  --(Logic tree item : Loop) Loop
+  while (true) do
+    sleep(0.001)
+    if (loopScriptFunc_0() == false) then
+      break
+    end
+  end

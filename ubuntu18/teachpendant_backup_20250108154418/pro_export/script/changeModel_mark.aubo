@@ -1,0 +1,36 @@
+-- Written by: 
+function string.split(str, delimiter)   
+	if str==nil or str=='' or delimiter==nil then     
+		return nil  
+	 end 
+ local result = {}   
+for match in (str..delimiter):gmatch("(.-)"..delimiter) do    
+	 table.insert(result, match)   
+end 
+ return result 
+end 
+
+--connect to TCP server 
+port = 54600
+ip = "192.168.192.29" 
+tcp.client.connect(ip,port) 
+tcp.client.send_str_data(ip,port,"510,mark")
+sleep (0.2)
+
+--read data 
+ recv = "" 
+repeat
+ recv=tcp.client.recv_str_data(ip,port)
+ until(recv~="")
+ print(recv)
+ pos = string.split(recv, ",")
+print (pos[1])
+
+if (pos[1]=="512")then 
+print "shoudao"
+print (pos[1])
+else
+print "shoudao"
+print (pos[1])
+sleep (0.1000)
+end

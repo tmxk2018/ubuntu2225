@@ -1,0 +1,105 @@
+--Thread Program
+
+--block script function definition
+  function blockScriptFunc_plcf()
+    
+    port =2008
+    
+    ip = "192.168.0.1" 
+    sleep(1)
+    tcp.client.connect(ip,port) 
+    sleep(1)
+    tcp.client.send_str_data(ip,port," ")
+  end  --function blockScriptFunc_plcf()
+
+  function blockScriptFunc_q2()
+    tcp.client.disconnect("192.168.0.1",2008)
+  end  --function blockScriptFunc_q2()
+
+  function blockScriptFunc_PLC_connetion()
+    data=nil
+    sleep(0.2)
+    port =2008
+    
+    ip = "192.168.0.1" 
+    tcp.client.connect(ip,port) 
+    sleep(0.1)
+    data=tcp.client.recv_str_data(ip,port)
+    sleep(0.1)
+    print(data)
+    aaa= string.sub(data,5,6)
+    sleep(0.2)
+    
+    if (aaa >="1") then
+    tcp.client.send_str_data(ip,port,"A")
+    print("ok")
+    end
+    
+    if (aaa >="1") then
+    print(aaa)
+    set_global_variable("V_I_Receive",  tonumber(aaa))
+    sleep(1)
+    data=nil
+    end
+  end  --function blockScriptFunc_PLC_connetion()
+
+--script function definition
+  function loopScriptFunc_0()
+    --(Logic tree item : Wait) Wait
+    set_current_logic_tree_item("7ab7605cc6da4985a786c3a7bfd10bd3")
+    sleep(1)
+    set_step_breakpoint()
+    --(Logic tree item : Loop) Loop
+    while (get_robot_io_status(RobotIOType.RobotBoardUserDI, "U_DI_03") == 1 and get_global_variable("V_I_Receive") == 0) do
+      sleep(0.001)
+      if (loopScriptFunc_1() == false) then
+        break
+      end
+    end
+    --(Logic tree item : Loop) Loop
+    while (get_robot_io_status(RobotIOType.RobotBoardUserDI, "U_DI_03") == 0) do
+      sleep(0.001)
+      if (loopScriptFunc_3() == false) then
+        break
+      end
+    end
+  end
+
+  function loopScriptFunc_1()
+    --(Logic tree item : Loop) Loop
+    local loop_times_flag_0 = 0
+    while (loop_times_flag_0 < 1) do
+      loop_times_flag_0 = loop_times_flag_0 + 1
+      sleep(0.001)
+      if (loopScriptFunc_2() == false) then
+        break
+      end
+    end
+    --(Logic tree item : Script) PLC_connetion
+    set_current_logic_tree_item("b759ceff37774decbb3b7793a2fcadd4")
+    blockScriptFunc_PLC_connetion()
+    set_step_breakpoint()
+  end
+
+  function loopScriptFunc_2()
+    --(Logic tree item : Script) q2
+    set_current_logic_tree_item("eacfd8343e6f4116ac23ad430b6b315b")
+    blockScriptFunc_q2()
+    set_step_breakpoint()
+  end
+
+  function loopScriptFunc_3()
+    --(Logic tree item : Script) plcf
+    set_current_logic_tree_item("547728e2452c456395d20c9671b712e3")
+    blockScriptFunc_plcf()
+    set_step_breakpoint()
+  end
+
+--(Logic tree item : Thread) Thread
+  --(Logic tree item : Loop) Loop
+  while (true) do
+    sleep(0.001)
+    if (loopScriptFunc_0() == false) then
+      break
+    end
+  end

@@ -1,0 +1,15 @@
+--server
+port = 8888
+ip = "192.168.192.6"
+
+tcp.server.listen(port)
+recv = ""
+while 1 do
+	sleep(1)
+	recv=tcp.server.recv_str_data(ip)
+	if(recv=="START")then
+		tcp.server.send_str_data(ip,"ARM START")
+		print("Arm start moving")
+		break
+	end
+end

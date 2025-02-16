@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MainProgram>
+    <Condition ConditionType="Project_Program" ConditionAlias="Project_Program" ConditionUuid="be410b9f79324d6f8e4ef01d4ea033a6">
+        <Attribute/>
+        <Condition ConditionType="Loop" ConditionAlias="Loop" ConditionUuid="81f97cb8cfce434e81eeb7ab9774e6d5">
+            <Attribute>
+                <LoopConditionMode>Always</LoopConditionMode>
+            </Attribute>
+            <Condition ConditionType="Script" ConditionAlias="PLC_connetion" ConditionUuid="7b054cedceeb41c2b448fdde1ef949ae">
+                <Attribute>
+                    <ScriptConditionMode>BlockScript</ScriptConditionMode>
+                    <MD5>3aa9b83ec515b7b7a96d6a63eff11c96</MD5>
+                    <ScriptFileName>PLC_connetion</ScriptFileName>
+                </Attribute>
+            </Condition>
+            <Condition ConditionType="Script" ConditionAlias="q2" ConditionUuid="bfa3fd0eb71b483986588de75997d015">
+                <Attribute>
+                    <ScriptConditionMode>BlockScript</ScriptConditionMode>
+                    <MD5>d70375eca935d282cebfb357929eed45</MD5>
+                    <ScriptFileName>q2</ScriptFileName>
+                </Attribute>
+            </Condition>
+        </Condition>
+    </Condition>
+</MainProgram>

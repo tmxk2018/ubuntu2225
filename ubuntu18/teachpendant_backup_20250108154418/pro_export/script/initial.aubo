@@ -1,0 +1,2 @@
+set_global_variable("V_I_workNum",0)
+set_global_variable("V_B_ClawRun",false)

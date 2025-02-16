@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MainProgram>
+    <Condition ConditionType="Project_Program" ConditionAlias="TEST_3DVISION" ConditionUuid="d652574202c141bfbfffb321953f40de">
+        <Attribute/>
+        <Condition ConditionType="Script" ConditionAlias="Text_3Dvision" ConditionUuid="07bd110f45ee429aa7f3c20786bff42c">
+            <Attribute>
+                <ScriptConditionMode>BlockScript</ScriptConditionMode>
+                <MD5>166ab398ab046d5e880b0a5b7dc4d99d</MD5>
+                <ScriptFileName>Text_3Dvision</ScriptFileName>
+            </Attribute>
+        </Condition>
+    </Condition>
+</MainProgram>

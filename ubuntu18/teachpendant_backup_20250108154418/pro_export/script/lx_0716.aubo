@@ -1,0 +1,5 @@
+ip="192.168.192.6"--相机（server）IP
+port=8080--相机（server）端口
+tcp.client.connect(ip,port) --连接相机（server）
+recv_str = "1"
+tcp.client.send_str_data(ip,port,"Pwf,876652.9")

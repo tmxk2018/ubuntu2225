@@ -1,0 +1,16 @@
+--Main Program
+--(Logic tree item : Project_Program) Project_Program
+  --(Logic tree item : Loop) Loop
+  local loop_times_flag_0 = 0
+  while (loop_times_flag_0 < 1) do
+    loop_times_flag_0 = loop_times_flag_0 + 1
+    sleep(0.001)
+    --(Logic tree item : Move) Move
+    init_global_move_profile()
+    set_joint_maxvelc({1.298089,1.298089,1.298089,1.555088,1.555088,1.555088})
+    set_joint_maxacc({8.654390,8.654390,8.654390,10.368128,10.368128,10.368128})
+      --(Logic tree item : Waypoint) Waypoint
+      set_current_logic_tree_item("24d6e70357774ea580035ba7ff514a93")
+      move_joint({0.000000, 0.000000, 2.696403, 0.000000, 0.000000, -1.469592}, true)
+      set_step_breakpoint()
+  end

@@ -1,0 +1,362 @@
+--CommandListen
+
+--"V_I_command"
+--"V_I_command"=1		货架位置
+--"V_I_command"=2		CNC位置
+--"V_I_command"=3		镭射机位置
+--"V_I_command"=4		视觉检测
+--"V_I_command"=5		自动装配
+set_global_variable("V_I_command",0)
+
+
+--字符串分割函数
+function string.split(str, delimiter)
+  if str == nil or str =='' or delimiter == nil then
+    return nil
+  end
+  local result = {}
+  for match in (str..delimiter):gmatch("(.-)"..delimiter) do
+    table.insert(result, match)
+  end
+  return result
+end
+
+--IP与端口
+port=9999
+ip="192.168.10.1"	--上位交互软件
+port_camera=8499
+ip_camera="192.168.10.1"
+
+tcp.server.listen(port)
+
+while(tcp.server.is_connected(ip) ~= true)do
+	print("no connection")
+	sleep(1)
+end
+
+recv=""
+while(recv=="" or recv==nil)do
+	sleep(0.5)
+	recv=tcp.server.recv_str_data(ip)
+end
+print("recv=".. recv)
+
+tables1 = string.split(recv,",")
+
+--move to 货架位置
+if(tables1[1] == "go_to_martial")then
+	set_global_variable("V_I_AGV_move",1)
+     set_global_variable("V_B_move",true)
+                    while("V_B_move" == true) do
+                          sleep(0.5)
+                    end
+	tcp.server.send_str_data(ip,"scan_code_success")
+
+
+--货架位置
+elseif(tables1[1]=="takeaddress")then
+
+	set_global_variable("V_I_command",1)
+
+            if(tables1[2]=="D41")then
+                    set_global_variable("V_I_address_num_JS",1)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[2]=="D42")then
+                    set_global_variable("V_I_address_num_JS",2)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[2]=="D43")then
+                    set_global_variable("V_I_address_num_JS",3)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[2]=="D44")then
+                    set_global_variable("V_I_address_num_JS",4)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[2]=="D45")then
+                    set_global_variable("V_I_address_num_JS",5)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[2]=="D46")then
+                    set_global_variable("V_I_address_num_JS",6)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[2]=="D47")then
+                    set_global_variable("V_I_address_num_JS",7)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[2]=="D48")then
+                    set_global_variable("V_I_address_num_JS",8)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[2]=="D49")then
+                    set_global_variable("V_I_address_num_JS",9)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[2]=="D50")then
+                    set_global_variable("V_I_address_num_JS",10)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[2]=="0")then
+                    set_global_variable("V_I_address_num_DZ",0)
+            end
+
+                    while("V_B_move" == true) do
+                          sleep(0.5)
+                    end
+
+            if(tables1[3]=="D31")then
+                    set_global_variable("V_I_address_num_DZ",1)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[3]=="D32")then
+                    set_global_variable("V_I_address_num_DZ",2)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[3]=="D33")then
+                    set_global_variable("V_I_address_num_DZ",3)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[3]=="D34")then
+                    set_global_variable("V_I_address_num_DZ",4)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[3]=="D35")then
+                    set_global_variable("V_I_address_num_DZ",5)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[3]=="D36")then
+                    set_global_variable("V_I_address_num_DZ",6)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[3]=="D37")then
+                    set_global_variable("V_I_address_num_DZ",7)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[3]=="D38")then
+                    set_global_variable("V_I_address_num_DZ",8)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[3]=="D39")then
+                    set_global_variable("V_I_address_num_DZ",9)
+                    set_global_variable("V_B_move",true)                          
+            elseif(tables1[3]=="D40")then
+                    set_global_variable("V_I_address_num_DZ",10)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[3]=="0")then
+                    set_global_variable("V_I_address_num_DZ",0)
+            end
+
+                    while("V_B_move" == true) do
+                          sleep(0.5)
+                    end
+
+            if(tables1[4]=="D41")then
+                    set_global_variable("V_I_address_num_JS",1)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[4]=="D42")then
+                    set_global_variable("V_I_address_num_JS",2)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[4]=="D43")then
+                    set_global_variable("V_I_address_num_JS",3)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[4]=="D44")then
+                    set_global_variable("V_I_address_num_JS",4)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[4]=="D45")then
+                    set_global_variable("V_I_address_num_JS",5)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[4]=="D46")then
+                    set_global_variable("V_I_address_num_JS",6)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[4]=="D47")then
+                    set_global_variable("V_I_address_num_JS",7)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[4]=="D48")then
+                    set_global_variable("V_I_address_num_JS",8)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[4]=="D49")then
+                    set_global_variable("V_I_address_num_JS",9)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[4]=="D50")then
+                    set_global_variable("V_I_address_num_JS",10)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[4]=="0")then
+                    set_global_variable("V_I_address_num_DZ",0)
+            end
+
+                    while("V_B_move" == true) do
+                          sleep(0.5)
+                    end
+
+            if(tables1[5]=="D31")then
+                    set_global_variable("V_I_address_num_DZ",1)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[5]=="D32")then
+                    set_global_variable("V_I_address_num_DZ",2)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[5]=="D33")then
+                    set_global_variable("V_I_address_num_DZ",3)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[5]=="D34")then
+                    set_global_variable("V_I_address_num_DZ",4)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[5]=="D35")then
+                    set_global_variable("V_I_address_num_DZ",5)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[5]=="D36")then
+                    set_global_variable("V_I_address_num_DZ",6)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[5]=="D37")then
+                    set_global_variable("V_I_address_num_DZ",7)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[5]=="D38")then
+                    set_global_variable("V_I_address_num_DZ",8)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[5]=="D39")then
+                    set_global_variable("V_I_address_num_DZ",9)
+                    set_global_variable("V_B_move",true)                      
+            elseif(tables1[5]=="D40")then
+                    set_global_variable("V_I_address_num_DZ",10)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[5]=="0")then
+                    set_global_variable("V_I_address_num_DZ",0)
+            end
+
+                    while("V_B_move" == true) do
+                          sleep(0.5)
+                    end
+
+            if(tables1[6]=="D41")then
+                    set_global_variable("V_I_address_num_JS",1)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[6]=="D42")then
+                    set_global_variable("V_I_address_num_JS",2)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[6]=="D43")then
+                    set_global_variable("V_I_address_num_JS",3)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[6]=="D44")then
+                    set_global_variable("V_I_address_num_JS",4)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[6]=="D45")then
+                    set_global_variable("V_I_address_num_JS",5)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[6]=="D46")then
+                    set_global_variable("V_I_address_num_JS",6)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[6]=="D47")then
+                    set_global_variable("V_I_address_num_JS",7)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[6]=="D48")then
+                    set_global_variable("V_I_address_num_JS",8)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[6]=="D49")then
+                    set_global_variable("V_I_address_num_JS",9)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[6]=="D50")then
+                    set_global_variable("V_I_address_num_JS",10)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[6]=="0")then
+                    set_global_variable("V_I_address_num_DZ",0)
+            end
+
+                    while("V_B_move" == true) do
+                          sleep(0.5)
+                    end
+
+            if(tables1[7]=="D31")then
+                    set_global_variable("V_I_address_num_DZ",1)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[7]=="D32")then
+                    set_global_variable("V_I_address_num_DZ",2)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[7]=="D33")then
+                    set_global_variable("V_I_address_num_DZ",3)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[7]=="D34")then
+                    set_global_variable("V_I_address_num_DZ",4)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[7]=="D35")then
+                    set_global_variable("V_I_address_num_DZ",5)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[7]=="D36")then
+                    set_global_variable("V_I_address_num_DZ",6)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[7]=="D37")then
+                    set_global_variable("V_I_address_num_DZ",7)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[7]=="D38")then
+                    set_global_variable("V_I_address_num_DZ",8)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[7]=="D39")then
+                    set_global_variable("V_I_address_num_DZ",9)
+                    set_global_variable("V_B_move",true)                          
+            elseif(tables1[7]=="D40")then
+                    set_global_variable("V_I_address_num_DZ",10)
+                    set_global_variable("V_B_move",true)
+            elseif(tables1[7]=="0")then
+                    set_global_variable("V_I_address_num_DZ",0)
+            end
+
+                    while("V_B_move" == true) do
+                          sleep(0.5)
+                    end
+
+	set_global_variable("V_I_AGV_move",2)
+
+--CNC位置
+                tcp.server.send_str_data(ip,"cnc_already_in_place")
+
+elseif(tables1[1]=="cnc_can_be_place")then
+	set_global_variable("V_I_command",2)
+	
+                    while("V_B_move" == true) do
+                          sleep(0.5)
+                    end
+
+                tcp.server.send_str_data(ip,"cnc_place_ok")
+
+--镭射机位置
+                tcp.server.send_str_data(ip,"laser_already_in_place")
+
+elseif(tables1[1]=="laser_can_be_place")then
+
+		set_global_variable("V_I_command",3)
+
+                    while("V_B_move" == true) do
+                          sleep(0.5)
+                    end
+	
+	tcp.server.send_str_data(ip,"laser_place_ok")
+
+--视觉检测
+                tcp.server.send_str_data(ip,"visual_check_already_in_place")
+elseif(tables1[1]=="visual_check_can_be_place")then
+
+	set_global_variable("V_I_command",4)
+	
+                    while("V_B_move" == true) do
+                          sleep(0.5)
+                    end
+
+	tcp.server.send_str_data(ip,"this_check_completed")
+
+	tcp.server.send_str_data(ip,"visual_check_all_completed")
+
+--视觉检测全部NG
+--elseif(tables1[14]=="visual_ng")then
+
+	--set_global_variable("V_I_command",5)		
+
+--自动装配
+	tcp.server.send_str_data(ip,"assemble_already_in_place")
+
+elseif(tables1[1]=="assemble_can_be_place")then
+
+	tcp.server.send_str_data(ip,"please_send_dz_ok_postion")
+
+---+elseif(tables1[1]=="dz_ok_postion")then
+
+	set_global_variable("V_I_command",5)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+end
+

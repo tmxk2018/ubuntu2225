@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcedureProgram>
+    <Condition ConditionType="Procedure_Program" ConditionAlias="Procedure_Program" ConditionUuid="edae1e2eda554eb699643f73bc742631">
+        <Attribute/>
+        <Condition ConditionType="Script" ConditionAlias="initial" ConditionUuid="401df576058a4ffeaa80465e1a7befec">
+            <Attribute>
+                <ScriptConditionMode>BlockScript</ScriptConditionMode>
+                <MD5>8db1b40687124a472b463f01b3120ed5</MD5>
+                <ScriptFileName>initial</ScriptFileName>
+            </Attribute>
+        </Condition>
+        <Condition ConditionType="Move" ConditionAlias="Move" ConditionUuid="a1acdf284f8c4ae797f1b11a260dfe2c">
+            <Attribute>
+                <MoveConditionMode>MoveJoint</MoveConditionMode>
+                <ArrivalAheadThreshold>0.000000</ArrivalAheadThreshold>
+                <ArrivalAheadType>None</ArrivalAheadType>
+                <EnableArrivalAhead>false</EnableArrivalAhead>
+                <EnableOffset>false</EnableOffset>
+                <JointAcc>50,50,50,50,50,50</JointAcc>
+                <JointSpeed>50,50,50,50,50,50</JointSpeed>
+                <OffsetCoordName></OffsetCoordName>
+                <OffsetCoordType>BaseCoord</OffsetCoordType>
+                <OffsetRX></OffsetRX>
+                <OffsetRY></OffsetRY>
+                <OffsetRZ></OffsetRZ>
+                <OffsetX></OffsetX>
+                <OffsetY></OffsetY>
+                <OffsetZ></OffsetZ>
+            </Attribute>
+            <Condition ConditionType="Waypoint" ConditionAlias="Waypoint" ConditionUuid="8486a5a46ad54044806bb0b802d5c3ea">
+                <Attribute>
+                    <WaypointConditionMode>VarPoint</WaypointConditionMode>
+                    <VarPoint>V_P_Area_1</VarPoint>
+                </Attribute>
+            </Condition>
+        </Condition>
+        <Condition ConditionType="Loop" ConditionAlias="Loop" ConditionUuid="554fc18f5ff24f6d88e1d042d15d06a2">
+            <Attribute>
+                <LoopConditionMode>Always</LoopConditionMode>
+            </Attribute>
+            <Condition ConditionType="Wait" ConditionAlias="Wait" ConditionUuid="52a71797bb1044c09d8b1b98c68df57d">
+                <Attribute>
+                    <WaitConditionMode>Time</WaitConditionMode>
+                    <WaitTime>0.1</WaitTime>
+                </Attribute>
+            </Condition>
+            <Condition ConditionType="Script" ConditionAlias="3D_Vision" ConditionUuid="84db611b98c143e585dbe92e87f31d41">
+                <Attribute>
+                    <ScriptConditionMode>BlockScript</ScriptConditionMode>
+                    <MD5>f8f5db3ef47e60c7ef5fd70478d2c944</MD5>
+                    <ScriptFileName>3D_Vision</ScriptFileName>
+                </Attribute>
+            </Condition>
+            <Condition ConditionType="Wait" ConditionAlias="Wait" ConditionUuid="bad2f592e9944289b2d828f3c60646e8">
+                <Attribute>
+                    <WaitConditionMode>Time</WaitConditionMode>
+                    <WaitTime>0.1</WaitTime>
+                </Attribute>
+            </Condition>
+            <Condition ConditionType="Loop" ConditionAlias="Loop" ConditionUuid="abf3e4e5a60f4fbdac5361e80cc09451">
+                <Attribute>
+                    <LoopConditionMode>Exp</LoopConditionMode>
+                    <LoopConditionExp>V_B_ClawRun == false</LoopConditionExp>
+                </Attribute>
+                <Condition ConditionType="Script" ConditionAlias="Receive_pos" ConditionUuid="020494c18d194435b06dd66ee75bedc4">
+                    <Attribute>
+                        <ScriptConditionMode>BlockScript</ScriptConditionMode>
+                        <MD5>f8f8918746429eaffc4798ded7d89792</MD5>
+                        <ScriptFileName>Receive_pos</ScriptFileName>
+                    </Attribute>
+                </Condition>
+                <Condition ConditionType="Script" ConditionAlias="Script" ConditionUuid="44f03e163e0b4477a286683e72690337">
+                    <Attribute>
+                        <ScriptConditionMode>LineScript</ScriptConditionMode>
+                        <LineScriptContent>move_pos()</LineScriptContent>
+                    </Attribute>
+                </Condition>
+            </Condition>
+        </Condition>
+    </Condition>
+</ProcedureProgram>

@@ -1,0 +1,6 @@
+sleep(1)
+set_robot_io_status(RobotIOType.RobotBoardUserDO,"U_DO_00",0)
+--set_step_breakpoint()
+sleep(2)
+set_robot_io_status(RobotIOType.RobotBoardUserDO,"U_DO_00",1)
+--set_step_breakpoint()
