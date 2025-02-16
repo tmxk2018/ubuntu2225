@@ -1,0 +1,73 @@
+function table2str(tab)
+    local str=""
+    for i=1,#tab,1 do
+        if(i==#tab) then
+             str=str..tostring(tab[i])
+        else
+            str=str..tostring(tab[i])..","
+        end
+    end
+    return  str
+end
+function joint2pose(jointList,V_P)
+    local joint_str,pos_str,ori_str,pos,ori=""
+    pos,ori=base_to_user(jointList)
+    joint_str=table2str(jointList)
+    print(joint_str)
+    pos_str=table2str(pos)
+    print(pos_str)
+    ori_str=table2str(ori)
+    print(ori_str)
+    set_global_variable(V_P,pos_str..","..ori_str..","..joint_str)
+    print(pos_str..","..ori_str..","..joint_str)
+end
+set_joint_maxvelc({1,1,1,1,1,1})
+set_joint_maxacc({1,1,1,1,1,1})
+set_end_maxvelc(1)
+set_end_maxacc(1)
+script_common_interface("AuboVision","hvisionModel|ysl.")
+script_common_interface("AuboVision", "hclosevision|")
+resp_from_camera=nil
+while (resp_from_camera ~= 1) do
+    sleep(0.05)
+    resp_from_camera = script_common_interface("AuboVision", "gethvision_status|")
+    print("resp_from_camera :"..tostring(resp_from_camera))
+    if (resp_from_camera == 0) then
+        popup_message(2, "Excessice Deviation", true)
+        break
+    end
+    if (resp_from_camera == -1) then
+        popup_message(2, "Verification Fail", true)
+        break
+    end
+    if (resp_from_camera == -2) then
+        popup_message(2, "Verification Stop", true)
+        break
+    end
+end
+sleep(0.05)
+joint2pose(script_common_interface("AuboVision", "hposechange|0.295365,0.497327,0.490241,1.51182,1.39783,1.57422"), "V_P_left_1")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.41448,0.524918,0.498956,1.55071,1.39668,1.40789"), "V_P_left_2")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.413489,0.518906,0.533454,1.55061,1.39659,1.40783"), "V_P_left_3")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.420748,0.569881,0.555872,1.55069,1.39667,1.40789"), "V_P_left_4")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.411821,0.50758,0.544795,1.55069,1.39665,1.4079"), "V_P_left_5")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.354757,0.515804,0.544599,1.5507,1.39666,1.4079"), "V_P_left_6")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.237981,-0.23068,0.483056,1.51197,1.39782,1.57436"), "V_P_right_1")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.418682,-0.231322,0.482843,1.51184,1.39782,1.57422"), "V_P_right_2")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.418709,-0.240418,0.534944,1.51173,1.39782,1.57414"), "V_P_right_3")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.420969,-0.27966,0.550503,1.51184,1.39781,1.57424"), "V_P_right_4")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.419134,-0.250718,0.555554,1.51199,1.39781,1.5744"), "V_P_right_5")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.297582,-0.258202,0.55432,1.51199,1.3978,1.57441"), "V_P_right_6")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.358047,0.623862,0.0366008,1.64686,1.39838,1.18991"), "V_P_left_7")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.436865,0.58522,0.0354559,1.64686,1.39837,1.18991"), "V_P_left_8")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.433366,0.57647,0.0895643,1.64687,1.39836,1.1899"), "V_P_left_9")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.451573,0.613403,0.0966999,1.64686,1.39837,1.18991"), "V_P_left_10")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.433909,0.577579,0.0897583,1.64688,1.39836,1.1899"), "V_P_left_11")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.330534,0.628263,0.0912693,1.64687,1.39837,1.18989"), "V_P_left_12")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.402315,-0.187562,0.09242,2.1831,1.43178,1.93815"), "V_P_right_7")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.443711,-0.197712,0.0890128,2.18312,1.43178,1.93817"), "V_P_right_8")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.445828,-0.203221,0.131192,2.18322,1.43178,1.93827"), "V_P_right_9")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.436315,-0.25061,0.156747,2.18319,1.43178,1.93824"), "V_P_right_10")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.444395,-0.21889,0.16049,2.183,1.43178,1.93804"), "V_P_right_11")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.372368,-0.201236,0.166414,2.18301,1.43179,1.93805"), "V_P_right_12")
+sleep(2)

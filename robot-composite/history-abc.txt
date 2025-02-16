@@ -1,0 +1,510 @@
+    1  
+    2  sudo reboot
+    3  
+    4  cd /etc/
+    5  
+    6  exit
+    7  cd /
+    8  
+    9  sudo autoremove
+   10  apt autoremove
+   11  apt autoclean
+   12  tar -cvpzf /media/usb/seer_ubuntu_backup0.tar.gz --exclude=/media
+   13  tar -cvpzf /media/usb/seer_ubuntu_backup0.tar.gz --exclude=/media /
+   14  cd /
+   15  tar -cvpzf /media/usb/seer_ubuntu_server_backup_0.tar.gz --exclude=/media /
+   16  
+   17  cd /media/usb/
+   18  
+   19  file seer_ubuntu_server_backup_0.tar.gz 
+   24  
+   25  cd /media/
+   26  
+   27  mkdir backup
+   28  
+   29  tar -cvpzf /media/backup/seer_ubuntu_server_backup_0.tar.gz --exclude=/media /
+   30  
+   31  rm seer_ubuntu_server_backup_0.tar.gz 
+   32  
+   33  exit
+   39  
+   40  ifconfig
+   41  exit
+   42  
+   43  cd /root/
+   44  
+   45   -a
+   46  cd /home/
+   47  
+   48   -a
+   49  cd sr/
+   50  
+   51   -a
+   52  
+   53  cd /media/
+   54  
+   55  cd backup/
+   56  
+   57  cd ..
+   58  rm -rf backup/
+   59  
+   60  cd /
+   61  fdisk -l
+   62  mount /dev/sdb4 /media/usb/
+   63  cd /media/usb/
+   64  
+   65  rm *
+   66  rm -rf *
+   67  
+   68  cd /
+   69  tar -cvpzf /media/Disk/myDisk/ubuntu_backup@`date +%Y-%m+%d`.tar.gz --exclude=/proc --exclude=/tmp --exclude=/boot --exclude=/home --exclude=/lost+found --exclude=/media --exclude=/mnt --exclude=/run /
+   70  tar -cvpzf /media/usb/ubuntu_backup@`date +%Y-%m+%d`.tar.gz --exclude=/proc --exclude=/tmp --exclude=/lost+found --exclude=/media --exclude=/mnt --exclude=/run /
+   71  
+   72  reboot
+   73  
+   74  cd /
+   75  
+   76  reboot
+   77  cd /media/
+   78  
+   79  mkdir backup
+   80  cd /
+   81  tar -cvpzf /media/backup/ubuntu_backup_0.tar.gz --exclude=/proc --exclude=/tmp --exclude=/lost+found --exclude=/media --exclude=/mnt --exclude=/run /
+   82  
+   83  fdisk -l
+   84  mount /dev/sdb2 /media/usb/
+   85  cd /media/usb/
+   86  
+   87  cd backup/
+   88  
+   89  rm -rf *
+   90  
+   91  cp /media/backup/ubuntu_backup_0.tar.gz ./
+   92  
+   93  cd /media/backup/
+   94  
+   95  rm ubuntu_backup_0.tar.gz 
+   96  
+   97  reboot
+   98  cd /home/sr/
+   99  
+  100  mv mdns* /usr/sbin/
+  101  
+  102  cd /usr/sbin/
+  103  
+  104  ldd ./mdnsd
+  105  chmod +x mdnsd*
+  106  
+  107  ./mdnsd.sh 
+  108  ./mdnsd.sh start
+  109  ps -ef | grep mdnsd
+  110  exit
+  111  mount /dev/sdb2 /media/usb/
+  112  
+  113  cd /media/usb/
+  114  
+  115  cd backup/
+  116  
+  117  ldd mdnsd 
+  118  ldd ./mdnsd 
+  119  chmod +x ./mdnsd 
+  120  
+  121  ldd ./mdnsd 
+  122  cp ./mdnsd /usr/sbin/
+  123  cd /usr/sbin/
+  124  
+  125  ldd ./mdnsd 
+  126  chmod +x mdnsd 
+  127  ldd mdnsd 
+  128  mdnsd 
+  129  ps -ef 
+  130  ps -ef | grep mdnsd 
+  131  ps -ef | grep md
+  132  
+  133  file mdnsd 
+  134  ifconfig
+  135  
+  136  ifconfig
+  137  
+  138  ifconfig
+  139  
+  140  ifconfig
+  141  vim /etc/default/grub
+  142  update-grub
+  143  vim /etc/fstab 
+  144  update-grub
+  145  vim /boot/grub/grub.cfg 
+  146  reboot
+  147  sudo vim /etc/systemd/system.conf 
+  148  reboot
+  149  
+  150  cd .ssh/
+  151  
+  152  exit
+  153  ping baidu.com
+  154  cd
+  155  
+  156  reboot
+  157  
+  158  reboot
+  159  gPen3
+  160  cd ~
+  161  
+  162  cd ~
+  163  
+  164  python3 Battery_Status.py 
+  165  cd ~
+  166  
+  167  python3 Data_Analysis.py 
+  168  cd ~
+  169  
+  170  python3 Battery_Status.py 
+  171  cd ~
+  172  
+  173  python3 Battery_Status.py 
+  174  cd ~
+  175  
+  176  python3 Battery_Status.py 
+  177  ifconfig
+  178  sudo apt-get install openssh-client
+  179  ifconfig -a
+  180  ping baidu.com
+  181  ping 127.0.0.1
+  182  sudo iwlist scan
+  183  uname -a
+  184  uname -v
+  185  b_release -a
+  186  sudo nmcli device wifi rescan
+  187  nm-connection-editor
+  188  apt install network-manger-gnome
+  189  sudo nmcli dev
+  190  sudo nmcli r wifi on
+  191  sudo nmcli dev wifi
+  192  sudo nmcli dev wifi connect "vivo S16" password "hy020408" ifname wlan0
+  193  sudo apt install net-too wireless-too network-manager
+  194  nmcli dev wifi connect vivo S16
+  195  nmcli dev wifi connect vivoS16 password hy020408
+  196  sudo ufw allow ssh
+  197  sudo ufw allow http
+  198  sudo ufw allow https
+  199  nmcli dev wifi connect vivoS16 password hy020408
+  200  sudo nmcli r wifi on
+  201  sudo nmcli dev wifi
+  202  uname -sr
+  203  rfkill list all
+  204  sudo tee /etc/modprobe.d/blacklist-ideapad.conf <<< "blacklist ideapad_laptop"
+  205  restart 0
+  206  sudo nmcli r wifi on
+  207  sudo nmcli dev wifi
+  208  ifconfig
+  209  sudo apt install network-manager wpasupplicant wireless-too
+  210  nmcli device wifi rescan
+  211  sudo nmcli device wifi rescan
+  212  nmcli device wifi list
+  213  sudo nmcli device wifi rescan
+  214  sudo nmcli dev wifi
+  215  sudo nmcli dev
+  216  ifconfig
+  217  sudo nmcli r wifi on
+  218  sudo nmcli dev wifi
+  219  sudo nmcli dev wiifi
+  220  sudo nmcli dev wifi
+  221  nmcli device wifi connect vivoS16 password  hy020408
+  222  pci
+  223  pci -vvv
+  224  sudo hw -class network
+  225  rfkill list all
+  226  apt install rfkill
+  227  sudo iwlist wlan0 scan | grep -E "Quality|ESSID"
+  228  sudo netplan apply
+  229  ifconfig
+  230  sudo netplan apply
+  231  ifconfig
+  232  sudo netplan apply
+  233  ifconfig
+  234  iwconfig
+  235  sudo netplan apply
+  236  iwconfig
+  237  sudo iw dev wlan0 scan | less
+  238  sudo ip link set wlan0 up
+  239  sudo iw dev wlan0 scan | less
+  240  sudo apt install network-manager wpasupplicant wireless-too
+  241  sudo iw dev wlan0 scan | less
+  242  sudo iw dev wlan0 scan
+  243  iwconfig
+  244  sudo ip link set wlan0 up
+  245  sudo iw dev wlan0 scan
+  246  ifconfig
+  247  ping 10.42.0.1
+  248  ping www.baidu.com
+  249  ping baidu.com
+  250  sudo netplan apply
+  251  ifconfig
+  252  sudo nmcli r wifi on
+  253  sudo nmcli dev wifi
+  254  ifconfig
+  255  sudo apt-get update
+  256  sudo nmcli dev
+  257  sudo nmcli r wifi on
+  258  sudo nmcli dev wifi
+  259  sudo apt install net-too wireless-too network-manager
+  260  sudo nmcli dev wifi
+  261  nmtui
+  262  ip addr
+  263  sudo netplan apply
+  264  iwconfig
+  265  init 0
+  266  sudo nmcli r wifi on
+  267  sudo nmcli dev wifi
+  268  ifconfig wlan0 down
+  269  sudo nmcli dev wifi
+  270  ifconfig wlan0 up
+  271  pci
+  272  hw -C network
+  273  ping www.baidu.com
+  274  rfkill list all
+  275  sudo iwlist scan
+  276  nmcli networking connectivity check
+  277  nmcli radio wifi
+  278  nmcli connecy show --active
+  279  nmcli connection show --active
+  280  nmcli dev wifi list
+  281  nmcli dev wifi rescan
+  282  type iwpriv
+  283  adb shell
+  284  cd ~/sbin
+  285  sudo du
+  286  cd ~./sbin
+  287  cd ~sbin
+  288  sudo nautilus
+  289  cd sbin
+  290  cd ./sbin
+  291  sudo su
+  292  sudo su
+  293  cd ..
+  294  cd ~
+  295  cd sbin
+  296  cd ..
+  297  cd sbin
+  298  iwpriv wlan0 setUnitTestCmd 9 1 1
+  299  iwpriv wlan scan_disable 0
+  300  iw list
+  301  iw dev wlab0 scan
+  302  iw dev wlan0 scan
+  303  iwpriv
+  304  ifconfig eth1 up
+  305  iwlist eth1 s
+  306  sudo iwlist eth1 scan
+  307  iw dev wlan0 scan ap-force
+  308  rfkill list all
+  309  sudo apt-get install rfkill
+  310  rfkill list all
+  311  systemctl restart NetworkManager.service
+  312  sudo nmcli dev
+  313  sudo nmcli r wifi on
+  314  sudo nmcli dev
+  315  sudo nmcli r wifi on
+  316  sudo nmcli dev
+  317  sudo nmcli dev wifi
+  318  sudo nmcli dev wifi connect "vivoS16" password "hy020408" ifname wlan0
+  319  init 0
+  320  rfkill list all
+  321  sudo systemctl restart network-manager
+  322  nm-connection-editor
+  323  sudo apt-get install network-manager-gnome
+  324  nm-connection-editor
+  325  sudo nmcli r wifi on
+  326  sudo nmcli dev wifi
+  327  sudo nmcli dev wifi connecct "vivoS16" password "hy020408" ifname wlan0
+  328  sudo nmcli dev wifi connect "vivoS16" password "hy020408" ifname wlan0
+  329  nm-connection-editor
+  330  sudo nmcli dev
+  331  sudo apt-get install openssh-server
+  332  sudo apt-get update
+  333  sudo apt-get install ssh
+  334  service ssh start
+  335  service ssh status
+  336  ifconfig
+  337  sudo passwd
+  338  su root
+  339  reboot
+  340  sudo apt-get update
+  341  sudo apt-get install ubuntu-desktop
+  342  sudo apt-get install unity
+  343  sudo apt-get install lightdm
+  344  sudo service dgm3 start
+  345  sudo service gdm3 start
+  346  sudo service gmd3 start
+  347  sudo dpkg-reconfigure gmd3
+  348  sudo systemctl set-defalut graphiccal.target
+  349  reboot
+  350  sudo nano /etc/default/grub
+  351  sudo update-grub
+  352  reboot
+  353  sudo nano /etc/default/grub
+  354  sudo update-grub
+  355  sudo dpkg-reconfigure gdm3
+  356  sudo service sddm restart
+  357  sudo service gdm3 restart
+  358  /usr/bin/sudo nano /etc/profile
+  359  ll
+  360  sudo apt-get update
+  361  sudo apt-get install xserver-xorg-lts-quantal
+  362  cd ~
+  363   -la
+  364  sudo chown sr:sr .Xauthority
+  365  sudo chmod -R 777 .Xauthority
+  366  cd~
+  367  cd ~
+  368  la
+  369   .Xauthority -l
+  370  sudo chown sr:sr .Xauthority
+  371  sudo reboot
+  372  sudo chmod 1777 /tmp
+  373  cd ..
+  374  cd root
+  375  autosetup.sh
+  376  exit()
+  377  exit
+  378  cd ~
+  379  sudo chmod 1777 /tem/
+  380  sudo chmod 1777 /tmp
+  381  
+  382  ./autosetup.sh
+  383  reboot
+  384  
+  385  cd ~
+  386  
+  387  cd ../
+  388  
+  389  cd root
+  390  sudo ch,od 777 /tmp
+  391  sudo chmod 777 /tmp
+  392  
+  393  sudo chmod root:root .Xauthority
+  394  sudo chown root:root .Xauthority
+  395  ./autosetup.sh
+  396  reboot
+  397  sudo -s
+  398  ~/xsession-errors
+  399   -a
+  400  reboot
+  401   -a
+  402  sudo chown sr:sr .Xauthority
+  403  sudo chmod 777 /tmp
+  404  sudo chmod 1777 /tmp
+  405  sudo chown sr:sr .Xauthority
+  406  xs ~
+  407  cd ~
+  408  sudo chown sr:sr .Xauthority
+  409  cd /
+  410  sudo chmod 1777 /tmp
+  411  
+  412  cd var
+  413  
+  414  sudo chmod 1777 /tmp
+  415   .Xauthority
+  416   .Xauthority -l
+  417  sudo chmod 777 /tmp
+  418  cd ..
+  419  sudo passwd sr
+  420  exit
+  421  sudo chmod 1777 /tmp
+  422  cd /
+  423  
+  424  cd ~
+  425  sudo chown root:root .Xauthority
+  426  sudo chmod 1777 /tmp
+  427  
+  428   -al
+  429  sudo chown root:root pmLinux-Ubuntu
+  430   -al
+  431  reboot
+  432  init 0
+  433  passwd -d root
+  434  reboot
+
+  442  cd /etc
+  443  
+  444  sudo nano shadow
+  445  reboot
+  446  passwd -d root
+  447  sudo nano /etc/lightdm/lightdm.conf
+  448  sudo passwd -d root
+  449  sudo passwd -d root
+  450  cd /root
+  451  sudo passwd -d root
+  452  cd /root
+  453  sudo passwd -d root
+  454  reboot
+  455  cd /etc
+  456  sudo nano shadow
+  457  sudo su
+  458  sudo /etc/shadow
+  459  sudo nano /etc/shadow
+  460  passwd root
+  461  reboot
+  462  ifconfig
+  463  
+  464  cd ./auborobotstudio/scripts/
+  465  
+  466  ./update.sh 
+  467  reboot
+  468  
+  469  cd ./auborobotstudio/scripts/
+  470  
+  471  ./update.sh 
+  472  vim update.sh 
+  473  
+  502  cd scripts/
+  503  sudo ./update.sj
+  504  sudo ./update.sh
+  505  
+  506  cd /etc/ssh/
+  507  
+  508  vim sshd_config
+  509  cd ~
+  510  ping www.baidu.com
+  511  ifconfig
+  512  
+  513  ping www.baidu.com
+  514  ifconfig
+  515  ping www.baidu.com
+  516  
+  517  ./autosetup.sh 
+  518  ifconfig
+  519  ping www.baidu.com
+  520  ./autosetup.sh 
+  521  
+  522  
+  523  ping www.baidu.com
+  524  ./autosetup.sh 
+  525  sudo apt update
+  526  sudo apt upgrade
+  527  sudo ./autosetup.sh 
+  528  
+  529  cd ./auborobotstudio/
+  530  
+  531  cd ./scripts/
+  532  
+  533  sudo ./update_restart.sh 
+  534  sudo ./update.sh 
+  535  vim update.sh 
+  536  sudo ./update.sh 
+  537  vim update.sh 
+  538  sudo ./update.sh 
+  539  reboot
+  540  
+  541  cd auborobotstudio/
+  542  
+  543  vim start.log 
+  544  
+  545  sudo systemctl list-unit-files 
+
+  561  mv AuboAgvUpdate_1.1.22_20231201_14h51m.tar.gz.auboagv AuboAgvUpdate_1.1.22_20231201_14h51m.tar.gz
+  562  tar zxvf AuboAgvUpdate_1.1.22_20231201_14h51m.tar.gz 
+  563  cd ./auborobotstudio/scripts/
+  564  cd ./
+  565  
+  566  vim update.sh 
+t

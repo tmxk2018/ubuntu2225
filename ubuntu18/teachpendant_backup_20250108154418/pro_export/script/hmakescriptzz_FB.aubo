@@ -1,0 +1,102 @@
+function table2str(tab)
+    local str=""
+    for i=1,#tab,1 do
+        if(i==#tab) then
+             str=str..tostring(tab[i])
+        else
+            str=str..tostring(tab[i])..","
+        end
+    end
+    return  str
+end
+
+function joint2pose(jointList,V_P)
+    local joint_str,pos_str,ori_str,pos,ori=""
+
+    pos,ori=base_to_user(jointList)
+    joint_str=table2str(jointList)
+    print(joint_str)
+    pos_str=table2str(pos)
+    print(pos_str)
+    ori_str=table2str(ori)
+    print(ori_str)
+    set_global_variable(V_P,pos_str..","..ori_str..","..joint_str)
+    print(pos_str..","..ori_str..","..joint_str)
+end 
+
+set_joint_maxvelc({1,1,1,1,1,1})
+set_joint_maxacc({1,1,1,1,1,1})
+set_end_maxvelc(1)
+set_end_maxacc(1)
+script_common_interface("AuboVision","hvisionModel|zz_ceshi.")
+script_common_interface("AuboVision", "hopenvision|")
+
+resp_from_camera=nil
+while (resp_from_camera ~= 1) do
+    sleep(0.05)
+    resp_from_camera = script_common_interface("AuboVision", "gethvision_status|")
+    end
+
+-- 返回值为1，表示ok，wb31=0, wb32=1
+if (resp_from_camera == 1) then
+    set_modbus_io_status("w_b31",0)
+    set_modbus_io_status("w_b32",1)
+    -- 执行机械臂运动
+    sleep(0.05)
+
+joint2pose(script_common_interface("AuboVision", "hposechange|0.661874,0.707639,0.675517,1.5538,-0.834002,1.38743"), "V_P_F2_L1_010")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.765656,0.743899,0.672734,1.55381,-0.833991,1.38742"), "V_P_F2_L1_011")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.765656,0.743902,0.714271,1.5538,-0.833995,1.38742"), "V_P_F2_L1_012")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.767103,0.736778,0.759353,1.55621,0.113226,1.46862"), "V_P_F2_L1_013")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.767107,0.758782,0.776134,1.55224,0.674425,1.45868"), "V_P_F2_L1_014")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.637365,0.715349,0.776142,1.55223,0.674417,1.45866"), "V_P_F2_L1_015")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.655294,-0.476945,0.689823,1.55078,-0.754695,1.4741"), "V_P_F2_R1_010")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.75735,-0.49039,0.682002,1.5517,-0.752649,1.61684"), "V_P_F2_R1_011")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.757345,-0.495393,0.722007,1.55169,-0.752647,1.61684"), "V_P_F2_R1_012")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.757343,-0.515392,0.770497,-1.43343,-1.4687,-1.67448"), "V_P_F2_R1_013")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.757349,-0.540386,0.792063,-1.55073,-0.803215,-1.55225"), "V_P_F2_R1_014")
+joint2pose(script_common_interface("AuboVision", "hposechange|0.634596,-0.451246,0.783531,-1.55203,-0.759738,-1.5213"), "V_P_F2_R1_015")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.12729,-0.646725,1.22902,1.89,0.353057,0.696127"), "V_P_F2_L2_010")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.00839,-0.773695,0.983292,1.76783,0.471953,0.761646"), "V_P_F2_L2_011")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.00839,-0.764113,0.948626,1.72358,0.471956,0.761646"), "V_P_F2_L2_012")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.01862,-0.78444,0.816934,1.61243,0.461728,-0.152329"), "V_P_F2_L2_013")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.03306,-0.835396,0.706834,1.55362,0.447299,-0.755623"), "V_P_F2_L2_014")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.08807,-0.603521,1.09915,1.71555,0.392286,-0.880877"), "V_P_F2_L2_015")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.479386,-0.344875,1.68748,2.03779,2.00985,0.834833"), "V_P_F2_R2_010")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.40307,-0.53203,1.37324,1.91052,1.93354,0.8187"), "V_P_F2_R2_011")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.403074,-0.513461,1.33582,1.85453,1.93354,0.8187"), "V_P_F2_R2_012")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.452808,-0.55923,1.19369,1.75827,2.05304,1.75268"), "V_P_F2_R2_013")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.466445,-0.569257,1.14496,1.71958,2.06668,2.33122"), "V_P_F2_R2_014")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.441171,-0.310463,1.5173,1.8331,1.97165,2.48236"), "V_P_F2_R2_015")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.09177,-0.681906,1.37399,2.06186,0.375998,0.75205"), "V_P_F2_L3_010")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.01316,-0.833649,1.07154,1.91016,0.454588,0.753112"), "V_P_F2_L3_011")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.01428,-0.813027,1.03432,1.85238,0.453486,0.753101"), "V_P_F2_L3_012")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.02857,-0.828003,0.903998,1.73716,0.439192,-0.391549"), "V_P_F2_L3_013")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.03194,-0.83603,0.875528,1.71676,0.453279,-0.829251"), "V_P_F2_L3_014")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.08445,-0.620473,1.24519,1.87154,0.38331,-0.829985"), "V_P_F2_L3_015")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.566637,-0.549506,1.55734,2.10867,2.26239,0.801256"), "V_P_F2_R3_010")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.472098,-0.65313,1.37589,2.03074,2.17657,0.801048"), "V_P_F2_R3_011")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.470008,-0.622366,1.35009,1.97416,2.16576,0.801044"), "V_P_F2_R3_012")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.470984,-0.608634,1.29387,1.90422,2.10562,1.76509"), "V_P_F2_R3_013")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.493716,-0.608056,1.24636,1.85618,2.14583,2.30802"), "V_P_F2_R3_014")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.52638,-0.370942,1.6077,1.98042,2.22213,2.30812"), "V_P_F2_R3_015")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.07109,-0.680873,1.51943,2.20401,0.651392,0.803944"), "V_P_F2_L4_010")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.01206,-0.9043,1.13427,2.04208,0.465928,0.804245"), "V_P_F2_L4_011")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.01205,-0.868921,1.11456,1.98697,0.465932,0.804245"), "V_P_F2_L4_012")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.01546,-0.89605,0.976322,1.87587,0.462522,-0.379755"), "V_P_F2_L4_013")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.02077,-0.877218,0.977009,1.85782,0.492137,-0.828489"), "V_P_F2_L4_014")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.07732,-0.687146,1.34137,2.03254,0.400685,-0.837749"), "V_P_F2_L4_015")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.554172,-0.595571,1.68384,2.28153,2.17713,0.760648"), "V_P_F2_L4_010")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.443839,-0.726715,1.43909,2.16781,2.06681,0.760385"), "V_P_F2_L4_011")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.443844,-0.694033,1.42364,2.11966,2.06681,0.760385"), "V_P_F2_L4_012")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.458589,-0.65666,1.3616,1.99356,2.07292,1.85166"), "V_P_F2_L4_013")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.494466,-0.686118,1.29078,1.9516,2.15244,2.34295"), "V_P_F2_L4_014")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.52552,-0.462098,1.65854,2.09475,2.19223,2.35943"), "V_P_F2_L4_015")
+
+
+-- 返回值不为1，表示ng，wb31=1，wb32=0
+else
+    set_modbus_io_status("w_b31",1)
+    set_modbus_io_status("w_b32",0)
+    robot_slow_stop()
+end

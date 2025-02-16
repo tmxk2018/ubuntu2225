@@ -1,0 +1,152 @@
+function table2str(tab)
+    local str=""
+    for i=1,#tab,1 do
+        if(i==#tab) then
+             str=str..tostring(tab[i])
+        else
+            str=str..tostring(tab[i])..","
+        end
+    end
+    return  str
+end
+
+function joint2pose(jointList,V_P)
+    local joint_str,pos_str,ori_str,pos,ori=""
+    pos,ori=base_to_user(jointList)
+    joint_str=table2str(jointList)
+    print(joint_str)
+    pos_str=table2str(pos)
+    print(pos_str)
+    ori_str=table2str(ori)
+    print(ori_str)
+    set_global_variable(V_P,pos_str..","..ori_str..","..joint_str)
+    print(pos_str..","..ori_str..","..joint_str)
+end 
+
+set_joint_maxvelc({1,1,1,1,1,1})
+set_joint_maxacc({1,1,1,1,1,1})
+set_end_maxvelc(1)
+set_end_maxacc(1)
+
+-- 选择模板
+script_common_interface("AuboVision","hvisionModel|zz.")
+-- 开始视觉
+script_common_interface("AuboVision", "hopenvision|")
+
+-- 初始化返回值
+resp_from_camera=nil
+
+-- 获取返回值
+while (resp_from_camera == nil) do
+    sleep(0.05)
+    resp_from_camera = script_common_interface("AuboVision", "gethvision_status|")
+end
+
+-- 返回值为1，表示ok，wb31=0, wb32=1
+if (resp_from_camera == 1) then
+    set_modbus_io_status("w_b31",0)
+    set_modbus_io_status("w_b32",1)
+-- 返回值不为1，表示ng，wb31=1，wb32=0
+else
+    set_modbus_io_status("w_b31",1)
+    set_modbus_io_status("w_b32",0)
+end
+
+sleep(0.05)
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.12412,-0.658973,1.02902,1.73399,0.250975,0.789516"), "V_P_F2_L1_01")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.03226,-0.826811,0.734654,1.59544,0.342757,0.802063"), "V_P_F2_L1_02")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.03226,-0.831356,0.657806,1.52326,0.342757,0.721023"), "V_P_F2_L1_03")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.04251,-0.902483,0.448554,1.38603,0.332513,-0.0915447"), "V_P_F2_L1_04")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.04356,-0.924121,0.393308,1.35357,0.408555,-0.82452"), "V_P_F2_L1_05")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.13448,-0.57024,1.00097,1.61716,0.317707,-0.835026"), "V_P_F2_L1_06")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.12729,-0.646726,1.22902,1.89,0.353057,0.696127"), "V_P_F2_L2_01")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.00839,-0.773696,0.983292,1.76783,0.471953,0.761644"), "V_P_F2_L2_02")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.00839,-0.764113,0.948626,1.72358,0.471956,0.761644"), "V_P_F2_L2_03")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.01861,-0.784438,0.816932,1.61243,0.461728,-0.152329"), "V_P_F2_L2_04")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.03721,-0.851865,0.677446,1.54079,0.443153,-0.879339"), "V_P_F2_L2_05")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.08807,-0.603518,1.09915,1.71555,0.392287,-0.880876"), "V_P_F2_L2_06")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.09177,-0.681907,1.37399,2.06186,0.375998,0.75205"), "V_P_F2_L3_01")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.01037,-0.826792,1.08403,1.91576,0.457392,0.753146"), "V_P_F2_L3_02")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.01037,-0.80533,1.05568,1.86598,0.457392,0.753148"), "V_P_F2_L3_03")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.02857,-0.828003,0.903995,1.73716,0.43919,-0.391549"), "V_P_F2_L3_04")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.03921,-0.860215,0.832147,1.69764,0.428549,-0.829346"), "V_P_F2_L3_05")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.08445,-0.620472,1.24519,1.87154,0.383308,-0.829985"), "V_P_F2_L3_06")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.07109,-0.680873,1.51943,2.20401,0.651392,0.803945"), "V_P_F2_L4_01")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.01206,-0.9043,1.13427,2.04208,0.465926,0.804243"), "V_P_F2_L4_02")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.01205,-0.868924,1.11456,1.98697,0.465931,0.804243"), "V_P_F2_L4_03")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.01546,-0.896049,0.976321,1.87587,0.462522,-0.379756"), "V_P_F2_L4_04")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.0251,-0.920291,0.919844,1.84372,0.452913,-0.837265"), "V_P_F2_L4_05")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.07732,-0.687146,1.34137,2.03254,0.400686,-0.837749"), "V_P_F2_L4_06")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.07703,-0.875016,1.36247,2.19219,0.41847,0.756078"), "V_P_F2_L5_01")
+joint2pose(script_common_interface("AuboVision", "hjointchange|0.999883,-0.979041,1.16312,2.10346,0.495553,0.748739"), "V_P_F2_L5_02")
+joint2pose(script_common_interface("AuboVision", "hjointchange|0.999883,-0.946518,1.1585,2.06631,0.495541,0.748743"), "V_P_F2_L5_03")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.01444,-0.932466,1.07976,1.97243,0.480996,-0.187211"), "V_P_F2_L5_04")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.02483,-0.945178,1.02219,1.92676,0.470623,-0.730167"), "V_P_F2_L5_05")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.07087,-0.761359,1.3697,2.08637,0.424619,-0.72562"), "V_P_F2_L5_06")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.0594,-1.00239,1.3597,2.33849,0.470365,0.796485"), "V_P_F2_L6_01")
+joint2pose(script_common_interface("AuboVision", "hjointchange|0.993157,-1.06915,1.19445,2.24271,0.53657,0.793434"), "V_P_F2_L6_02")
+joint2pose(script_common_interface("AuboVision", "hjointchange|0.993166,-1.03066,1.20085,2.21059,0.536574,0.793435"), "V_P_F2_L6_03")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.01103,-1.00977,1.12964,2.11784,0.518722,-0.230369"), "V_P_F2_L6_04")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.02104,-1.0127,1.08238,2.07313,0.508751,-0.76585"), "V_P_F2_L6_05")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.08544,-0.823815,1.46501,2.26394,0.444353,-0.762554"), "V_P_F2_L6_06")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.07495,-1.14514,1.31273,2.44633,0.445414,0.770418"), "V_P_F2_L7_01")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.01711,-1.23932,1.02565,2.25456,0.398978,0.76915"), "V_P_F2_L7_02")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.01713,-1.19296,1.0452,2.22766,0.398973,0.769146"), "V_P_F2_L7_03")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.02535,-1.15386,1.0223,2.16557,0.390767,-0.201824"), "V_P_F2_L7_04")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.04,-1.18368,0.94349,2.11617,0.376118,-0.744438"), "V_P_F2_L7_05")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.09337,-1.0094,1.3238,2.32047,0.322743,-0.74258"), "V_P_F2_L7_06")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.09325,-1.26864,1.22772,2.518,0.415439,0.80175"), "V_P_F2_L8_01")
+joint2pose(script_common_interface("AuboVision", "hjointchange|0.996836,-1.32829,1.05996,2.40606,0.511843,0.806007"), "V_P_F2_L8_02")
+joint2pose(script_common_interface("AuboVision", "hjointchange|0.996826,-1.29652,1.07998,2.39432,0.511843,0.806008"), "V_P_F2_L8_03")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.01306,-1.24583,1.05262,2.31681,0.495613,-0.267563"), "V_P_F2_L8_04")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.02509,-1.25405,1.0021,2.27491,0.483585,-0.857366"), "V_P_F2_L8_05")
+joint2pose(script_common_interface("AuboVision", "hjointchange|1.09549,-1.09895,1.37153,2.4922,0.413189,-0.86066"), "V_P_F2_L8_06")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.432682,-0.290606,1.5511,1.85708,1.89304,0.759665"), "V_P_F2_R1_01")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.382486,-0.482824,1.2752,1.77316,1.84285,0.758863"), "V_P_F2_R1_02")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.382486,-0.473753,1.23148,1.72037,1.84285,0.758863"), "V_P_F2_R1_03")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.396229,-0.479305,1.13907,1.63356,1.85659,1.79178"), "V_P_F2_R1_04")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.426692,-0.511066,1.06741,1.59383,1.88706,2.51676"), "V_P_F2_R1_05")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.413484,-0.203549,1.48771,1.70654,1.87385,2.51655"), "V_P_F2_R1_06")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.479386,-0.344875,1.68748,2.03779,2.00985,0.834833"), "V_P_F2_R2_01")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.40307,-0.53203,1.37324,1.91053,1.93354,0.818698"), "V_P_F2_R2_02")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.403071,-0.51346,1.33582,1.85453,1.93354,0.818698"), "V_P_F2_R2_03")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.432147,-0.526125,1.24879,1.78022,1.96261,1.70018"), "V_P_F2_R2_04")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.460624,-0.549544,1.17159,1.72652,1.9911,2.48247"), "V_P_F2_R2_05")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.441171,-0.310463,1.51731,1.83311,1.97165,2.48236"), "V_P_F2_R2_06")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.566638,-0.549506,1.55734,2.10867,2.26239,0.801257"), "V_P_F2_R3_01")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.47,-0.651069,1.37943,2.03221,2.16576,0.801044"), "V_P_F2_R3_02")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.470006,-0.622366,1.3501,1.97416,2.16576,0.801044"), "V_P_F2_R3_03")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.501875,-0.622767,1.24166,1.86615,2.19763,1.85507"), "V_P_F2_R3_04")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.523797,-0.644141,1.18728,1.83319,2.21955,2.30812"), "V_P_F2_R3_05")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.526379,-0.370939,1.6077,1.98042,2.22213,2.30813"), "V_P_F2_R3_06")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.554172,-0.595569,1.68384,2.28153,2.17713,0.760649"), "V_P_F2_R4_01")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.443837,-0.726716,1.43909,2.16781,2.06681,0.760385"), "V_P_F2_R4_02")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.443843,-0.694032,1.42364,2.11966,2.06681,0.760385"), "V_P_F2_R4_03")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.483389,-0.681711,1.31864,1.9752,2.15011,1.80727"), "V_P_F2_R4_04")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.506407,-0.699441,1.26782,1.94173,2.17312,2.36004"), "V_P_F2_R4_05")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.52552,-0.462096,1.65854,2.09475,2.19223,2.35943"), "V_P_F2_R4_06")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.507238,-0.731777,1.6421,2.35424,2.20136,0.786183"), "V_P_F2_R5_01")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.47223,-0.823943,1.45636,2.26115,2.16636,0.720829"), "V_P_F2_R5_02")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.472238,-0.783705,1.45034,2.21489,2.16635,0.720826"), "V_P_F2_R5_03")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.50666,-0.765381,1.37519,2.12092,2.20078,1.76535"), "V_P_F2_R5_04")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.526734,-0.77562,1.3301,2.0858,2.22083,2.3045"), "V_P_F2_R5_05")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.556113,-0.568246,1.70364,2.2515,2.25022,2.30374"), "V_P_F2_R5_06")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.436694,-0.796695,1.8008,2.58613,1.98031,0.785937"), "V_P_F2_R6_01")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.420908,-0.913617,1.49925,2.40159,1.96452,0.727851"), "V_P_F2_R6_02")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.420908,-0.874927,1.50332,2.36696,1.96452,0.72785"), "V_P_F2_R6_03")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.438468,-0.823811,1.47729,2.28973,1.98208,1.81517"), "V_P_F2_R6_04")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.468929,-0.837958,1.42754,2.25397,2.01252,2.42116"), "V_P_F2_R6_05")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.450583,-0.633253,1.8388,2.46062,1.99419,2.42139"), "V_P_F2_R6_06")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.539026,-1.01104,1.61681,2.62464,2.18984,0.701815"), "V_P_F2_R7_01")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.456498,-1.07568,1.40264,2.47529,2.10731,0.702124"), "V_P_F2_R7_02")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.456495,-1.03201,1.41723,2.44621,2.10731,0.702124"), "V_P_F2_R7_03")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.467713,-0.970251,1.41561,2.38283,2.11853,1.59619"), "V_P_F2_R7_04")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.505222,-0.992179,1.34961,2.33865,2.15604,2.34819"), "V_P_F2_R7_05")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.52211,-0.812487,1.76429,2.57362,2.17293,2.34813"), "V_P_F2_R7_06")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.426435,-1.12183,1.64681,2.74904,1.90565,0.74723"), "V_P_F2_R8_01")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.390528,-1.14696,1.45561,2.58197,1.8701,0.747991"), "V_P_F2_R8_02")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.39053,-1.11802,1.46947,2.56685,1.87009,0.747999"), "V_P_F2_R8_03")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.405504,-1.05138,1.47962,2.51027,1.88507,1.65927"), "V_P_F2_R8_04")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.444404,-1.05617,1.42832,2.46348,1.92396,2.44927"), "V_P_F2_R8_05")
+joint2pose(script_common_interface("AuboVision", "hjointchange|-0.442684,-0.91918,1.79905,2.69724,1.92225,2.4493"), "V_P_F2_R8_06")
+joint2pose(script_common_interface("AuboVision", "hjointchange|0.178813,-0.00497084,2.15609,2.14332,1.30579,0.708426"), "V_P_F2_R8_07")
