@@ -68,6 +68,8 @@ function photo1()
   set_global_variable("V_P_prepick","0,0,0,0,0,0,0,".. table2str(joint_prepick))
   print(table2str(joint_prepick))
 end
+
+
 ip="192.168.192.6"
 port = 8000
 pick_pos = {-0.506988,-0.005821,0.028803} 
