@@ -1,0 +1,28 @@
+-- main
+
+-- 全局变量定义
+local ip = "192.168.20.1"  -- 服务器端的 IP
+local port = 8081         -- 服务器端监听的端口号
+local signal = "1"        -- 发送给服务器端的字符串数据
+
+-- 主函数
+function main()
+    -- 连接到服务器
+    --ConnectTcpServer(ip, port)
+
+	-- 发送数据
+    --Send(ip, port, signal)
+	
+    -- 接收数据
+    --Recv(ip, port)
+	
+	
+	get_current_point()
+	--set_var_point("V_P_A0",{0,0,0,0,0,0})
+    
+	-- 断开连接
+    --DisconnectTcpServer(ip, port)
+end
+
+-- 调用主函数
+main()
